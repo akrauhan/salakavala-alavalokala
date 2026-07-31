@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bf8h02hmexujc"]
 
-[ext_resource type="Texture2D" uid="uid://dte60jepnka8b" path="res://kala.png" id="1_bgtgj"]
-[ext_resource type="Script" uid="uid://u0dp7vbjh0ts" path="res://kala.gd" id="1_w0oxm"]
-[ext_resource type="Script" uid="uid://47usfo354a86" path="res://orbiting_sphere.gd" id="3_i3pqv"]
-[ext_resource type="Texture2D" uid="uid://qq0vpbe6jvti" path="res://light.webp" id="5_sweqy"]
+[ext_resource type="Texture2D" uid="uid://dte60jepnka8b" path="res://asset/kala.png" id="1_bgtgj"]
+[ext_resource type="Script" uid="uid://u0dp7vbjh0ts" path="res://script/kala.gd" id="1_w0oxm"]
+[ext_resource type="Script" uid="uid://47usfo354a86" path="res://script/orbiting_sphere.gd" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://qq0vpbe6jvti" path="res://asset/light.webp" id="5_sweqy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dop4x"]
 radius = 8.062258

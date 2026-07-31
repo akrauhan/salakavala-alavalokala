@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q4fi5qd8n7tr"
-path="res://.godot/imported/orb.svg-0313e59d97801b32b7d8638ac638be51.ctex"
+uid="uid://dte60jepnka8b"
+path="res://.godot/imported/kala.png-5eb85208fdf660d5fdb683d37dea337a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://orb.svg"
-dest_files=["res://.godot/imported/orb.svg-0313e59d97801b32b7d8638ac638be51.ctex"]
+source_file="res://asset/kala.png"
+dest_files=["res://.godot/imported/kala.png-5eb85208fdf660d5fdb683d37dea337a.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
