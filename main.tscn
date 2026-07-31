@@ -15,6 +15,7 @@ offset_bottom = 657.0
 color = Color(0.051970966, 0.05197096, 0.05197095, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1235036554]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Players" type="Node2D" parent="." unique_id=123082180]

@@ -8,6 +8,7 @@ extends RigidBody2D
 
 @export var dash_strength := 1000
 @export var dash_cooldown := 2
+@export var biteimpulse_strength := 100
 
 @onready var dash_timer: Timer = $DashCooldown
 @onready var bite_timer: Timer = $BiteCooldown
@@ -42,15 +43,19 @@ func _physics_process(delta):
 var attack_previous := false
 
 func _input(event):
-	if Input.is_joy_button_pressed(player_id,JOY_BUTTON_X):
+	if Input.is_joy_button_pressed(player_id,JOY_BUTTON_LEFT_SHOULDER):
 		dash()
 	
 	var attack_pressed = Input.is_joy_button_pressed(player_id, JOY_BUTTON_RIGHT_SHOULDER)
 	if attack_pressed and !attack_previous:
-		var direction = orbiting_sphere.global_position - global_position
+		var input = Vector2(
+		Input.get_joy_axis(player_id, JOY_AXIS_RIGHT_X),
+		Input.get_joy_axis(player_id, JOY_AXIS_RIGHT_Y)
+		)
+		var direction = input
 		melee_attack.melee(player_id, direction)
+		apply_impulse(direction.normalized() * biteimpulse_strength)
 	
-
 func take_damage():
 	print("Player ", player_id, "hit")
 

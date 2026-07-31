@@ -5,6 +5,8 @@ extends RigidBody2D
 @export var orbit_speed := 2.0
 @export var orbit_acceleration := 1000.0
 
+@export var orb_speed := 5.0
+
 @onready var light: PointLight2D = $PointLight2D
 
 # Called when the node enters the scene tree for the first time.
@@ -33,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		input = Vector2.ZERO
 		
 
-	apply_central_force(input * orbit_acceleration + spring_force())
+	apply_central_force(orb_speed * input * orbit_acceleration + spring_force())
 
 func spring_force():
 	var distance = global_position-get_parent().global_position
@@ -44,7 +46,7 @@ func spring_force():
 	
 	var d = distance - rest_position
 	
-	var force = -  distance.length() * d
+	var force = -  distance.length() * d * 10
 
 	return force
 	
