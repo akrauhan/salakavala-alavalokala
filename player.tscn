@@ -66,6 +66,9 @@ position = Vector2(-1.9073486e-06, 0)
 scale = Vector2(2.515, 1)
 shape = SubResource("CircleShape2D_q4em8")
 
+[node name="BiteDuration" type="Timer" parent="Bite" unique_id=1502114615]
+one_shot = true
+
 [node name="BiteCooldown" type="Timer" parent="Bite" unique_id=1921175251]
 one_shot = true
 
@@ -75,3 +78,5 @@ texture = ExtResource("6_2hs0m")
 
 [node name="FlapCooldown" type="Timer" parent="." unique_id=1562447073]
 one_shot = true
+
+[connection signal="timeout" from="Bite/BiteDuration" to="." method="_on_bite_duration_timeout"]
