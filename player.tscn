@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bf8h02hmexujc"]
+
+[ext_resource type="Texture2D" uid="uid://dte60jepnka8b" path="res://kala.png" id="1_bgtgj"]
+[ext_resource type="Script" uid="uid://u0dp7vbjh0ts" path="res://kala.gd" id="1_w0oxm"]
+[ext_resource type="Script" uid="uid://47usfo354a86" path="res://orbiting_sphere.gd" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://qq0vpbe6jvti" path="res://light.webp" id="5_sweqy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dop4x"]
+radius = 8.062258
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52wb4"]
+radius = 6.0
+
+[node name="Player" type="RigidBody2D" unique_id=2038223969]
+gravity_scale = 0.0
+linear_damp = 5.0
+script = ExtResource("1_w0oxm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1213556571]
+position = Vector2(4, 0)
+shape = SubResource("CircleShape2D_dop4x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2111743535]
+position = Vector2(-1.0000001, 1)
+rotation = 0.01747456
+scale = Vector2(0.058, 0.064)
+texture = ExtResource("1_bgtgj")
+
+[node name="OrbitingSphere" type="RigidBody2D" parent="." unique_id=162152448]
+position = Vector2(56, 0)
+gravity_scale = 0.0
+linear_damp = 5.0
+script = ExtResource("3_i3pqv")
+
+[node name="PointLight2D" type="PointLight2D" parent="OrbitingSphere" unique_id=711782307]
+energy = 5.18
+range_layer_min = -1024
+range_layer_max = 1024
+texture = ExtResource("5_sweqy")
+texture_scale = 0.25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbitingSphere" unique_id=1513548188]
+shape = SubResource("CircleShape2D_52wb4")
+disabled = true
