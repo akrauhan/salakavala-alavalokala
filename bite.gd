@@ -40,7 +40,6 @@ func attack(direction) -> bool: # Returns if attack was successful
 	
 	var locked_direction = direction.normalized()
 	
-
 	position = locked_direction * attack_distance
 	rotation = locked_direction.angle()
 	
