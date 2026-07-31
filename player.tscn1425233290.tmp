@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bf8h02hmexujc"]
+
+[ext_resource type="Texture2D" uid="uid://dte60jepnka8b" path="res://asset/kala.png" id="1_bgtgj"]
+[ext_resource type="Script" uid="uid://u0dp7vbjh0ts" path="res://script/kala.gd" id="1_w0oxm"]
+[ext_resource type="Script" uid="uid://47usfo354a86" path="res://script/orbiting_sphere.gd" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://c0mjhy45i5sd5" path="res://bite.gd" id="5_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://qq0vpbe6jvti" path="res://asset/light.webp" id="5_sweqy"]
+[ext_resource type="Texture2D" uid="uid://ckut7pxok7tfv" path="res://asset/bite.png" id="6_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://b7lbetxeet03h" path="res://asset/bite2.png" id="7_1jxqw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dop4x"]
+radius = 8.062258
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52wb4"]
+radius = 6.0
+
+[sub_resource type="ImageTexture" id="ImageTexture_h2yge"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q4em8"]
+
+[node name="Player" type="RigidBody2D" unique_id=2038223969]
+gravity_scale = 0.0
+linear_damp = 1.0
+angular_damp = 100.0
+script = ExtResource("1_w0oxm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1213556571]
+position = Vector2(4, 0)
+shape = SubResource("CircleShape2D_dop4x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2111743535]
+position = Vector2(-1.0000001, 1)
+rotation = 0.01747456
+texture = ExtResource("1_bgtgj")
+
+[node name="DashCooldown" type="Timer" parent="." unique_id=1659091772]
+one_shot = true
+
+[node name="OrbitingSphere" type="RigidBody2D" parent="." unique_id=783793761]
+position = Vector2(56, 0)
+gravity_scale = 0.0
+linear_damp = 5.0
+script = ExtResource("3_i3pqv")
+
+[node name="PointLight2D" type="PointLight2D" parent="OrbitingSphere" unique_id=711782307]
+energy = 5.0
+range_layer_min = -1024
+range_layer_max = 1024
+texture = ExtResource("5_sweqy")
+texture_scale = 0.25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbitingSphere" unique_id=1513548188]
+shape = SubResource("CircleShape2D_52wb4")
+disabled = true
+
+[node name="Bite" type="Node2D" parent="." unique_id=1755387565]
+script = ExtResource("5_2hs0m")
+normal_texture = SubResource("ImageTexture_h2yge")
+active_texture = ExtResource("7_1jxqw")
+
+[node name="BiteArea" type="Area2D" parent="Bite" unique_id=197780047]
+position = Vector2(24.000002, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bite/BiteArea" unique_id=741406850]
+position = Vector2(-1.9073486e-06, 0)
+scale = Vector2(2.515, 1)
+shape = SubResource("CircleShape2D_q4em8")
+
+[node name="BiteCooldown" type="Timer" parent="Bite" unique_id=1921175251]
+one_shot = true
+
+[node name="BiteVisualizer" type="Sprite2D" parent="Bite" unique_id=1790828731]
+position = Vector2(24.000002, 0)
+texture = ExtResource("6_2hs0m")
+
+[node name="FlapCooldown" type="Timer" parent="." unique_id=1562447073]
+one_shot = true

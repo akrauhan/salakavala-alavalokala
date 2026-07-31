@@ -46,7 +46,7 @@ func spring_force():
 	
 	var d = distance - rest_position
 	
-	var force = -  distance.length() * d * 10
+	var force = -  distance.length() * d
 
 	return force
 	
