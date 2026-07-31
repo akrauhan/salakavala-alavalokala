@@ -140,8 +140,9 @@ texture_scale = 0.25
 shape = SubResource("CircleShape2D_52wb4")
 disabled = true
 
-[node name="Bite" type="Node2D" parent="." unique_id=1755387565]
+[node name="Bite" type="Node2D" parent="." unique_id=1755387565 node_paths=PackedStringArray("sprite_2d")]
 script = ExtResource("5_2hs0m")
+sprite_2d = NodePath("../Sprite2D")
 normal_texture = SubResource("ImageTexture_h2yge")
 active_texture = ExtResource("7_1jxqw")
 

@@ -13,7 +13,7 @@ extends RigidBody2D
 @export var biteimpulse_strength := 100
 
 @onready var dash_timer: Timer = $DashCooldown
-@onready var bite_timer: Timer = $BiteCooldown
+@onready var bite_timer: Timer = $Bite/BiteCooldown
 @onready var flap_timer: Timer = $FlapCooldown
 @onready var orbiting_sphere = $OrbitingSphere
 @onready var melee_attack = $Bite
