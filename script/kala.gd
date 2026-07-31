@@ -6,20 +6,25 @@ extends RigidBody2D
 @export var acceleration := 1000.0
 @export var deadzone := 0.4
 
-@export var dash_strength := 1000
+@export var dash_strength := 100
 @export var dash_cooldown := 2
-@export var biteimpulse_strength := 100
+@export var flap_strength := 100
+@export var flap_cooldown := 0.5
+@export var biteimpulse_strength := 50
 
 @onready var dash_timer: Timer = $DashCooldown
 @onready var bite_timer: Timer = $BiteCooldown
+@onready var flap_timer: Timer = $FlapCooldown
 @onready var orbiting_sphere = $OrbitingSphere
 @onready var melee_attack = $Bite
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	dash_timer.wait_time = dash_cooldown
+	flap_timer.wait_time = flap_cooldown
 	orbiting_sphere.player_id = player_id
 	melee_attack.player_id = player_id
+	
 
 
 var toggle_light_previous := false
@@ -38,7 +43,17 @@ func _physics_process(delta):
 	if input.length() < deadzone:
 		input = Vector2.ZERO
 	
-	apply_central_force(input * acceleration)
+	
+	flap(input)
+
+
+func flap(direction):
+	if !flap_timer.is_stopped():
+		return
+	
+	apply_impulse(direction * flap_strength)
+		
+	flap_timer.start()
 
 var attack_previous := false
 
@@ -54,7 +69,9 @@ func _input(event):
 		)
 		var direction = input
 		melee_attack.melee(player_id, direction)
-		apply_impulse(direction.normalized() * biteimpulse_strength)
+		if melee_attack.bite_timer.is_stopped():
+			apply_impulse(direction.normalized()*biteimpulse_strength)
+
 	
 func take_damage():
 	print("Player ", player_id, "hit")

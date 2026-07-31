@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 @export var attack_distance := 40.0
 @export var attack_duration := 0.15
@@ -8,6 +8,8 @@ extends Area2D
 
 @onready var bite_timer := $BiteCooldown
 @onready var bite_sprite := $BiteVisualizer
+@onready var bite_area := $BiteArea
+
 
 @export var normal_texture: Texture2D
 @export var active_texture: Texture2D
@@ -34,7 +36,7 @@ func melee(player_id, direction):
 var attacking := false
 
 func attack (direction: Vector2):	
-	if attacking: 
+	if attacking or !bite_timer.is_stopped(): 
 		return
 	attacking = true
 	var locked_direction = direction.normalized()
@@ -45,7 +47,7 @@ func attack (direction: Vector2):
 	rotation = locked_direction.angle()
 	
 	
-	for target in get_overlapping_bodies():
+	for target in bite_area.get_overlapping_bodies():
 		if target == get_parent():
 			continue
 
@@ -56,5 +58,6 @@ func attack (direction: Vector2):
 	
 	bite_sprite.texture = normal_texture
 	attacking = false
+	
 	
 	bite_timer.start()
