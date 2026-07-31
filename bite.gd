@@ -1,4 +1,5 @@
 extends Area2D
+@export var sprite_2d: AnimatedSprite2D
 
 @export var attack_distance := 40.0
 @export var attack_duration := 0.15
@@ -44,7 +45,11 @@ func attack (direction: Vector2):
 	position = locked_direction * attack_distance
 	rotation = locked_direction.angle()
 	
-	
+	if attacking:
+		sprite_2d.play("bite")
+	else:
+		sprite_2d.play("idle")
+		
 	for target in get_overlapping_bodies():
 		if target == get_parent():
 			continue
