@@ -50,7 +50,7 @@ func attack(direction) -> bool: # Returns if attack was successful
 			continue
 
 		if target.has_method("take_damage"):
-			target.take_damage()
+			target.take_damage(get_parent().player_id)
 	
 	attack_duration_timer.start()
 	bite_timer.start()

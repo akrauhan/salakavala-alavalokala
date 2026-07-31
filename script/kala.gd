@@ -25,6 +25,7 @@ func _ready() -> void:
 	orbiting_sphere.player_id = player_id
 	melee_attack.player_id = player_id
 	
+	ScoreManager.add_player(player_id)
 
 
 var toggle_light_previous := false
@@ -77,8 +78,9 @@ func flap(direction):
 var attack_previous := false
 
 	
-func take_damage():
+func take_damage(attacker_id):
 	print("Player ", player_id, "hit")
+	ScoreManager.add_score(attacker_id, 1)
 
 func dash():
 	if !dash_timer.is_stopped():
