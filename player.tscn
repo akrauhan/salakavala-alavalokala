@@ -142,7 +142,6 @@ disabled = true
 
 [node name="Bite" type="Node2D" parent="." unique_id=1755387565]
 script = ExtResource("5_2hs0m")
-sprite_2d = NodePath("../Sprite2D")
 normal_texture = SubResource("ImageTexture_h2yge")
 active_texture = ExtResource("7_1jxqw")
 
