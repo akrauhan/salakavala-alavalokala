@@ -44,7 +44,6 @@ func attack(direction) -> bool: # Returns if attack was successful
 	position = locked_direction * attack_distance
 	rotation = locked_direction.angle()
 	
-
 	for target in bite_area.get_overlapping_bodies():
 
 		if target == get_parent():
