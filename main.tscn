@@ -4,6 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bf8h02hmexujc" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bjhqs3ppgisuf" path="res://script/player_manager.gd" id="2_0xm2m"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(57, 710)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dop4x"]
+size = Vector2(1204, 100)
+
 [node name="Main" type="Node2D" unique_id=566845920]
 script = ExtResource("1_0xm2m")
 
@@ -15,7 +21,6 @@ offset_bottom = 657.0
 color = Color(0.051970966, 0.05197096, 0.05197095, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1235036554]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Players" type="Node2D" parent="." unique_id=123082180]
@@ -23,3 +28,32 @@ color = Color(0, 0, 0, 1)
 [node name="PlayerManager" type="Node" parent="." unique_id=239729471]
 script = ExtResource("2_0xm2m")
 player_scene = ExtResource("1_ig7tw")
+
+[node name="Borders" type="Node" parent="." unique_id=1732383276]
+
+[node name="Right" type="StaticBody2D" parent="Borders" unique_id=1198831199]
+position = Vector2(1, 1309)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right" unique_id=1007763113]
+position = Vector2(-29, -982)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Left" type="StaticBody2D" parent="Borders" unique_id=1827380981]
+position = Vector2(1154, 638)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left" unique_id=983993276]
+position = Vector2(29, -326)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Top" type="StaticBody2D" parent="Borders" unique_id=245295799]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Top" unique_id=221768745]
+position = Vector2(572, -52)
+shape = SubResource("RectangleShape2D_dop4x")
+
+[node name="Bot" type="StaticBody2D" parent="Borders" unique_id=924000071]
+position = Vector2(-1, 648)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Bot" unique_id=1428801058]
+position = Vector2(584, 47)
+shape = SubResource("RectangleShape2D_dop4x")
