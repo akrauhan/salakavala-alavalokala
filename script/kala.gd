@@ -53,6 +53,8 @@ func _physics_process(delta):
 		Input.get_joy_axis(player_id, JOY_AXIS_RIGHT_Y)
 	)
 	
+	rotation = input2.angle()
+	
 	var attack_pressed = Input.is_joy_button_pressed(player_id, JOY_BUTTON_RIGHT_SHOULDER)
 	if attack_pressed and !attack_previous:
 		var direction = input2

@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var player_id := 0
-@export var orbit_radius := 32.0
+@export var orbit_radius := 30.0
 @export var orbit_speed := 2.0
 @export var orbit_acceleration := 1000.0
 
@@ -46,7 +46,7 @@ func spring_force():
 	
 	var d = distance - rest_position
 	
-	var force = -  distance.length() * d
+	var force = -  5 * distance.length() * d
 
 	return force
 	
