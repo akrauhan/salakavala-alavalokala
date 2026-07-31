@@ -1,6 +1,5 @@
 extends RigidBody2D
-
-
+@onready var flapper_animation: AnimatedSprite2D = $Sprite2D/FlapperAnimation
 
 @export var player_id := 0
 @export var acceleration := 1000.0
@@ -42,6 +41,7 @@ func _physics_process(delta):
 	
 	if input.length() < deadzone:
 		input = Vector2.ZERO
+		flapper_animation.play("loop")
 	flap(input)
 	
 	

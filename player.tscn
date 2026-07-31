@@ -1,13 +1,27 @@
 [gd_scene format=3 uid="uid://bf8h02hmexujc"]
 
 [ext_resource type="Script" uid="uid://u0dp7vbjh0ts" path="res://script/kala.gd" id="1_w0oxm"]
-[ext_resource type="Script" uid="uid://bu4dllqypjcwf" path="res://flapper.gd" id="2_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://dv41bri6nh48m" path="res://asset/fin move loop.png" id="3_dw050"]
 [ext_resource type="Script" uid="uid://47usfo354a86" path="res://script/orbiting_sphere.gd" id="3_i3pqv"]
 [ext_resource type="Script" uid="uid://c0mjhy45i5sd5" path="res://bite.gd" id="5_2hs0m"]
-[ext_resource type="Texture2D" uid="uid://qq0vpbe6jvti" path="res://asset/light.webp" id="5_sweqy"]
+[ext_resource type="Texture2D" uid="uid://d0kg1o3teyojr" path="res://asset/lightorgan.png" id="5_dw050"]
 [ext_resource type="Texture2D" uid="uid://ckut7pxok7tfv" path="res://asset/bite.png" id="6_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://b7lbetxeet03h" path="res://asset/bite2.png" id="7_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://b5ni7ddb5cefe" path="res://asset/kala bite.png" id="10_ivps1"]
+
+[sub_resource type="GDScript" id="GDScript_b26j0"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dop4x"]
 radius = 8.062258
@@ -88,6 +102,42 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_op7ga"]
+atlas = ExtResource("3_dw050")
+region = Rect2(0, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q13i1"]
+atlas = ExtResource("3_dw050")
+region = Rect2(18, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pylmc"]
+atlas = ExtResource("3_dw050")
+region = Rect2(36, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbfsw"]
+atlas = ExtResource("3_dw050")
+region = Rect2(0, 32, 18, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op7ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q13i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pylmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbfsw")
+}],
+"loop": 1,
+"name": &"loop",
+"speed": 4.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_52wb4"]
 radius = 6.0
 
@@ -104,7 +154,7 @@ script = ExtResource("1_w0oxm")
 [node name="flapper" type="Node2D" parent="." unique_id=1111981613]
 position = Vector2(-1.0000001, 1)
 rotation = 0.01747456
-script = ExtResource("2_n7ghd")
+script = SubResource("GDScript_b26j0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1213556571]
 position = Vector2(4, 0)
@@ -116,6 +166,9 @@ sprite_frames = SubResource("SpriteFrames_bjeov")
 animation = &"bite"
 
 [node name="FlapperAnimation" type="AnimatedSprite2D" parent="Sprite2D" unique_id=209489225]
+position = Vector2(-35, 0)
+sprite_frames = SubResource("SpriteFrames_dw050")
+animation = &"loop"
 offset = Vector2(-20, 0)
 
 [node name="DashCooldown" type="Timer" parent="." unique_id=1659091772]
@@ -128,11 +181,11 @@ linear_damp = 10.0
 script = ExtResource("3_i3pqv")
 
 [node name="PointLight2D" type="PointLight2D" parent="OrbitingSphere" unique_id=711782307]
-energy = 5.0
+scale = Vector2(3.5, 3.5)
+energy = 8.14
 range_layer_min = -1024
 range_layer_max = 1024
-texture = ExtResource("5_sweqy")
-texture_scale = 0.25
+texture = ExtResource("5_dw050")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OrbitingSphere" unique_id=1513548188]
 shape = SubResource("CircleShape2D_52wb4")
