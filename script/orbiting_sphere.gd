@@ -5,13 +5,24 @@ extends RigidBody2D
 @export var orbit_speed := 2.0
 @export var orbit_acceleration := 1000.0
 
+@onready var light: PointLight2D = $PointLight2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 var angle := 0.0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var toggle_light_previous := false
+
+func _process(delta: float) -> void:
+	var toggle_pressed = Input.is_joy_button_pressed(player_id, JOY_BUTTON_Y)
+	
+	if toggle_pressed and !toggle_light_previous:
+		toggle_light()
+	
+	toggle_light_previous = toggle_pressed
+	
 
 func _physics_process(delta: float) -> void:
 	var input = Vector2(
@@ -28,8 +39,24 @@ func spring_force():
 	var distance = global_position-get_parent().global_position
 	var rest_position = distance.normalized()*orbit_radius
 	
+	if distance.length() < orbit_radius:
+		return Vector2.ZERO
+	
 	var d = distance - rest_position
 	
 	var force = -  distance.length() * d
 
 	return force
+	
+var light_on = true
+
+func _input(event):
+	pass
+	
+
+func toggle_light():
+	if light_on:
+		light.energy = 0
+	else:
+		light.energy = 5
+	light_on =  !light_on

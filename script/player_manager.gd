@@ -18,3 +18,5 @@ func spawn_players():
 		player.position = Vector2(i * 100+200, 0)
 
 		players_container.add_child(player)
+		
+		print("Spawned player ID: ", player.player_id)
