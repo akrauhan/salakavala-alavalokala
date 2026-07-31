@@ -13,7 +13,7 @@ extends RigidBody2D
 @export var biteimpulse_strength := 100
 
 @onready var dash_timer: Timer = $DashCooldown
-@onready var bite_timer: Timer = $BiteCooldown
+@onready var bite_timer: Timer = $Bite/BiteCooldown
 @onready var flap_timer: Timer = $FlapCooldown
 @onready var orbiting_sphere = $OrbitingSphere
 @onready var melee_attack = $Bite
@@ -52,6 +52,8 @@ func _physics_process(delta):
 		Input.get_joy_axis(player_id, JOY_AXIS_RIGHT_X),
 		Input.get_joy_axis(player_id, JOY_AXIS_RIGHT_Y)
 	)
+	
+	rotation = input2.angle()
 	
 	var attack_pressed = Input.is_joy_button_pressed(player_id, JOY_BUTTON_RIGHT_SHOULDER)
 	if attack_pressed and !attack_previous:

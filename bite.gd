@@ -36,10 +36,10 @@ func attack(direction) -> bool: # Returns if attack was successful
 		return false
 		
 	attacking = true
+	sprite_2d.play("bite")
 	
 	var locked_direction = direction.normalized()
 	
-	sprite_2d.play("bite")
 
 	position = locked_direction * attack_distance
 	rotation = locked_direction.angle()

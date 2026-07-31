@@ -111,11 +111,9 @@ position = Vector2(4, 0)
 shape = SubResource("CircleShape2D_dop4x")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1289207644]
-position = Vector2(-1.0000001, 1)
-rotation = 0.01747456
+position = Vector2(32, 1)
 sprite_frames = SubResource("SpriteFrames_bjeov")
 animation = &"bite"
-flip_h = true
 
 [node name="FlapperAnimation" type="AnimatedSprite2D" parent="Sprite2D" unique_id=209489225]
 offset = Vector2(-20, 0)
@@ -140,8 +138,9 @@ texture_scale = 0.25
 shape = SubResource("CircleShape2D_52wb4")
 disabled = true
 
-[node name="Bite" type="Node2D" parent="." unique_id=1755387565]
+[node name="Bite" type="Node2D" parent="." unique_id=1755387565 node_paths=PackedStringArray("sprite_2d")]
 script = ExtResource("5_2hs0m")
+sprite_2d = NodePath("../Sprite2D")
 normal_texture = SubResource("ImageTexture_h2yge")
 active_texture = ExtResource("7_1jxqw")
 
@@ -160,6 +159,7 @@ one_shot = true
 one_shot = true
 
 [node name="BiteVisualizer" type="Sprite2D" parent="Bite" unique_id=1790828731]
+visible = false
 position = Vector2(24.000002, 0)
 texture = ExtResource("6_2hs0m")
 
