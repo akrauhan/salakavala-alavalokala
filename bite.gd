@@ -39,15 +39,12 @@ func attack(direction) -> bool: # Returns if attack was successful
 	
 	var locked_direction = direction.normalized()
 	
+	sprite_2d.play("bite")
 
 	position = locked_direction * attack_distance
 	rotation = locked_direction.angle()
 	
-	if attacking:
-		sprite_2d.play("bite")
-	else:
-		sprite_2d.play("idle")
-		
+
 	for target in bite_area.get_overlapping_bodies():
 
 		if target == get_parent():
