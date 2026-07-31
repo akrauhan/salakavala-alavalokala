@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 var attacking := false
 
 func attack(direction) -> bool: # Returns if attack was successful
-	if direction.length() < 0.4 or !bite_timer.is_stopped(): #TODO: Make deadzone global
+	if !bite_timer.is_stopped():
 		return false
 		
 	if !attack_duration_timer.is_stopped() or !bite_timer.is_stopped(): 

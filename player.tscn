@@ -124,7 +124,7 @@ one_shot = true
 [node name="OrbitingSphere" type="RigidBody2D" parent="." unique_id=783793761]
 position = Vector2(56, 0)
 gravity_scale = 0.0
-linear_damp = 5.0
+linear_damp = 10.0
 script = ExtResource("3_i3pqv")
 
 [node name="PointLight2D" type="PointLight2D" parent="OrbitingSphere" unique_id=711782307]
