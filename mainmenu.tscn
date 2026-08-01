@@ -137,6 +137,7 @@ label_settings = SubResource("LabelSettings_0fbet")
 
 [node name="StartButton" type="MenuButton" parent="VBoxContainer" unique_id=1443704411]
 layout_mode = 2
+focus_mode = 2
 text = "Start"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=73265232]
@@ -149,6 +150,9 @@ text = "Players"
 
 [node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer" unique_id=652220639]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../StartButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/SpinBox")
+focus_mode = 2
 min_value = 2.0
 max_value = 8.0
 value = 2.0
@@ -163,6 +167,9 @@ text = "Limit    "
 
 [node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer2" unique_id=2144437112]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer/SpinBox")
+focus_neighbor_bottom = NodePath("../../Quitbutton")
+focus_mode = 2
 min_value = 1.0
 max_value = 20.0
 value = 10.0
@@ -174,6 +181,7 @@ text = "
 
 [node name="Quitbutton" type="MenuButton" parent="VBoxContainer" unique_id=1336057452]
 layout_mode = 2
+focus_mode = 2
 text = "Quit"
 
 [node name="Kala" type="AnimatedSprite2D" parent="." unique_id=2053627045]

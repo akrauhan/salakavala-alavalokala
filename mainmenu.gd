@@ -4,11 +4,15 @@ extends Control
 @onready var win_limit := $VBoxContainer/HBoxContainer2/SpinBox
 @onready var flapper := $Kala/FlapperAnimation
 @onready var flapper2 := $Kala2/FlapperAnimation
+@onready var start_button := $VBoxContainer/StartButton
+@onready var spin_box: SpinBox = $VBoxContainer/HBoxContainer/SpinBox
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	flapper.play()
 	flapper2.play()
+	start_button.grab_focus()
+	spin_box.value = min(Input.get_connected_joypads().size(), 2)
 	pass # Replace with function body.
 
 
@@ -27,3 +31,4 @@ func _on_start_button_pressed() -> void:
 
 func _on_quitbutton_pressed() -> void:
 	get_tree().quit()
+	
