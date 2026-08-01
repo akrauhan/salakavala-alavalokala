@@ -48,6 +48,10 @@ var toggle_light_previous := false
 	
 	
 @export var thrust := 500.0
+#	var input = Vector2(
+#		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_X),
+#		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
+
 
 func _physics_process(delta):
 	var input = Vector2(
@@ -62,8 +66,8 @@ func _physics_process(delta):
 	flap(input)
 	
 
-
-	if Input.is_joy_button_pressed(player_id,JOY_BUTTON_LEFT_SHOULDER):
+	# DASH
+	if Input.get_joy_axis(player_id,JOY_AXIS_TRIGGER_LEFT) >= 0.5:
 		dash()
 	
 	
@@ -74,7 +78,9 @@ func _physics_process(delta):
 	
 	rotation = input2.angle()
 	
-	var attack_pressed = Input.is_joy_button_pressed(player_id, JOY_BUTTON_RIGHT_SHOULDER)
+
+	var attack_pressed = Input.get_joy_axis(player_id,JOY_AXIS_TRIGGER_RIGHT) >= 0.5
+	
 	if attack_pressed and !attack_previous:
 		var direction = input2
 		
@@ -135,11 +141,11 @@ func take_damage(attacker_id):
 func dash():
 	if !dash_timer.is_stopped():
 		return
-	
 	var input = Vector2(
 		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_X),
 		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
-	)	
+	)
+	
 	apply_impulse(input * dash_strength)
 		
 	dash_timer.start()
