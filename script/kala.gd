@@ -17,6 +17,10 @@ extends RigidBody2D
 @onready var orbiting_sphere = $OrbitingSphere
 @onready var melee_attack = $Bite
 
+@onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
+
+@export var hurt_sounds: Array[AudioStream]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	dash_timer.wait_time = dash_cooldown
@@ -80,7 +84,18 @@ var attack_previous := false
 	
 func take_damage(attacker_id):
 	print("Player ", player_id, "hit")
+	if player_id < hurt_sounds.size():
+		hurt_sound.stream = hurt_sounds[player_id]
+	hurt_sound.play()
+		
 	ScoreManager.add_score(attacker_id, 1)
+	
+	Input.start_joy_vibration(
+		player_id,	# Controller to vibrate
+		1.0,		# Weak motor (0.0-1.0)
+		1.0,		# Strong motor (0.0-1.0)
+		0.25		# Duration in seconds
+	)
 
 func dash():
 	if !dash_timer.is_stopped():
