@@ -7,6 +7,8 @@ extends RigidBody2D
 
 @export var dash_strength := 300
 @export var dash_cooldown := 2
+@export var stun_time := 1 # Time spent stunned after hit
+@export var stun_speed := 1 # Speed of movement when stunned
 @export var flap_strength := 100
 @export var flap_cooldown := 0.5
 @export var biteimpulse_strength := 100
@@ -14,6 +16,8 @@ extends RigidBody2D
 @onready var dash_timer: Timer = $DashCooldown
 @onready var bite_timer: Timer = $Bite/BiteCooldown
 @onready var flap_timer: Timer = $FlapCooldown
+@onready var stun_timer: Timer = $StunTimer
+
 @onready var orbiting_sphere = $OrbitingSphere
 @onready var melee_attack = $Bite
 
@@ -25,6 +29,7 @@ extends RigidBody2D
 func _ready() -> void:
 	dash_timer.wait_time = dash_cooldown
 	flap_timer.wait_time = flap_cooldown
+	stun_timer.wait_time = stun_time
 	orbiting_sphere.player_id = player_id
 	melee_attack.player_id = player_id
 	
@@ -44,7 +49,7 @@ func _physics_process(delta):
 		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
 	)
 	
-	if input.length() < deadzone:
+	if input.length() < deadzone and stun_timer.is_stopped():
 		input = Vector2.ZERO
 		flapper_animation.play("loop")
 	flap(input)
@@ -96,6 +101,14 @@ func take_damage(attacker_id):
 		1.0,		# Strong motor (0.0-1.0)
 		0.25		# Duration in seconds
 	)
+	
+	# Stuns the player
+	stun_timer.start()
+	# Play hurt animation
+	linear_velocity = stun_speed * Vector2(0, 1)
+	
+	
+
 
 func dash():
 	if !dash_timer.is_stopped():

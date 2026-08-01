@@ -244,4 +244,7 @@ stream = ExtResource("8_b26j0")
 [node name="FlapCooldown" type="Timer" parent="." unique_id=1562447073]
 one_shot = true
 
+[node name="StunTimer" type="Timer" parent="." unique_id=1419330303]
+one_shot = true
+
 [connection signal="timeout" from="Bite/BiteDuration" to="Bite" method="_on_bite_duration_timeout"]
