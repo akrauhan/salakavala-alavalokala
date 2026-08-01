@@ -4,15 +4,14 @@ extends RigidBody2D
 
 
 @export var player_id := 0
-@export var acceleration := 1000.0
 @export var deadzone := 0.4
 
 @export var dash_strength := 300
 @export var dash_cooldown := 2
 @export var stun_time := 1 # Time spent stunned after hit
 @export var stun_speed := 1 # Speed of movement when stunned
-@export var flap_strength := 100
-@export var flap_cooldown := 0.5
+@export var flap_strength := 50
+@export var flap_cooldown := 1
 @export var biteimpulse_strength := 100
 
 @onready var dash_timer: Timer = $DashCooldown

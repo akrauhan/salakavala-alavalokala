@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var player_id := 0
-@export var orbit_radius := 30.0
+@export var orbit_radius := 50.0
 @export var orbit_speed := 2.0
 @export var orbit_acceleration := 1000.0
 
