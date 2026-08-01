@@ -26,6 +26,8 @@
 [ext_resource type="AudioStream" uid="uid://duy720nmfak60" path="res://asset/rousk7.mp3" id="13_5tmop"]
 [ext_resource type="AudioStream" uid="uid://cv2xcnucjetwt" path="res://asset/rousk8.mp3" id="14_7ahtn"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lea0t"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7hik5"]
 atlas = ExtResource("10_jm5j8")
 region = Rect2(0, 0, 32, 32)
@@ -76,7 +78,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"blood",
-"speed": 5.0
+"speed": 18.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_b26j0"]
@@ -225,9 +227,24 @@ hurt_sounds = Array[AudioStream]([ExtResource("2_dx0e4"), ExtResource("3_jm5j8")
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=946621151]
 
+[node name="Parry" type="Node2D" parent="." unique_id=1221134077]
+
+[node name="ParryExplosionArea" type="Area2D" parent="Parry" unique_id=168975830]
+position = Vector2(32, 1)
+
+[node name="CircleCollision" type="CollisionShape2D" parent="Parry/ParryExplosionArea" unique_id=2002764103]
+shape = SubResource("CircleShape2D_lea0t")
+
+[node name="ParrySound" type="AudioStreamPlayer2D" parent="Parry" unique_id=1644140109]
+position = Vector2(32, 1)
+
 [node name="BloodAnimation" type="AnimatedSprite2D" parent="." unique_id=834861851]
+z_index = 1
+scale = Vector2(4.934446, 4.462514)
 sprite_frames = SubResource("SpriteFrames_gc3ty")
 animation = &"blood"
+frame = 6
+frame_progress = 1.0
 
 [node name="flapper" type="Node2D" parent="." unique_id=1111981613]
 position = Vector2(-1.0000001, 1)

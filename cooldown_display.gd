@@ -6,7 +6,11 @@ extends Control
 	$VBoxContainer/Player0BiteCooldown,
 	$VBoxContainer/Player1BiteCooldown,
 	$VBoxContainer/Player2BiteCooldown,
-	$VBoxContainer/Player3BiteCooldown
+	$VBoxContainer/Player3BiteCooldown,
+	$VBoxContainer/Player4BiteCooldown,
+	$VBoxContainer/Player5BiteCooldown,
+	$VBoxContainer/Player6BiteCooldown,
+	$VBoxContainer/Player7BiteCooldown
 ]
 
 var colors = [
@@ -31,6 +35,6 @@ func _process(delta):
 
 		var progress = 1.0 - (timer.time_left / timer.wait_time)
 		circles[i].value = progress * 100
-		print(circles[i].value)
+
 		
 		

@@ -2,6 +2,7 @@ extends RigidBody2D
 @onready var flapper_animation: AnimatedSprite2D = $Sprite2D/FlapperAnimation
 @onready var blood_animation: AnimatedSprite2D = $BloodAnimation
 
+
 @export var player_id := 0
 @export var acceleration := 1000.0
 @export var deadzone := 0.4
@@ -21,8 +22,10 @@ extends RigidBody2D
 
 @onready var orbiting_sphere = $OrbitingSphere
 @onready var melee_attack = $Bite
+@onready var parry_area = $Parry/ParryExplosionArea
 
 @onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
+@onready var parry_sound: AudioStreamPlayer2D = $Parry/ParrySound
 
 @export var hurt_sounds: Array[AudioStream]
 
@@ -89,6 +92,12 @@ var attack_previous := false
 
 	
 func take_damage(attacker_id):
+	if !bite_timer.is_stopped(): # Parry
+		print("Parried lol")
+		parry_area.global_position = global_position
+		#parry_sound.play()
+		return
+		
 	print("Player ", player_id, "hit")
 	if player_id < hurt_sounds.size():
 		hurt_sound.stream = hurt_sounds[player_id]

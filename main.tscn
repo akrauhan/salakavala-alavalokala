@@ -48,17 +48,47 @@ layout_mode = 2
 value = 100.0
 fill_mode = 4
 texture_progress = ExtResource("4_272bh")
-tint_progress = Color(0, 1, 0, 1)
+tint_progress = Color(1, 1, 0, 1)
 
 [node name="Player2BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=962886863]
 layout_mode = 2
 value = 100.0
 fill_mode = 4
+texture_progress = ExtResource("4_272bh")
+tint_progress = Color(0.87058824, 0.72156864, 0.5294118, 1)
 
 [node name="Player3BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=58231700]
 layout_mode = 2
 value = 100.0
 fill_mode = 4
+texture_progress = ExtResource("4_272bh")
+tint_progress = Color(0, 1, 0.49803922, 1)
+
+[node name="Player4BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=316727057]
+layout_mode = 2
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("4_272bh")
+tint_progress = Color(0, 0.7490196, 1, 1)
+
+[node name="Player5BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=704348871]
+layout_mode = 2
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("4_272bh")
+
+[node name="Player6BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=761231171]
+layout_mode = 2
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("4_272bh")
+tint_progress = Color(1, 0, 1, 1)
+
+[node name="Player7BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=1751158590]
+layout_mode = 2
+fill_mode = 4
+texture_progress = ExtResource("4_272bh")
+tint_progress = Color(1, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=53508969]
 offset_left = -16.0
