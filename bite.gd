@@ -11,7 +11,11 @@ extends Node2D
 @onready var bite_timer := $BiteCooldown
 @onready var bite_area := $BiteArea
 @onready var attack_duration_timer: Timer = $BiteDuration
+@onready var bite_sound: AudioStreamPlayer2D = $BiteSound
 
+@export var bite_sounds: Array[AudioStream]
+
+@export var bite_sfx: AudioStreamPlayer
 @export var normal_texture: Texture2D
 @export var active_texture: Texture2D
 
@@ -34,9 +38,11 @@ func attack(direction) -> bool: # Returns if attack was successful
 		
 	if !attack_duration_timer.is_stopped() or !bite_timer.is_stopped(): 
 		return false
-		
+	
 	attacking = true
+	
 	sprite_2d.play("bite")
+	bite_sound.play()
 	
 	var locked_direction = direction.normalized()
 	

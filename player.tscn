@@ -7,7 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://d0kg1o3teyojr" path="res://asset/lightorgan.png" id="5_dw050"]
 [ext_resource type="Texture2D" uid="uid://ckut7pxok7tfv" path="res://asset/bite.png" id="6_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://b7lbetxeet03h" path="res://asset/bite2.png" id="7_1jxqw"]
+[ext_resource type="AudioStream" uid="uid://bkbrxdexv2cdl" path="res://asset/rousk1.mp3" id="8_b26j0"]
+[ext_resource type="AudioStream" uid="uid://cdm4ktk2yggxk" path="res://asset/rousk2.mp3" id="8_u1c27"]
+[ext_resource type="AudioStream" uid="uid://bw8fwburxjyi4" path="res://asset/rousk3.mp3" id="9_op7ga"]
 [ext_resource type="Texture2D" uid="uid://b5ni7ddb5cefe" path="res://asset/kala bite.png" id="10_ivps1"]
+[ext_resource type="AudioStream" uid="uid://d3cgebevxbhl0" path="res://asset/rousk4.mp3" id="10_q13i1"]
+[ext_resource type="AudioStream" uid="uid://c6n1ctouvbb0t" path="res://asset/rousk5.mp3" id="11_pylmc"]
+[ext_resource type="AudioStream" uid="uid://vd6q3sauqo44" path="res://asset/rousk6.mp3" id="12_pbfsw"]
+[ext_resource type="AudioStream" uid="uid://duy720nmfak60" path="res://asset/rousk7.mp3" id="13_5tmop"]
+[ext_resource type="AudioStream" uid="uid://cv2xcnucjetwt" path="res://asset/rousk8.mp3" id="14_7ahtn"]
 
 [sub_resource type="GDScript" id="GDScript_b26j0"]
 script/source = "extends Node2D
@@ -194,6 +202,7 @@ disabled = true
 [node name="Bite" type="Node2D" parent="." unique_id=1755387565 node_paths=PackedStringArray("sprite_2d")]
 script = ExtResource("5_2hs0m")
 sprite_2d = NodePath("../Sprite2D")
+bite_sounds = Array[AudioStream]([ExtResource("8_b26j0"), ExtResource("8_u1c27"), ExtResource("9_op7ga"), ExtResource("10_q13i1"), ExtResource("11_pylmc"), ExtResource("12_pbfsw"), ExtResource("13_5tmop"), ExtResource("14_7ahtn")])
 normal_texture = SubResource("ImageTexture_h2yge")
 active_texture = ExtResource("7_1jxqw")
 
@@ -215,6 +224,9 @@ one_shot = true
 visible = false
 position = Vector2(24.000002, 0)
 texture = ExtResource("6_2hs0m")
+
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="Bite" unique_id=855653927]
+stream = ExtResource("8_b26j0")
 
 [node name="FlapCooldown" type="Timer" parent="." unique_id=1562447073]
 one_shot = true
