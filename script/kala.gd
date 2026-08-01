@@ -66,7 +66,7 @@ func _physics_process(delta):
 	flap(input)
 	
 
-	# DASH
+	# DASH_INPUT
 	if Input.get_joy_axis(player_id,JOY_AXIS_TRIGGER_LEFT) >= 0.5:
 		dash()
 	
