@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 [autoload]
 
 ScoreManager="*uid://du6tis4q1xjq4"
+GameSettings="*uid://kfgd7r4iose"
 
 [display]
 

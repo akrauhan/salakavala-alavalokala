@@ -118,8 +118,7 @@ func take_damage(attacker_id):
 	stun_timer.start()
 	# Play hurt animation
 	linear_velocity = stun_speed * Vector2(0, 1)
-	
-	
+
 
 
 func dash():
@@ -134,9 +133,6 @@ func dash():
 		
 	dash_timer.start()
 
-
-
-	
 
 func _on_dash_cooldown_timeout() -> void:
 	print("Dash ready: ", player_id )
