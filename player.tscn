@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bf8h02hmexujc"]
 
 [ext_resource type="Script" uid="uid://u0dp7vbjh0ts" path="res://script/kala.gd" id="1_w0oxm"]
+[ext_resource type="Texture2D" uid="uid://d1bnfxo53rfhs" path="res://asset/hurteffect.png" id="2_op7ga"]
 [ext_resource type="Texture2D" uid="uid://dv41bri6nh48m" path="res://asset/fin move loop.png" id="3_dw050"]
 [ext_resource type="Script" uid="uid://47usfo354a86" path="res://script/orbiting_sphere.gd" id="3_i3pqv"]
 [ext_resource type="Script" uid="uid://c0mjhy45i5sd5" path="res://bite.gd" id="5_2hs0m"]
@@ -16,6 +17,59 @@
 [ext_resource type="AudioStream" uid="uid://vd6q3sauqo44" path="res://asset/rousk6.mp3" id="12_pbfsw"]
 [ext_resource type="AudioStream" uid="uid://duy720nmfak60" path="res://asset/rousk7.mp3" id="13_5tmop"]
 [ext_resource type="AudioStream" uid="uid://cv2xcnucjetwt" path="res://asset/rousk8.mp3" id="14_7ahtn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tmop"]
+atlas = ExtResource("2_op7ga")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ahtn"]
+atlas = ExtResource("2_op7ga")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lmhl"]
+atlas = ExtResource("2_op7ga")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx0e4"]
+atlas = ExtResource("2_op7ga")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm5j8"]
+atlas = ExtResource("2_op7ga")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hik5"]
+atlas = ExtResource("2_op7ga")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gc3ty"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tmop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ahtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lmhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx0e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm5j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hik5")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"hurteffect",
+"speed": 10.0
+}]
 
 [sub_resource type="GDScript" id="GDScript_b26j0"]
 script/source = "extends Node2D
@@ -160,6 +214,15 @@ linear_damp = 1.0
 angular_damp = 100.0
 script = ExtResource("1_w0oxm")
 hurt_sounds = Array[AudioStream]([null, null, null, null, null, null, null, null])
+
+[node name="BloodAnimation" type="AnimatedSprite2D" parent="." unique_id=1208195292]
+top_level = true
+position = Vector2(-3.9999995, -2.3841858e-07)
+scale = Vector2(2.2, 2.2)
+sprite_frames = SubResource("SpriteFrames_gc3ty")
+animation = &"hurteffect"
+frame = 6
+frame_progress = 1.0
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=946621151]
 

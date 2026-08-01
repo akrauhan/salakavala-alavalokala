@@ -1,5 +1,6 @@
 extends RigidBody2D
 @onready var flapper_animation: AnimatedSprite2D = $Sprite2D/FlapperAnimation
+@onready var blood_animation: AnimatedSprite2D = $BloodAnimation
 
 @export var player_id := 0
 @export var acceleration := 1000.0
@@ -87,6 +88,7 @@ func take_damage(attacker_id):
 	if player_id < hurt_sounds.size():
 		hurt_sound.stream = hurt_sounds[player_id]
 	hurt_sound.play()
+	blood_animation.play()  
 		
 	ScoreManager.add_score(attacker_id, 1)
 	
