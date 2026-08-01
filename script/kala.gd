@@ -2,6 +2,7 @@ extends RigidBody2D
 @onready var flapper_animation: AnimatedSprite2D = $Sprite2D/FlapperAnimation
 @onready var blood_animation: AnimatedSprite2D = $BloodAnimation
 @onready var flapper_emitter: GPUParticles2D = $Sprite2D/FlapperEmitter
+@onready var parry_light: PointLight2D = $Parry/ParryLight
 
 @export var player_id := 0
 @export var deadzone := 0.4
@@ -18,6 +19,8 @@ extends RigidBody2D
 @onready var bite_timer: Timer = $Bite/BiteCooldown
 @onready var flap_timer: Timer = $FlapCooldown
 @onready var stun_timer: Timer = $StunTimer
+@onready var parry_timer: Timer = $Parry/ParryTimer
+
 
 @onready var orbiting_sphere = $OrbitingSphere
 @onready var melee_attack = $Bite
@@ -94,11 +97,17 @@ var attack_previous := false
 	
 func take_damage(attacker_id):
 	if !bite_timer.is_stopped(): # Parry
+		
+		
 		print("Parried lol")
 		parry_area.global_position = global_position
-		#parry_sound.play()
+		parry_light.energy = 41
+		parry_timer.start()
+		parry_sound.play()
 		return
-		
+	if !parry_timer.is_stopped():
+		parry_light.energy = 0
+	
 	print("Player ", player_id, "hit")
 	if player_id < hurt_sounds.size():
 		hurt_sound.stream = hurt_sounds[player_id]

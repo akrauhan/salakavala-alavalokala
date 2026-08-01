@@ -18,9 +18,11 @@
 [ext_resource type="AudioStream" uid="uid://cdm4ktk2yggxk" path="res://asset/rousk2.mp3" id="8_u1c27"]
 [ext_resource type="AudioStream" uid="uid://b31unxknwnvbh" path="res://asset/oof8.mp3" id="9_634y6"]
 [ext_resource type="AudioStream" uid="uid://bw8fwburxjyi4" path="res://asset/rousk3.mp3" id="9_op7ga"]
+[ext_resource type="Texture2D" uid="uid://cmp0j4xakrxwx" path="res://asset/clash.png" id="10_7hik5"]
 [ext_resource type="Texture2D" uid="uid://b5ni7ddb5cefe" path="res://asset/kala bite.png" id="10_ivps1"]
 [ext_resource type="Texture2D" uid="uid://d1bnfxo53rfhs" path="res://asset/hurteffect.png" id="10_jm5j8"]
 [ext_resource type="AudioStream" uid="uid://d3cgebevxbhl0" path="res://asset/rousk4.mp3" id="10_q13i1"]
+[ext_resource type="AudioStream" uid="uid://v4sjeevvcgcr" path="res://asset/ParrySound.mp3" id="10_qtqh7"]
 [ext_resource type="AudioStream" uid="uid://c6n1ctouvbb0t" path="res://asset/rousk5.mp3" id="11_pylmc"]
 [ext_resource type="AudioStream" uid="uid://vd6q3sauqo44" path="res://asset/rousk6.mp3" id="12_pbfsw"]
 [ext_resource type="AudioStream" uid="uid://duy720nmfak60" path="res://asset/rousk7.mp3" id="13_5tmop"]
@@ -255,6 +257,19 @@ shape = SubResource("CircleShape2D_lea0t")
 
 [node name="ParrySound" type="AudioStreamPlayer2D" parent="Parry" unique_id=1644140109]
 position = Vector2(32, 1)
+stream = ExtResource("10_qtqh7")
+
+[node name="ParryLight" type="PointLight2D" parent="Parry" unique_id=366778516]
+z_index = 1
+position = Vector2(34, 0)
+scale = Vector2(4, 4)
+color = Color(1, 1, 0.33333334, 1)
+energy = 0.0
+texture = ExtResource("10_7hik5")
+
+[node name="ParryTimer" type="Timer" parent="Parry" unique_id=942943354]
+wait_time = 0.5
+one_shot = true
 
 [node name="BloodAnimation" type="AnimatedSprite2D" parent="." unique_id=834861851]
 z_index = 1
