@@ -97,16 +97,16 @@ var attack_previous := false
 	
 func take_damage(attacker_id):
 	if !bite_timer.is_stopped(): # Parry
-		
-		
-		print("Parried lol")
+				
 		parry_area.global_position = global_position
-		parry_light.energy = 41
-		parry_timer.start()
+
 		parry_sound.play()
+		parry_timer.start()
+		parry_light.energy = 100
+		
 		return
-	if !parry_timer.is_stopped():
-		parry_light.energy = 0
+	
+	
 	
 	print("Player ", player_id, "hit")
 	if player_id < hurt_sounds.size():
@@ -145,3 +145,7 @@ func dash():
 
 func _on_dash_cooldown_timeout() -> void:
 	print("Dash ready: ", player_id )
+
+
+func _on_parry_timer_timeout() -> void:
+	parry_light.energy = 0

@@ -30,6 +30,20 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lea0t"]
 
+[sub_resource type="GDScript" id="GDScript_qtqh7"]
+script/source = "extends Timer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7hik5"]
 atlas = ExtResource("10_jm5j8")
 region = Rect2(0, 0, 32, 32)
@@ -270,6 +284,7 @@ texture = ExtResource("10_7hik5")
 [node name="ParryTimer" type="Timer" parent="Parry" unique_id=942943354]
 wait_time = 0.5
 one_shot = true
+script = SubResource("GDScript_qtqh7")
 
 [node name="BloodAnimation" type="AnimatedSprite2D" parent="." unique_id=834861851]
 z_index = 1
@@ -373,4 +388,5 @@ one_shot = true
 [node name="StunTimer" type="Timer" parent="." unique_id=1419330303]
 one_shot = true
 
+[connection signal="timeout" from="Parry/ParryTimer" to="." method="_on_parry_timer_timeout"]
 [connection signal="timeout" from="Bite/BiteDuration" to="Bite" method="_on_bite_duration_timeout"]
