@@ -185,16 +185,5 @@ sprite_frames = SubResource("SpriteFrames_fj5cn")
 animation = &"loop"
 offset = Vector2(-20, 0)
 
-[node name="HowToPlay" type="Control" parent="." unique_id=412061645]
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="HowToPlay" unique_id=1805934748]
-layout_mode = 0
-offset_left = -586.0
-offset_top = -333.0
-offset_right = -546.0
-offset_bottom = -293.0
-scale = Vector2(14.317566, 6.298066)
-
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quitbutton" to="." method="_on_quitbutton_pressed"]
