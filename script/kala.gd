@@ -93,7 +93,7 @@ func take_damage(attacker_id):
 	if player_id < hurt_sounds.size():
 		hurt_sound.stream = hurt_sounds[player_id]
 	hurt_sound.play()
-	blood_animation.play()  
+	blood_animation.play("blood")  
 		
 	ScoreManager.add_score(attacker_id, 1)
 	
