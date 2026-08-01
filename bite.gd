@@ -4,7 +4,7 @@ extends Node2D
 
 @export var attack_distance := 40.0
 @export var attack_duration := 0.4
-@export var bite_cooldown := 0.8
+@export var bite_cooldown := 3
 @export var player_id := 0
 
 

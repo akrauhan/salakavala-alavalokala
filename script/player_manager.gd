@@ -20,3 +20,6 @@ func spawn_players():
 		players_container.add_child(player)
 		
 		print("Spawned player ID: ", player.player_id)
+	
+	var cooldown_ui = $"../UI/Cooldowns"
+	cooldown_ui.players = players_container.get_children()	
