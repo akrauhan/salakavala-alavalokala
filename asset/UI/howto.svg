@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="howto.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="1"
+     inkscape:cx="290.5"
+     inkscape:cy="301.5"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1072"
+     inkscape:window-y="828"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Taso 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;stroke:#000000;stroke-width:0.1;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       x="40.779587"
+       y="11.131104"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#ffffff;stroke:#000000;stroke-width:0.1"
+         x="40.779587"
+         y="11.131104">Move</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;stroke:#000000;stroke-width:0.1;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       x="13.010728"
+       y="23.773226"
+       id="text1-8"><tspan
+         sodipodi:role="line"
+         id="tspan1-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#ffffff;stroke:#000000;stroke-width:0.1"
+         x="13.010728"
+         y="23.773226">Move light</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;stroke:#000000;stroke-width:0.1;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       x="3.7006955"
+       y="37.002396"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0.1"
+         x="3.7006955"
+         y="37.002396">Toggle light</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;stroke:#000000;stroke-width:0.1;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       x="40.949081"
+       y="49.979385"
+       id="text2-7"><tspan
+         sodipodi:role="line"
+         id="tspan2-1"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0.1"
+         x="40.949081"
+         y="49.979385">Dash</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;stroke:#000000;stroke-width:0.1;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       x="37.430954"
+       y="62.150219"
+       id="text2-7-6"><tspan
+         sodipodi:role="line"
+         id="tspan2-1-1"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0.1"
+         x="37.430954"
+         y="62.150219">BITE!</tspan></text>
+    <circle
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.5;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       id="path2"
+       cx="73.554161"
+       cy="8.4666653"
+       r="5.1593747" />
+    <circle
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.5;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       id="circle2"
+       cx="73.554161"
+       cy="21.695833"
+       r="5.1593747" />
+    <circle
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.5;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       id="circle3"
+       cx="73.554161"
+       cy="34.925003"
+       r="5.1593747" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       x="71.231293"
+       y="10.779629"
+       id="text6"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         style="stroke-width:1"
+         x="71.231293"
+         y="10.779629">L</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       x="71.450478"
+       y="24.525141"
+       id="text7"><tspan
+         sodipodi:role="line"
+         id="tspan7"
+         style="stroke-width:1"
+         x="71.450478"
+         y="24.525141">R</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       x="71.354179"
+       y="37.650692"
+       id="text8"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="stroke-width:1"
+         x="71.354179"
+         y="37.650692">X</tspan></text>
+    <path
+       id="rect8"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.5;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       d="m 64.957276,43.973053 13.542187,0.187089 5.23848,7.742433 H 64.957276 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.499999;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       x="69.4888"
+       y="50.74139"
+       id="text9"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         style="stroke:none;stroke-width:0.5"
+         x="69.4888"
+         y="50.74139">LB</tspan></text>
+    <path
+       id="rect9"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.5;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       d="m 68.792593,55.102077 15.03889,0.09354 v 7.929522 H 65.05082 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.499999;stroke-miterlimit:0;stroke-dashoffset:3.3"
+       x="69.582344"
+       y="61.963963"
+       id="text10"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="stroke:none;stroke-width:0.5"
+         x="69.582344"
+         y="61.963963">RB</tspan></text>
+  </g>
+</svg>
