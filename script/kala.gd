@@ -61,9 +61,11 @@ func _physics_process(delta):
 		
 	flap(input)
 	
-	
+
+
 	if Input.is_joy_button_pressed(player_id,JOY_BUTTON_LEFT_SHOULDER):
 		dash()
+	
 	
 	var input2 = Vector2(
 		Input.get_joy_axis(player_id, JOY_AXIS_RIGHT_X),
