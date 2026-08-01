@@ -9,8 +9,10 @@ func _ready():
 
 func spawn_players():
 	var controllers = Input.get_connected_joypads()
+	
+	var count = min(GameSettings.player_count, controllers.size())
 
-	for i in controllers.size():
+	for i in range(count):
 		var player = player_scene.instantiate()
 
 		player.player_id = controllers[i]
