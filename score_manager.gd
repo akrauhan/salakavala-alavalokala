@@ -4,11 +4,15 @@ var scores := {}
 
 @export var game_over_timer: Timer
 
+@onready var scoreboard = $"../MarginContainer/Scoreboard"
+
+
 func add_player(player_id):
 	scores[player_id] = 0
 	
 func add_score(player_id, amount):
 	scores[player_id] += amount
+	scoreboard.update_scoreboard()
 	if scores[player_id] == GameSettings.win_limit:
 		game_over(player_id)
 	
