@@ -52,7 +52,7 @@ func attack(direction) -> bool: # Returns if attack was successful
 	rotation = locked_direction.angle()
 	
 	attack_duration_timer.start()	
-	eyelight.energy=8
+	eyelight.energy=2
 	
 	bite_cooldown_timer.start()
 	

@@ -1,7 +1,7 @@
 extends RigidBody2D
 @onready var flapper_animation: AnimatedSprite2D = $Sprite2D/FlapperAnimation
 @onready var blood_animation: AnimatedSprite2D = $BloodAnimation
-
+@onready var flapper_emitter: GPUParticles2D = $Sprite2D/FlapperEmitter
 
 @export var player_id := 0
 @export var deadzone := 0.4
@@ -55,6 +55,7 @@ func _physics_process(delta):
 	if input.length() < deadzone and stun_timer.is_stopped():
 		input = Vector2.ZERO
 		flapper_animation.play("loop")
+		
 	flap(input)
 	
 	
@@ -79,8 +80,9 @@ func _physics_process(delta):
 
 func flap(direction):
 	if direction == Vector2.ZERO:
+		flapper_emitter.emitting = false
 		return
-	
+	flapper_emitter.emitting = true
 	if !flap_timer.is_stopped():
 		return
 	
