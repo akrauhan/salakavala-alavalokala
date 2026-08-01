@@ -1,6 +1,7 @@
 extends Control
 
 @onready var player_count := $VBoxContainer/HBoxContainer/SpinBox
+@onready var win_limit := $VBoxContainer/HBoxContainer2/SpinBox
 @onready var flapper := $Kala/FlapperAnimation
 @onready var flapper2 := $Kala2/FlapperAnimation
 
@@ -19,7 +20,9 @@ func _process(delta: float) -> void:
 
 func _on_start_button_pressed() -> void:
 	GameSettings.player_count = int(player_count.value)
+	GameSettings.win_limit = int(win_limit.value)
 	get_tree().change_scene_to_file("res://main.tscn") # Replace with function body.
+	queue_free()
 
 
 func _on_quitbutton_pressed() -> void:

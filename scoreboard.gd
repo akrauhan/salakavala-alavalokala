@@ -11,7 +11,7 @@ func update_scoreboard():
 	for player_id in ScoreManager.scores:
 		var label = Label.new()
 		label.text = "Player %s: %s" % [
-			player_id,
+			player_id+1,
 			ScoreManager.get_score(player_id)
 		]
 		add_child(label)

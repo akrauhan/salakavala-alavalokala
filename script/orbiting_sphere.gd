@@ -18,7 +18,7 @@ var angle := 0.0
 var toggle_light_previous := false
 
 func _process(delta: float) -> void:
-	var toggle_pressed = Input.is_joy_button_pressed(player_id, JOY_BUTTON_Y)
+	var toggle_pressed = Input.is_joy_button_pressed(player_id, JOY_BUTTON_X)
 	
 	if toggle_pressed and !toggle_light_previous:
 		toggle_light()

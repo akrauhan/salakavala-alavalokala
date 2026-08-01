@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d108bhbec0tko" path="res://mainmenu.gd" id="1_wgsso"]
 [ext_resource type="Texture2D" uid="uid://b5ni7ddb5cefe" path="res://asset/kala bite.png" id="2_igs2m"]
 [ext_resource type="Texture2D" uid="uid://dv41bri6nh48m" path="res://asset/fin move loop.png" id="3_3pujl"]
+[ext_resource type="Texture2D" uid="uid://mp6qp2akew6h" path="res://asset/UI/howto.png" id="4_igs2m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0fbet"]
 font_size = 39
@@ -152,6 +153,20 @@ min_value = 2.0
 max_value = 8.0
 value = 2.0
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1175844350]
+layout_mode = 2
+alignment = 1
+
+[node name="LimitLabel" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=864152791]
+layout_mode = 2
+text = "Limit    "
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer2" unique_id=2144437112]
+layout_mode = 2
+min_value = 1.0
+max_value = 20.0
+value = 10.0
+
 [node name="HowToButton" type="MenuButton" parent="VBoxContainer" unique_id=1669471093]
 layout_mode = 2
 text = "
@@ -184,6 +199,10 @@ position = Vector2(-35, -1)
 sprite_frames = SubResource("SpriteFrames_fj5cn")
 animation = &"loop"
 offset = Vector2(-20, 0)
+
+[node name="Howto" type="Sprite2D" parent="." unique_id=1254719489]
+position = Vector2(-270, -188)
+texture = ExtResource("4_igs2m")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quitbutton" to="." method="_on_quitbutton_pressed"]

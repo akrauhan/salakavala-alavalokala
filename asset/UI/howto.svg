@@ -43,7 +43,10 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;stroke:#000000;stroke-width:0.1;stroke-miterlimit:0;stroke-dashoffset:3.3"
        x="40.779587"
        y="11.131104"
-       id="text1"><tspan
+       id="text1"
+       inkscape:export-filename="howto.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          id="tspan1"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#ffffff;stroke:#000000;stroke-width:0.1"

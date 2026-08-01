@@ -5,6 +5,7 @@ extends Node
 @onready var cooldown_ui = $"../UI/Cooldowns"
 
 func _ready():
+	randomize()
 	spawn_players()
 
 func spawn_players():
@@ -18,7 +19,13 @@ func spawn_players():
 		player.player_id = controllers[i]
 
 		# Spread players out initially
-		player.position = Vector2(i * 100+200, 0)
+		var min_pos = Vector2(100, 100)
+		var max_pos = Vector2(1152, 600)
+
+		player.position = Vector2(
+			randf_range(min_pos.x, max_pos.x),
+			randf_range(min_pos.y, max_pos.y)
+		)
 
 		players_container.add_child(player)
 		cooldown_ui.add_player(player)
