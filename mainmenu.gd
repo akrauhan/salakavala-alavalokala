@@ -10,9 +10,6 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	BackgroundMusic.play()
-	start_button.pressed.connect(func():
-		print("Button pressed")
-	)
 	flapper.play()
 	flapper2.play()
 	start_button.grab_focus()

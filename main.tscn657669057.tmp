@@ -38,16 +38,9 @@ game_over_timer = NodePath("GameOverTimer")
 [node name="GameOverTimer" type="Timer" parent="UI/ScoreManager" unique_id=1819359228]
 wait_time = 5.0
 
-[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=95226235]
-offset_left = 462.0
-offset_right = 662.0
-offset_bottom = 50.0
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 100
-
-[node name="Scoreboard" type="HBoxContainer" parent="UI/MarginContainer" unique_id=72781503]
-layout_mode = 2
+[node name="Scoreboard" type="VBoxContainer" parent="UI" unique_id=1251257559]
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("2_lquwl")
 
 [node name="Cooldowns" type="Control" parent="UI" unique_id=1847699015]
