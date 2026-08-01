@@ -14,6 +14,7 @@ extends Node2D
 @onready var bite_sound: AudioStreamPlayer2D = $BiteSound
 
 @export var bite_sounds: Array[AudioStream]
+@onready var eyelight: PointLight2D = $Eyelight
 
 @export var bite_sfx: AudioStreamPlayer
 @export var normal_texture: Texture2D
@@ -51,6 +52,8 @@ func attack(direction) -> bool: # Returns if attack was successful
 	rotation = locked_direction.angle()
 	
 	attack_duration_timer.start()	
+	eyelight.energy=8
+	
 	bite_cooldown_timer.start()
 	
 	return true
@@ -58,7 +61,7 @@ func attack(direction) -> bool: # Returns if attack was successful
 
 func _on_bite_duration_timeout() -> void:
 	print("Bite timeout")
-	
+	eyelight.energy=0
 	for target in bite_area.get_overlapping_bodies():
 
 		if target == get_parent():

@@ -241,6 +241,13 @@ texture = ExtResource("6_2hs0m")
 [node name="BiteSound" type="AudioStreamPlayer2D" parent="Bite" unique_id=855653927]
 stream = ExtResource("8_b26j0")
 
+[node name="Eyelight" type="PointLight2D" parent="Bite" unique_id=1186784723]
+position = Vector2(-2, -5)
+scale = Vector2(0.7, 0.7)
+color = Color(5.77569e-06, 0.96071976, 0.97084016, 1)
+energy = 0.0
+texture = ExtResource("5_dw050")
+
 [node name="FlapCooldown" type="Timer" parent="." unique_id=1562447073]
 one_shot = true
 
