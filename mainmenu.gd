@@ -6,7 +6,7 @@ extends Control
 @onready var flapper2 := $Kala2/FlapperAnimation
 @onready var start_button := $VBoxContainer/StartButton
 @onready var spin_box: SpinBox = $VBoxContainer/HBoxContainer/SpinBox
-
+@onready var spin_box2: SpinBox = $VBoxContainer/HBoxContainer2/SpinBox
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -17,6 +17,7 @@ func _ready() -> void:
 	flapper2.play()
 	start_button.grab_focus()
 	spin_box.value = min(Input.get_connected_joypads().size(), 2)
+	spin_box2.value = GameSettings.win_limit
 	pass # Replace with function body.
 
 
