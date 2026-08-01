@@ -9,6 +9,10 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	start_button.pressed.connect(func():
+		print("Button pressed")
+	)
 	flapper.play()
 	flapper2.play()
 	start_button.grab_focus()
@@ -18,9 +22,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+
 	pass
 
-
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		print("ui_accept")
 
 func _on_start_button_pressed() -> void:
 	GameSettings.player_count = int(player_count.value)
