@@ -19,11 +19,65 @@
 [ext_resource type="AudioStream" uid="uid://b31unxknwnvbh" path="res://asset/oof8.mp3" id="9_634y6"]
 [ext_resource type="AudioStream" uid="uid://bw8fwburxjyi4" path="res://asset/rousk3.mp3" id="9_op7ga"]
 [ext_resource type="Texture2D" uid="uid://b5ni7ddb5cefe" path="res://asset/kala bite.png" id="10_ivps1"]
+[ext_resource type="Texture2D" uid="uid://d1bnfxo53rfhs" path="res://asset/hurteffect.png" id="10_jm5j8"]
 [ext_resource type="AudioStream" uid="uid://d3cgebevxbhl0" path="res://asset/rousk4.mp3" id="10_q13i1"]
 [ext_resource type="AudioStream" uid="uid://c6n1ctouvbb0t" path="res://asset/rousk5.mp3" id="11_pylmc"]
 [ext_resource type="AudioStream" uid="uid://vd6q3sauqo44" path="res://asset/rousk6.mp3" id="12_pbfsw"]
 [ext_resource type="AudioStream" uid="uid://duy720nmfak60" path="res://asset/rousk7.mp3" id="13_5tmop"]
 [ext_resource type="AudioStream" uid="uid://cv2xcnucjetwt" path="res://asset/rousk8.mp3" id="14_7ahtn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hik5"]
+atlas = ExtResource("10_jm5j8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtqh7"]
+atlas = ExtResource("10_jm5j8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wuci"]
+atlas = ExtResource("10_jm5j8")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iruf7"]
+atlas = ExtResource("10_jm5j8")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5n4i"]
+atlas = ExtResource("10_jm5j8")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_634y6"]
+atlas = ExtResource("10_jm5j8")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gc3ty"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hik5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtqh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wuci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iruf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5n4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_634y6")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"blood",
+"speed": 5.0
+}]
 
 [sub_resource type="GDScript" id="GDScript_b26j0"]
 script/source = "extends Node2D
@@ -170,6 +224,10 @@ script = ExtResource("1_w0oxm")
 hurt_sounds = Array[AudioStream]([ExtResource("2_dx0e4"), ExtResource("3_jm5j8"), ExtResource("4_7hik5"), ExtResource("5_qtqh7"), ExtResource("6_2wuci"), ExtResource("7_iruf7"), ExtResource("8_j5n4i"), ExtResource("9_634y6")])
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=946621151]
+
+[node name="BloodAnimation" type="AnimatedSprite2D" parent="." unique_id=834861851]
+sprite_frames = SubResource("SpriteFrames_gc3ty")
+animation = &"blood"
 
 [node name="flapper" type="Node2D" parent="." unique_id=1111981613]
 position = Vector2(-1.0000001, 1)
