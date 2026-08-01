@@ -1,15 +1,22 @@
 [gd_scene format=3 uid="uid://bf8h02hmexujc"]
 
 [ext_resource type="Script" uid="uid://u0dp7vbjh0ts" path="res://script/kala.gd" id="1_w0oxm"]
-[ext_resource type="Texture2D" uid="uid://d1bnfxo53rfhs" path="res://asset/hurteffect.png" id="2_op7ga"]
+
 [ext_resource type="Texture2D" uid="uid://dv41bri6nh48m" path="res://asset/fin move loop.png" id="3_dw050"]
 [ext_resource type="Script" uid="uid://47usfo354a86" path="res://script/orbiting_sphere.gd" id="3_i3pqv"]
+[ext_resource type="AudioStream" uid="uid://b51eaftentamm" path="res://asset/oof2.mp3" id="3_jm5j8"]
+[ext_resource type="AudioStream" uid="uid://bysyb6hpplgit" path="res://asset/oof3.mp3" id="4_7hik5"]
 [ext_resource type="Script" uid="uid://c0mjhy45i5sd5" path="res://bite.gd" id="5_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://d0kg1o3teyojr" path="res://asset/lightorgan.png" id="5_dw050"]
+[ext_resource type="AudioStream" uid="uid://ckauvst60a782" path="res://asset/oof4.mp3" id="5_qtqh7"]
 [ext_resource type="Texture2D" uid="uid://ckut7pxok7tfv" path="res://asset/bite.png" id="6_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://c6lonn4hfemax" path="res://asset/oof5.mp3" id="6_2wuci"]
 [ext_resource type="Texture2D" uid="uid://b7lbetxeet03h" path="res://asset/bite2.png" id="7_1jxqw"]
+[ext_resource type="AudioStream" uid="uid://punecn3vcjmq" path="res://asset/oof6.mp3" id="7_iruf7"]
 [ext_resource type="AudioStream" uid="uid://bkbrxdexv2cdl" path="res://asset/rousk1.mp3" id="8_b26j0"]
+[ext_resource type="AudioStream" uid="uid://cl66onxlotjjk" path="res://asset/oof7.mp3" id="8_j5n4i"]
 [ext_resource type="AudioStream" uid="uid://cdm4ktk2yggxk" path="res://asset/rousk2.mp3" id="8_u1c27"]
+[ext_resource type="AudioStream" uid="uid://b31unxknwnvbh" path="res://asset/oof8.mp3" id="9_634y6"]
 [ext_resource type="AudioStream" uid="uid://bw8fwburxjyi4" path="res://asset/rousk3.mp3" id="9_op7ga"]
 [ext_resource type="Texture2D" uid="uid://b5ni7ddb5cefe" path="res://asset/kala bite.png" id="10_ivps1"]
 [ext_resource type="AudioStream" uid="uid://d3cgebevxbhl0" path="res://asset/rousk4.mp3" id="10_q13i1"]
@@ -213,7 +220,7 @@ gravity_scale = 0.0
 linear_damp = 1.0
 angular_damp = 100.0
 script = ExtResource("1_w0oxm")
-hurt_sounds = Array[AudioStream]([null, null, null, null, null, null, null, null])
+hurt_sounds = Array[AudioStream]([ExtResource("2_dx0e4"), ExtResource("3_jm5j8"), ExtResource("4_7hik5"), ExtResource("5_qtqh7"), ExtResource("6_2wuci"), ExtResource("7_iruf7"), ExtResource("8_j5n4i"), ExtResource("9_634y6")])
 
 [node name="BloodAnimation" type="AnimatedSprite2D" parent="." unique_id=1208195292]
 top_level = true
