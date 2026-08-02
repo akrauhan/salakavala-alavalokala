@@ -10,8 +10,8 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	BackgroundMusic.play()
-	#flapper.play()
-	#flapper2.play()
+	flapper.play()
+	flapper2.play()
 	start_button.grab_focus()
 	spin_box.value = min(Input.get_connected_joypads().size(), 2)
 	spin_box2.value = GameSettings.win_limit
