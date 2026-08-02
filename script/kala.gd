@@ -64,7 +64,7 @@ func _physics_process(delta):
 		flapper_animation.play("loop")
 		
 	flap(input)
-	scale.x = sin(physics_ticks/ 1000.0  * PI )
+
 
 	# DASH_INPUT
 	if Input.get_joy_axis(player_id,JOY_AXIS_TRIGGER_LEFT) >= 0.5:
