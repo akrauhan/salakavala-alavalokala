@@ -30,10 +30,16 @@ func _input(event):
 func _on_start_button_pressed() -> void:
 	GameSettings.player_count = int(player_count.value)
 	GameSettings.win_limit = int(win_limit.value)
-	get_tree().change_scene_to_file("res://main.tscn") # Replace with function body.
+	get_tree().change_scene_to_file("res://gamemodes/versus.tscn") # Replace with function body.
 	queue_free()
 
 
 func _on_quitbutton_pressed() -> void:
 	get_tree().quit()
 	
+
+
+func _on_tutorial_button_pressed() -> void:
+	GameSettings.player_count = int(player_count.value)
+	get_tree().change_scene_to_file("res://gamemodes/tutorial.tscn")
+	pass # Replace with function body.

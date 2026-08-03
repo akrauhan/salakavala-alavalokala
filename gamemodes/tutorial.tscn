@@ -1,15 +1,13 @@
-[gd_scene format=3 uid="uid://cunt8n7olrmq0"]
+[gd_scene format=3 uid="uid://b5nkeci1w8stu"]
 
-[ext_resource type="Script" uid="uid://decjecqcyqegx" path="res://script/main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://bf8h02hmexujc" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://bjhqs3ppgisuf" path="res://script/player_manager.gd" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://scoreboard.gd" id="2_lquwl"]
-[ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://cooldown_display.gd" id="3_5vw27"]
-[ext_resource type="Script" uid="uid://du6tis4q1xjq4" path="res://score_manager.gd" id="4_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://cacdx6yhdy14l" path="res://asset/progress.png" id="4_272bh"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_272bh"]
-font_size = 60
+[ext_resource type="Script" uid="uid://d0j8vsqso2tu8" path="res://gamemodes/tutorialmanager.gd" id="1_yk7ps"]
+[ext_resource type="Script" uid="uid://du6tis4q1xjq4" path="res://score_manager.gd" id="2_4g6wd"]
+[ext_resource type="PackedScene" uid="uid://bwftgyyw1n4q0" path="res://gamemodes/decoy_fish.tscn" id="2_a76fb"]
+[ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://scoreboard.gd" id="3_a76fb"]
+[ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://cooldown_display.gd" id="4_kopkp"]
+[ext_resource type="Texture2D" uid="uid://cacdx6yhdy14l" path="res://asset/progress.png" id="5_bwdwo"]
+[ext_resource type="Script" uid="uid://bjhqs3ppgisuf" path="res://script/player_manager.gd" id="6_qdjmq"]
+[ext_resource type="PackedScene" uid="uid://bf8h02hmexujc" path="res://player.tscn" id="7_mo60f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(57, 710)
@@ -17,22 +15,20 @@ size = Vector2(57, 710)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dop4x"]
 size = Vector2(1204, 100)
 
-[node name="Main" type="Node2D" unique_id=566845920]
-script = ExtResource("1_0xm2m")
+[node name="Tutorial" type="Node2D" unique_id=566845920]
+script = ExtResource("1_yk7ps")
+decoy_scene = ExtResource("2_a76fb")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1971358089]
 
-[node name="WinnerLabel" type="Label" parent="UI" unique_id=166953887]
-visible = false
+[node name="TutorialLabel" type="Label" parent="UI" unique_id=1924512569]
 offset_left = 469.0
 offset_top = 118.0
-offset_right = 695.0
-offset_bottom = 201.0
-text = "Winner "
-label_settings = SubResource("LabelSettings_272bh")
+offset_right = 509.0
+offset_bottom = 141.0
 
 [node name="ScoreManager" type="Node" parent="UI" unique_id=1857764718 node_paths=PackedStringArray("game_over_timer")]
-script = ExtResource("4_1bvp3")
+script = ExtResource("2_4g6wd")
 game_over_timer = NodePath("GameOverTimer")
 
 [node name="GameOverTimer" type="Timer" parent="UI/ScoreManager" unique_id=1819359228]
@@ -48,12 +44,12 @@ theme_override_constants/margin_right = 100
 
 [node name="Scoreboard" type="HBoxContainer" parent="UI/MarginContainer" unique_id=72781503]
 layout_mode = 2
-script = ExtResource("2_lquwl")
+script = ExtResource("3_a76fb")
 
 [node name="Cooldowns" type="Control" parent="UI" unique_id=1847699015]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("3_5vw27")
+script = ExtResource("4_kopkp")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="UI/Cooldowns" unique_id=671661390]
 layout_mode = 0
@@ -66,54 +62,54 @@ scale = Vector2(0.35999984, 0.35999984)
 [node name="Player0BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=1389734142]
 layout_mode = 2
 fill_mode = 4
-texture_progress = ExtResource("4_272bh")
+texture_progress = ExtResource("5_bwdwo")
 tint_progress = Color(1, 0, 0, 1)
 
 [node name="Player1BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=178151619]
 layout_mode = 2
 value = 100.0
 fill_mode = 4
-texture_progress = ExtResource("4_272bh")
+texture_progress = ExtResource("5_bwdwo")
 tint_progress = Color(1, 1, 0, 1)
 
 [node name="Player2BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=962886863]
 layout_mode = 2
 value = 100.0
 fill_mode = 4
-texture_progress = ExtResource("4_272bh")
+texture_progress = ExtResource("5_bwdwo")
 tint_progress = Color(0.87058824, 0.72156864, 0.5294118, 1)
 
 [node name="Player3BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=58231700]
 layout_mode = 2
 value = 100.0
 fill_mode = 4
-texture_progress = ExtResource("4_272bh")
+texture_progress = ExtResource("5_bwdwo")
 tint_progress = Color(0, 1, 0.49803922, 1)
 
 [node name="Player4BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=316727057]
 layout_mode = 2
 value = 100.0
 fill_mode = 4
-texture_progress = ExtResource("4_272bh")
+texture_progress = ExtResource("5_bwdwo")
 tint_progress = Color(0, 0.7490196, 1, 1)
 
 [node name="Player5BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=704348871]
 layout_mode = 2
 value = 100.0
 fill_mode = 4
-texture_progress = ExtResource("4_272bh")
+texture_progress = ExtResource("5_bwdwo")
 
 [node name="Player6BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=761231171]
 layout_mode = 2
 value = 100.0
 fill_mode = 4
-texture_progress = ExtResource("4_272bh")
+texture_progress = ExtResource("5_bwdwo")
 tint_progress = Color(1, 0, 1, 1)
 
 [node name="Player7BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=1751158590]
 layout_mode = 2
 fill_mode = 4
-texture_progress = ExtResource("4_272bh")
+texture_progress = ExtResource("5_bwdwo")
 tint_progress = Color(1, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=53508969]
@@ -129,8 +125,8 @@ color = Color(0, 0, 0, 1)
 [node name="Players" type="Node2D" parent="." unique_id=123082180]
 
 [node name="PlayerManager" type="Node" parent="." unique_id=239729471]
-script = ExtResource("2_0xm2m")
-player_scene = ExtResource("1_ig7tw")
+script = ExtResource("6_qdjmq")
+player_scene = ExtResource("7_mo60f")
 
 [node name="Borders" type="Node" parent="." unique_id=1732383276]
 
