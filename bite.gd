@@ -42,6 +42,12 @@ func attack(direction) -> bool: # Returns if attack was successful
 		return false
 	
 	sprite_2d.play("bite")
+	Input.start_joy_vibration(
+		player_id,	# Controller to vibrate
+		0.5,		# Weak motor (0.0-1.0)
+		0.5,		# Strong motor (0.0-1.0)
+		0.2		# Duration in seconds
+	)
 	
 	if player_id < bite_sounds.size():
 		bite_sound.stream = bite_sounds[player_id]

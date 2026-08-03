@@ -5,17 +5,18 @@ extends RigidBody2D
 @onready var parry_light: PointLight2D = $Parry/ParryLight
 @onready var parry_collision: PointLight2D = $Parry/ParryCollision
 @onready var parry_sparks: GPUParticles2D = $Parry/ParrySparks
+@onready var dash_emitter: GPUParticles2D = $Sprite2D/DashEmitter
 
 
 @export var player_id := 0
 @export var deadzone := 0.4
 
 @export var dash_strength := 600
-@export var dash_cooldown := 1.5
+@export var dash_cooldown := 2
 @export var stun_time := 1 # Time spent stunned after hit
 @export var stun_speed := 1 # Speed of movement when stunned
-@export var flap_strength := 150
-@export var flap_cooldown := 0.8
+@export var flap_strength := 100
+@export var flap_cooldown := 0.25
 @export var biteimpulse_strength := 600
 
 @onready var dash_timer: Timer = $DashCooldown
@@ -105,6 +106,12 @@ func flap(direction):
 		return
 	
 	apply_impulse(direction.normalized() * flap_strength)
+	Input.start_joy_vibration(
+		player_id,	# Controller to vibrate
+		0.05,		# Weak motor (0.0-1.0)
+		0,		# Strong motor (0.0-1.0)
+		0.125		# Duration in seconds
+	)
 	flap_timer.start()
 
 var attack_previous := false
@@ -161,9 +168,17 @@ func dash():
 	var input = Vector2(
 		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_X),
 		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
-	)
+	) 
 	
 	apply_impulse(input * dash_strength)
+	dash_emitter.restart()
+	
+	Input.start_joy_vibration(
+		player_id,	# Controller to vibrate
+		0.5,		# Weak motor (0.0-1.0)
+		1,		# Strong motor (0.0-1.0)
+		0.1		# Duration in seconds
+	)
 		
 	dash_timer.start()
 

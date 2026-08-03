@@ -251,25 +251,60 @@ animations = [{
 }]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7hik5"]
+lifetime_randomness = 1.0
 particle_flag_disable_z = true
 particle_flag_damping_as_friction = true
 particle_flag_inherit_emitter_scale = true
-inherit_velocity_ratio = 0.871
-direction = Vector3(-90, 0, 0)
-initial_velocity_min = 30.0
-initial_velocity_max = 90.0
-gravity = Vector3(0, -45, 0)
-damping_max = 10.0
+emission_shape = 1
+emission_sphere_radius = 5.0
+angle_min = 45.00001
+angle_max = 45.00001
+inherit_velocity_ratio = 0.9
+direction = Vector3(0, 0, 0)
+initial_velocity_max = 100.0
+angular_velocity_min = -100.000015
+angular_velocity_max = 99.999985
+gravity = Vector3(0, -30, 0)
+damping_max = 2.0
 scale_min = 0.5
-scale_max = 1.5
+scale_max = 2.0
 scale_over_velocity_min = 1.0
 scale_over_velocity_max = 2.0
+turbulence_enabled = true
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.66
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qtqh7"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+particle_flag_inherit_emitter_scale = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+inherit_velocity_ratio = 0.2
+velocity_pivot = Vector3(-180, 0, 0)
+direction = Vector3(-90, 0, 0)
+flatness = 1.0
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+angular_velocity_min = -200.00002
+angular_velocity_max = 199.99998
+radial_velocity_min = -204.30002
+radial_velocity_max = -2.2351742e-05
+gravity = Vector3(0, -30, 0)
+damping_min = 2.0
+damping_max = 20.0
+scale_min = 0.5
+scale_max = 1.5
+scale_over_velocity_max = 2.0
+turbulence_enabled = true
 collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.66
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_52wb4"]
-radius = 6.0
+radius = 0.01
 
 [sub_resource type="ImageTexture" id="ImageTexture_h2yge"]
 
@@ -366,15 +401,29 @@ animation = &"loop"
 offset = Vector2(-20, 0)
 
 [node name="FlapperEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=1095639060]
+visible = false
+modulate = Color(3.1672676, 3.1672676, 3.1672676, 0.40392157)
+self_modulate = Color(0, 0.14077923, 0.30189094, 1)
+position = Vector2(-56, -1)
+rotation = 3.1415927
+amount = 2000
+lifetime = 20.0
+speed_scale = 0.75
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7hik5")
+
+[node name="DashEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=360676217]
 modulate = Color(3.1672676, 3.1672676, 3.1672676, 0.40392157)
 self_modulate = Color(0, 0.14077923, 0.30189094, 1)
 position = Vector2(-56, -1)
 scale = Vector2(2, 2)
-amount = 100
-lifetime = 4.0
-speed_scale = 0.75
-randomness = 0.1
-process_material = SubResource("ParticleProcessMaterial_7hik5")
+emitting = false
+amount = 300
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.95
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qtqh7")
 
 [node name="DashCooldown" type="Timer" parent="." unique_id=1659091772]
 one_shot = true
@@ -395,6 +444,8 @@ texture = ExtResource("5_dw050")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OrbitingSphere" unique_id=1513548188]
 shape = SubResource("CircleShape2D_52wb4")
 disabled = true
+one_way_collision = true
+one_way_collision_direction = Vector2(0, 0)
 
 [node name="Bite" type="Node2D" parent="." unique_id=1755387565 node_paths=PackedStringArray("sprite_2d")]
 script = ExtResource("5_2hs0m")
