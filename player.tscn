@@ -278,8 +278,7 @@ radius = 21.960052
 
 [node name="Player" type="RigidBody2D" unique_id=2038223969]
 gravity_scale = 0.0
-linear_damp = 1.0
-angular_damp = 100.0
+linear_damp = 5.0
 script = ExtResource("1_w0oxm")
 hurt_sounds = Array[AudioStream]([ExtResource("2_dx0e4"), ExtResource("3_jm5j8"), ExtResource("4_7hik5"), ExtResource("5_qtqh7"), ExtResource("6_2wuci"), ExtResource("7_iruf7"), ExtResource("8_j5n4i"), ExtResource("9_634y6")])
 
@@ -371,7 +370,7 @@ modulate = Color(3.1672676, 3.1672676, 3.1672676, 0.40392157)
 self_modulate = Color(0, 0.14077923, 0.30189094, 1)
 position = Vector2(-56, -1)
 scale = Vector2(2, 2)
-amount = 30
+amount = 100
 lifetime = 4.0
 speed_scale = 0.75
 randomness = 0.1
@@ -388,7 +387,7 @@ script = ExtResource("3_i3pqv")
 
 [node name="PointLight2D" type="PointLight2D" parent="OrbitingSphere" unique_id=711782307]
 scale = Vector2(3.5, 3.5)
-energy = 8.14
+energy = 16.0
 range_layer_min = -1024
 range_layer_max = 1024
 texture = ExtResource("5_dw050")
@@ -408,8 +407,8 @@ active_texture = ExtResource("7_1jxqw")
 position = Vector2(24.000002, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bite/BiteArea" unique_id=741406850]
-position = Vector2(9.999998, 0)
-scale = Vector2(2.515, 1)
+position = Vector2(15, 0)
+scale = Vector2(2, 0.5)
 shape = SubResource("CircleShape2D_q4em8")
 
 [node name="BiteDuration" type="Timer" parent="Bite" unique_id=1502114615]

@@ -10,13 +10,13 @@ extends RigidBody2D
 @export var player_id := 0
 @export var deadzone := 0.4
 
-@export var dash_strength := 400
-@export var dash_cooldown := 2
+@export var dash_strength := 600
+@export var dash_cooldown := 1.5
 @export var stun_time := 1 # Time spent stunned after hit
 @export var stun_speed := 1 # Speed of movement when stunned
-@export var flap_strength := 100
-@export var flap_cooldown := 1
-@export var biteimpulse_strength := 250
+@export var flap_strength := 150
+@export var flap_cooldown := 0.8
+@export var biteimpulse_strength := 600
 
 @onready var dash_timer: Timer = $DashCooldown
 @onready var bite_timer: Timer = $Bite/BiteCooldown
@@ -116,7 +116,13 @@ func take_damage(attacker_id):
 	if !bite_timer.is_stopped(): # Parry
 				
 		parry_area.global_position = global_position
-
+		
+		Input.start_joy_vibration(
+		player_id,	# Controller to vibrate
+		0,		# Weak motor (0.0-1.0)
+		1.0,		# Strong motor (0.0-1.0)
+		0.5		# Duration in seconds
+		)
 		parry_sound.play()
 		parry_timer.start()
 		parry_light.energy = 10

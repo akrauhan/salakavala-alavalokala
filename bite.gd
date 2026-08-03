@@ -4,7 +4,7 @@ extends Node2D
 
 @export var attack_distance := 40.0
 @export var attack_duration := 0.4
-@export var bite_cooldown := 3
+@export var bite_cooldown := 2
 @export var player_id := 0
 
 
@@ -38,7 +38,7 @@ func attack(direction) -> bool: # Returns if attack was successful
 	if !attack_duration_timer.is_stopped() or !bite_cooldown_timer.is_stopped() or attacking: 
 		return false
 	
-	if direction.length() < 0.4:
+	if direction.length() < 0.0:
 		return false
 	
 	sprite_2d.play("bite")
@@ -52,7 +52,9 @@ func attack(direction) -> bool: # Returns if attack was successful
 	
 	rotation = locked_direction.angle()
 	
+	
 	attack_duration_timer.start()	
+	
 	eyelight.energy=2
 	
 	bite_cooldown_timer.start()
@@ -70,4 +72,10 @@ func _on_bite_duration_timeout() -> void:
 
 		if target.has_method("take_damage"):
 			target.take_damage(get_parent().player_id)
-	
+			Input.start_joy_vibration(
+			player_id,	# Controller to vibrate
+			1.0,		# Weak motor (0.0-1.0)
+			0.5,		# Strong motor (0.0-1.0)
+			0.5		# Duration in seconds
+			)
+			continue
