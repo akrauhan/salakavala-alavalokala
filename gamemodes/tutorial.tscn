@@ -23,9 +23,18 @@ decoy_scene = ExtResource("2_a76fb")
 
 [node name="TutorialLabel" type="Label" parent="UI" unique_id=1924512569]
 offset_left = 469.0
-offset_top = 118.0
+offset_top = 139.0
 offset_right = 509.0
-offset_bottom = 141.0
+offset_bottom = 162.0
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="UI" unique_id=1266025033]
+z_index = 1
+offset_left = 565.0
+offset_top = 90.0
+offset_right = 569.0
+offset_bottom = 117.0
+max_value = 1.0
 
 [node name="ScoreManager" type="Node" parent="UI" unique_id=1857764718 node_paths=PackedStringArray("game_over_timer")]
 script = ExtResource("2_4g6wd")
@@ -34,22 +43,27 @@ game_over_timer = NodePath("GameOverTimer")
 [node name="GameOverTimer" type="Timer" parent="UI/ScoreManager" unique_id=1819359228]
 wait_time = 5.0
 
-[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=95226235]
-offset_left = 462.0
-offset_right = 662.0
-offset_bottom = 50.0
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 100
-
-[node name="Scoreboard" type="HBoxContainer" parent="UI/MarginContainer" unique_id=72781503]
-layout_mode = 2
-script = ExtResource("3_a76fb")
-
 [node name="Cooldowns" type="Control" parent="UI" unique_id=1847699015]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("4_kopkp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Cooldowns" unique_id=460543730]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 497.0
+offset_right = 523.0
+offset_bottom = 547.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Cooldowns/HBoxContainer" unique_id=95226235]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+
+[node name="Scoreboard" type="HBoxContainer" parent="UI/Cooldowns/HBoxContainer/MarginContainer" unique_id=72781503]
+layout_mode = 2
+script = ExtResource("3_a76fb")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="UI/Cooldowns" unique_id=671661390]
 layout_mode = 0

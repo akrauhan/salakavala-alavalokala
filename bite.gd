@@ -20,6 +20,7 @@ extends Node2D
 @export var normal_texture: Texture2D
 @export var active_texture: Texture2D
 
+signal bite_performed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,7 +61,7 @@ func attack(direction) -> bool: # Returns if attack was successful
 
 
 func _on_bite_duration_timeout() -> void:
-	print("Bite timeout")
+	bite_performed.emit(player_id)
 	eyelight.energy=0
 	for target in bite_area.get_overlapping_bodies():
 

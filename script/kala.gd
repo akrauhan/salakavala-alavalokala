@@ -34,6 +34,7 @@ extends RigidBody2D
 
 @export var hurt_sounds: Array[AudioStream]
 
+
 var start_pos: Vector2
 
 # Called when the node enters the scene tree for the first time.
@@ -110,6 +111,8 @@ var attack_previous := false
 
 	
 func take_damage(attacker_id):
+	if get_tree().current_scene.name == "Tutorial": # No damage in tutorial
+		return
 	if !bite_timer.is_stopped(): # Parry
 				
 		parry_area.global_position = global_position
