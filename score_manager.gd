@@ -13,7 +13,7 @@ func add_player(player_id):
 func add_score(player_id, amount):
 	scores[player_id] += amount
 	scoreboard.update_scoreboard()
-	if scores[player_id] == GameSettings.win_limit:
+	if scores[player_id] >= GameSettings.win_limit:
 		game_over(player_id)
 	
 func get_score(player_id):

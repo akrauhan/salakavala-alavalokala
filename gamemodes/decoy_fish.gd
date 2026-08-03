@@ -9,7 +9,7 @@ var players_bitten := {}
 func take_damage(attacker_id):
 	if players_bitten.has(attacker_id):
 		return
-
+	
 	players_bitten[attacker_id] = true
 	print("Player ", attacker_id, " bit decoy")
 
