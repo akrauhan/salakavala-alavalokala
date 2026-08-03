@@ -286,11 +286,11 @@ inherit_velocity_ratio = 0.2
 velocity_pivot = Vector3(-180, 0, 0)
 direction = Vector3(-90, 0, 0)
 flatness = 1.0
-initial_velocity_min = 200.0
-initial_velocity_max = 400.0
-angular_velocity_min = -200.00002
-angular_velocity_max = 199.99998
-radial_velocity_min = -204.30002
+initial_velocity_min = 1000.0
+initial_velocity_max = 2000.0
+angular_velocity_min = -90.000015
+angular_velocity_max = 89.999985
+radial_velocity_min = -100.00002
 radial_velocity_max = -2.2351742e-05
 gravity = Vector3(0, -30, 0)
 damping_min = 2.0
@@ -401,7 +401,6 @@ animation = &"loop"
 offset = Vector2(-20, 0)
 
 [node name="FlapperEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=1095639060]
-visible = false
 modulate = Color(3.1672676, 3.1672676, 3.1672676, 0.40392157)
 self_modulate = Color(0, 0.14077923, 0.30189094, 1)
 position = Vector2(-56, -1)
@@ -414,14 +413,29 @@ process_material = SubResource("ParticleProcessMaterial_7hik5")
 
 [node name="DashEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=360676217]
 modulate = Color(3.1672676, 3.1672676, 3.1672676, 0.40392157)
-self_modulate = Color(0, 0.14077923, 0.30189094, 1)
+self_modulate = Color(0, 0.225802, 0.45594442, 1)
+use_parent_material = true
 position = Vector2(-56, -1)
 scale = Vector2(2, 2)
 emitting = false
 amount = 300
 lifetime = 1.5
 one_shot = true
-explosiveness = 0.95
+explosiveness = 0.9
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qtqh7")
+
+[node name="BiteEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=84792539]
+modulate = Color(3.1672676, 3.1672676, 3.1672676, 0.40392157)
+self_modulate = Color(0, 0.225802, 0.45594442, 1)
+use_parent_material = true
+position = Vector2(-56, -1)
+scale = Vector2(2, 2)
+emitting = false
+amount = 300
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.9
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_qtqh7")
 
@@ -435,8 +449,10 @@ linear_damp = 10.0
 script = ExtResource("3_i3pqv")
 
 [node name="PointLight2D" type="PointLight2D" parent="OrbitingSphere" unique_id=711782307]
-scale = Vector2(3.5, 3.5)
+scale = Vector2(3, 3)
+color = Color(1.0511972, 2.1168277, 2.1168277, 1)
 energy = 16.0
+blend_mode = 2
 range_layer_min = -1024
 range_layer_max = 1024
 texture = ExtResource("5_dw050")
@@ -479,8 +495,8 @@ stream = ExtResource("8_b26j0")
 
 [node name="Eyelight" type="PointLight2D" parent="Bite" unique_id=1186784723]
 position = Vector2(12, -5)
-scale = Vector2(6, 6)
-color = Color(5.77569e-06, 0.96071976, 0.97084016, 1)
+scale = Vector2(5, 5)
+color = Color(0, 1.7549219, 1.7758842, 1)
 energy = 0.0
 texture = ExtResource("5_dw050")
 

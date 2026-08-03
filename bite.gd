@@ -15,6 +15,8 @@ extends Node2D
 
 @export var bite_sounds: Array[AudioStream]
 @onready var eyelight: PointLight2D = $Eyelight
+@onready var bite_emitter: GPUParticles2D = $"../Sprite2D/BiteEmitter"
+
 
 @export var bite_sfx: AudioStreamPlayer
 @export var normal_texture: Texture2D
@@ -53,6 +55,7 @@ func attack(direction) -> bool: # Returns if attack was successful
 		bite_sound.stream = bite_sounds[player_id]
 	
 	bite_sound.play()
+	bite_emitter.emitting = true
 	
 	var locked_direction = direction.normalized()
 	
