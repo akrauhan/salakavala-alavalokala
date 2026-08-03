@@ -6,6 +6,7 @@ extends RigidBody2D
 @onready var parry_collision: PointLight2D = $Parry/ParryCollision
 @onready var parry_sparks: GPUParticles2D = $Parry/ParrySparks
 @onready var dash_emitter: GPUParticles2D = $Sprite2D/DashEmitter
+@onready var dodge_emitter: GPUParticles2D = $Sprite2D/DodgeEmitter
 
 
 @export var player_id := 0
@@ -24,11 +25,13 @@ extends RigidBody2D
 @onready var flap_timer: Timer = $FlapCooldown
 @onready var stun_timer: Timer = $StunTimer
 @onready var parry_timer: Timer = $Parry/ParryTimer
+@onready var dodge_timer: Timer = $Parry/DodgeTimer
 
 
 @onready var orbiting_sphere = $OrbitingSphere
 @onready var melee_attack = $Bite
 @onready var parry_area = $Parry/ParryExplosionArea
+@onready var dodge_area: Area2D = $Parry/DodgeArea
 
 @onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
 @onready var parry_sound: AudioStreamPlayer2D = $Parry/ParrySound
@@ -137,7 +140,20 @@ func take_damage(attacker_id):
 		parry_sparks.emitting = true
 		
 		return
-	
+	if !dodge_timer.time_left > 0: # Dodge
+				
+		dodge_area.global_position = global_position
+		
+		Input.start_joy_vibration(
+		player_id,	# Controller to vibrate
+		1.0,		# Weak motor (0.0-1.0)
+		0.0,		# Strong motor (0.0-1.0)
+		0.2		# Duration in seconds
+		)
+		#dodge_sound.play()
+		dodge_emitter.emitting = true
+		
+		return
 	
 	
 	print("Player ", player_id, "hit")

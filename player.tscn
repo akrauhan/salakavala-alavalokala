@@ -31,7 +31,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_lea0t"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gc3ty"]
-light_mode = 1
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bjeov"]
 lifetime_randomness = 1.0
@@ -303,8 +302,37 @@ collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.66
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iruf7"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2wuci"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+particle_flag_inherit_emitter_scale = true
+emission_shape = 2
+emission_sphere_radius = 20.0
+inherit_velocity_ratio = 1.0
+velocity_pivot = Vector3(-180, 0, 0)
+direction = Vector3(-90, 0, 0)
+spread = 180.0
+initial_velocity_min = 250.0
+initial_velocity_max = 500.0
+orbit_velocity_min = -0.09999991
+orbit_velocity_max = 0.1000001
+radial_velocity_min = -30.000021
+radial_velocity_max = -2.2351742e-05
+gravity = Vector3(0, -30, 0)
+damping_min = 50.000004
+damping_max = 50.000004
+scale_min = 0.5
+scale_max = 1.5
+scale_over_velocity_max = 2.0
+turbulence_enabled = true
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.66
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_52wb4"]
-radius = 0.01
 
 [sub_resource type="ImageTexture" id="ImageTexture_h2yge"]
 
@@ -327,6 +355,14 @@ position = Vector2(32, 1)
 [node name="CircleCollision" type="CollisionShape2D" parent="Parry/ParryExplosionArea" unique_id=2002764103]
 shape = SubResource("CircleShape2D_lea0t")
 
+[node name="DodgeArea" type="Area2D" parent="Parry" unique_id=937440093]
+position = Vector2(32, 1)
+
+[node name="CircleCollision" type="CollisionShape2D" parent="Parry/DodgeArea" unique_id=2103245058]
+position = Vector2(-33, -1)
+scale = Vector2(1.9, 1.9)
+shape = SubResource("CircleShape2D_lea0t")
+
 [node name="ParrySound" type="AudioStreamPlayer2D" parent="Parry" unique_id=1644140109]
 position = Vector2(32, 1)
 stream = ExtResource("10_qtqh7")
@@ -334,15 +370,16 @@ stream = ExtResource("10_qtqh7")
 [node name="ParryLight" type="PointLight2D" parent="Parry" unique_id=366778516]
 z_index = 1
 position = Vector2(15, 0)
-scale = Vector2(10, 10)
-color = Color(1, 1, 0.33333334, 1)
+scale = Vector2(8, 8)
+color = Color(3.2944162, 3.2944162, 3.2944162, 1)
 energy = 0.0
 texture = ExtResource("5_dw050")
 
 [node name="ParryCollision" type="PointLight2D" parent="Parry" unique_id=855936721]
 z_index = 1
 position = Vector2(14, 0)
-scale = Vector2(3, 3)
+scale = Vector2(5.5, 5.5)
+color = Color(4.415934, 4.415934, 0, 1)
 energy = 0.0
 texture = ExtResource("10_7hik5")
 
@@ -354,11 +391,10 @@ material = SubResource("CanvasItemMaterial_gc3ty")
 position = Vector2(15.000001, 5.9604645e-08)
 scale = Vector2(0.2, 0.2)
 emitting = false
-amount = 300
+amount = 500
 texture = ExtResource("5_dw050")
-lifetime = 1.5
 one_shot = true
-speed_scale = 2.0
+speed_scale = 3.0
 explosiveness = 0.9
 randomness = 1.0
 visibility_rect = Rect2(-2500, -2500, 5000, 5000)
@@ -369,6 +405,11 @@ process_material = SubResource("ParticleProcessMaterial_bjeov")
 
 [node name="ParryTimer" type="Timer" parent="Parry" unique_id=942943354]
 wait_time = 0.5
+one_shot = true
+script = SubResource("GDScript_qtqh7")
+
+[node name="DodgeTimer" type="Timer" parent="Parry" unique_id=1008447621]
+wait_time = 0.1
 one_shot = true
 script = SubResource("GDScript_qtqh7")
 
@@ -401,8 +442,8 @@ animation = &"loop"
 offset = Vector2(-20, 0)
 
 [node name="FlapperEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=1095639060]
-modulate = Color(3.1672676, 3.1672676, 3.1672676, 0.40392157)
-self_modulate = Color(0, 0.14077923, 0.30189094, 1)
+modulate = Color(0.7019608, 0.8352941, 1, 0.7764706)
+self_modulate = Color(0.7019608, 0.8352941, 1, 0.6862745)
 position = Vector2(-56, -1)
 rotation = 3.1415927
 amount = 2000
@@ -412,8 +453,8 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_7hik5")
 
 [node name="DashEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=360676217]
-modulate = Color(3.1672676, 3.1672676, 3.1672676, 0.40392157)
-self_modulate = Color(0, 0.225802, 0.45594442, 1)
+modulate = Color(0.70306283, 0.83463293, 0.9999997, 1)
+self_modulate = Color(0.7019608, 0.8352941, 1, 0.84705883)
 use_parent_material = true
 position = Vector2(-56, -1)
 scale = Vector2(2, 2)
@@ -425,9 +466,26 @@ explosiveness = 0.9
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_qtqh7")
 
+[node name="DodgeEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=274554108]
+modulate = Color(0.7019608, 0.8352941, 1, 0.6862745)
+self_modulate = Color(0.6866718, 0.82691604, 0.9999998, 0.6862745)
+material = SubResource("CanvasItemMaterial_iruf7")
+use_parent_material = true
+position = Vector2(-32, -1)
+emitting = false
+amount = 500
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.75
+randomness = 1.0
+trail_lifetime = 0.01
+trail_sections = 3
+trail_section_subdivisions = 3
+process_material = SubResource("ParticleProcessMaterial_2wuci")
+
 [node name="BiteEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=84792539]
 modulate = Color(3.1672676, 3.1672676, 3.1672676, 0.40392157)
-self_modulate = Color(0, 0.225802, 0.45594442, 1)
+self_modulate = Color(0.51794696, 0.73538595, 0.9999991, 0.7764706)
 use_parent_material = true
 position = Vector2(-56, -1)
 scale = Vector2(2, 2)
@@ -507,4 +565,5 @@ one_shot = true
 one_shot = true
 
 [connection signal="timeout" from="Parry/ParryTimer" to="." method="_on_parry_timer_timeout"]
+[connection signal="timeout" from="Parry/DodgeTimer" to="." method="_on_parry_timer_timeout"]
 [connection signal="timeout" from="Bite/BiteDuration" to="Bite" method="_on_bite_duration_timeout"]
