@@ -30,6 +30,34 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lea0t"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gc3ty"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bjeov"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+particle_flag_inherit_emitter_scale = true
+angle_min = -720.0
+angle_max = 720.0
+inherit_velocity_ratio = 0.2
+direction = Vector3(0, 0, 0)
+spread = 0.0
+flatness = 1.0
+initial_velocity_min = 500.0
+initial_velocity_max = 1000.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+radial_velocity_min = 99.99998
+radial_velocity_max = 155.90997
+gravity = Vector3(0, 45, 0)
+linear_accel_min = -100.0
+linear_accel_max = 99.99999
+damping_max = 2.0
+scale_max = 2.0
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
 [sub_resource type="GDScript" id="GDScript_qtqh7"]
 script/source = "extends Timer
 
@@ -275,11 +303,40 @@ stream = ExtResource("10_qtqh7")
 
 [node name="ParryLight" type="PointLight2D" parent="Parry" unique_id=366778516]
 z_index = 1
-position = Vector2(34, 0)
-scale = Vector2(4, 4)
+position = Vector2(15, 0)
+scale = Vector2(5, 5)
+color = Color(1, 1, 0.33333334, 1)
+energy = 0.0
+texture = ExtResource("5_dw050")
+
+[node name="ParryCollision" type="PointLight2D" parent="Parry" unique_id=855936721]
+z_index = 1
+position = Vector2(14, 0)
+scale = Vector2(2, 2)
 color = Color(1, 1, 0.33333334, 1)
 energy = 0.0
 texture = ExtResource("10_7hik5")
+
+[node name="ParrySparks" type="GPUParticles2D" parent="Parry" unique_id=185887625]
+modulate = Color(1, 1, 0.30980393, 1)
+self_modulate = Color(18.892157, 18.892157, 1.4035361, 1)
+z_index = 1
+material = SubResource("CanvasItemMaterial_gc3ty")
+position = Vector2(15.000001, 5.9604645e-08)
+scale = Vector2(0.1, 0.1)
+emitting = false
+amount = 3000
+texture = ExtResource("5_dw050")
+lifetime = 3.5
+interp_to_end = 0.03
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.9
+randomness = 0.7
+trail_enabled = true
+trail_lifetime = 0.33
+trail_sections = 3
+process_material = SubResource("ParticleProcessMaterial_bjeov")
 
 [node name="ParryTimer" type="Timer" parent="Parry" unique_id=942943354]
 wait_time = 0.5
