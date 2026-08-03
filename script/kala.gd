@@ -3,6 +3,9 @@ extends RigidBody2D
 @onready var blood_animation: AnimatedSprite2D = $BloodAnimation
 @onready var flapper_emitter: GPUParticles2D = $Sprite2D/FlapperEmitter
 @onready var parry_light: PointLight2D = $Parry/ParryLight
+@onready var parry_collision: PointLight2D = $Parry/ParryCollision
+@onready var parry_sparks: GPUParticles2D = $Parry/ParrySparks
+
 
 @export var player_id := 0
 @export var deadzone := 0.4
@@ -116,7 +119,9 @@ func take_damage(attacker_id):
 
 		parry_sound.play()
 		parry_timer.start()
-		parry_light.energy = 100
+		parry_light.energy = 10
+		parry_collision.energy = 16
+		parry_sparks.emitting = true
 		
 		return
 	
@@ -163,3 +168,5 @@ func _on_dash_cooldown_timeout() -> void:
 
 func _on_parry_timer_timeout() -> void:
 	parry_light.energy = 0
+	parry_collision.energy = 0
+	parry_sparks.emitting = false
