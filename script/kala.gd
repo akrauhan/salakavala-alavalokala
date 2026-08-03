@@ -31,6 +31,8 @@ extends RigidBody2D
 
 @export var hurt_sounds: Array[AudioStream]
 
+var start_pos: Vector2
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	dash_timer.wait_time = dash_cooldown
@@ -38,7 +40,7 @@ func _ready() -> void:
 	stun_timer.wait_time = stun_time
 	orbiting_sphere.player_id = player_id
 	melee_attack.player_id = player_id
-	
+	start_pos = global_position
 	ScoreManager.add_player(player_id)
 
 

@@ -150,8 +150,6 @@ text = "Players"
 
 [node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer" unique_id=652220639]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../StartButton")
-focus_neighbor_bottom = NodePath("../../HBoxContainer2/SpinBox")
 focus_mode = 2
 min_value = 2.0
 max_value = 8.0
@@ -167,19 +165,16 @@ text = "Limit    "
 
 [node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer2" unique_id=2144437112]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../HBoxContainer/SpinBox")
-focus_neighbor_bottom = NodePath("../../Quitbutton")
 focus_mode = 2
 min_value = 1.0
 max_value = 20.0
 value = 10.0
 
-[node name="HowToButton" type="MenuButton" parent="VBoxContainer" unique_id=1669471093]
+[node name="TutorialButton" type="MenuButton" parent="VBoxContainer" unique_id=1669471093]
 layout_mode = 2
-text = "
-"
+text = "Tutorial"
 
-[node name="Quitbutton" type="MenuButton" parent="VBoxContainer" unique_id=1336057452]
+[node name="QuitButton" type="MenuButton" parent="VBoxContainer" unique_id=1336057452]
 layout_mode = 2
 focus_mode = 2
 text = "Quit"
@@ -213,4 +208,5 @@ animation = &"loop"
 offset = Vector2(-20, 0)
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quitbutton" to="." method="_on_quitbutton_pressed"]
+[connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quitbutton_pressed"]
