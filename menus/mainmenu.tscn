@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bsq0l618aptqj"]
 
-[ext_resource type="Script" uid="uid://d108bhbec0tko" path="res://mainmenu.gd" id="1_0qj0o"]
+[ext_resource type="Script" uid="uid://d108bhbec0tko" path="res://script/mainmenu.gd" id="1_0qj0o"]
 [ext_resource type="Texture2D" uid="uid://mp6qp2akew6h" path="res://asset/UI/howto.png" id="2_4wri8"]
 [ext_resource type="Texture2D" uid="uid://b5ni7ddb5cefe" path="res://asset/gfx/kala bite.png" id="3_0qj0o"]
 [ext_resource type="Texture2D" uid="uid://dv41bri6nh48m" path="res://asset/gfx/fin move loop.png" id="4_4wri8"]
