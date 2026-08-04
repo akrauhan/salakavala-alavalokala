@@ -170,14 +170,15 @@ min_value = 1.0
 max_value = 20.0
 value = 10.0
 
-[node name="TutorialButton" type="MenuButton" parent="VBoxContainer" unique_id=1669471093]
-layout_mode = 2
-text = "Tutorial"
-
 [node name="QuitButton" type="MenuButton" parent="VBoxContainer" unique_id=1336057452]
 layout_mode = 2
 focus_mode = 2
 text = "Quit"
+
+[node name="TutorialButton" type="MenuButton" parent="VBoxContainer" unique_id=1669471093]
+layout_mode = 2
+focus_mode = 2
+text = "Tutorial"
 
 [node name="Howto" type="Sprite2D" parent="." unique_id=1254719489]
 position = Vector2(-270, -188)
@@ -208,5 +209,5 @@ animation = &"loop"
 offset = Vector2(-20, 0)
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quitbutton_pressed"]
+[connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
