@@ -2,13 +2,24 @@
 
 [ext_resource type="Script" uid="uid://decjecqcyqegx" path="res://script/main.gd" id="1_31ybu"]
 [ext_resource type="Script" uid="uid://du6tis4q1xjq4" path="res://script/score_manager.gd" id="2_5mxol"]
+[ext_resource type="Shader" uid="uid://tgha53t6l52y" path="res://shaders/hueRect.gdshader" id="2_x5a3e"]
 [ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="3_x5a3e"]
 [ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://script/cooldown_display.gd" id="4_uuycg"]
 [ext_resource type="Texture2D" uid="uid://cacdx6yhdy14l" path="res://asset/gfx/progress.png" id="5_1ldtg"]
 [ext_resource type="Script" uid="uid://bjhqs3ppgisuf" path="res://script/player_manager.gd" id="6_fx5hv"]
 [ext_resource type="PackedScene" uid="uid://bf8h02hmexujc" path="res://characters/player.tscn" id="7_6hkix"]
 
+[sub_resource type="Gradient" id="Gradient_uuycg"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x5a3e"]
+gradient = SubResource("Gradient_uuycg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_31ybu"]
+shader = ExtResource("2_x5a3e")
+shader_parameter/hue = SubResource("GradientTexture2D_x5a3e")
+
 [sub_resource type="Shader" id="Shader_31ybu"]
+resource_local_to_scene = true
 code = "shader_type canvas_item;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
@@ -48,27 +59,31 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="Water" unique_id=53508969]
-layout_mode = 0
-offset_left = -16.0
-offset_top = -18.0
-offset_right = 1171.0
-offset_bottom = 657.0
+material = SubResource("ShaderMaterial_31ybu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1112.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0.039215688, 0.11764706, 1)
-
-[node name="TextureRect" type="TextureRect" parent="Water" unique_id=735767012]
-z_index = 3
-material = SubResource("ShaderMaterial_gc3ty")
-layout_mode = 0
-offset_left = -16.0
-offset_top = -18.0
-offset_right = 1171.0
-offset_bottom = 657.0
-expand_mode = 3
-stretch_mode = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Water" unique_id=1235036554]
 z_index = 3
 color = Color(0, 0, 0.039215688, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Water" unique_id=686483266]
+
+[node name="UWfilter" type="ColorRect" parent="Water/CanvasLayer" unique_id=394214873]
+visible = false
+material = SubResource("ShaderMaterial_gc3ty")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1971358089]
 
