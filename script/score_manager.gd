@@ -34,16 +34,7 @@ func game_over(player_id):
 	#label.position = Vector2(500,100)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
-	var colors = [
-		Color.RED,
-		Color.BLUE,
-		Color.GREEN,
-		Color.YELLOW,
-		Color.PURPLE,
-		Color.CYAN,
-		Color.ORANGE,
-		Color.HOT_PINK
-	]
+	var colors = GameSettings.colors
 	
 	label.add_theme_color_override("font_color", colors[player_id])
 
