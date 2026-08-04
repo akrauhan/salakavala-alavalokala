@@ -141,7 +141,7 @@ func take_damage(attacker_id):
 		
 		return
 	if !dodge_timer.time_left > 0: # Dodge
-				
+		
 		dodge_area.global_position = global_position
 		
 		Input.start_joy_vibration(

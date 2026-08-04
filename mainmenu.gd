@@ -6,8 +6,6 @@ extends Control
 @onready var flapper2 := $Kala2/FlapperAnimation
 @onready var start_button := $VBoxContainer/StartButton
 
-var active_spinbox: SpinBox = null
-
 var win_limit 
 var player_count
 
