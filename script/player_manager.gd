@@ -1,7 +1,7 @@
 extends Node
 
 @export var player_scene: PackedScene
-@onready var players_container = $"../Players"
+@onready var players_container = $"../World/Players"
 @onready var cooldown_ui = $"../UI/Cooldowns"
 
 func _ready():

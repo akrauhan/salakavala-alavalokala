@@ -8,6 +8,9 @@ var scores := {}
 
 var scoreboard
 
+func _ready() -> void:
+	ScoreManager.scoreboard = $UI/MarginContainer/Scoreboard
+
 func add_player(player_id):
 	scores[player_id] = 0
 	
