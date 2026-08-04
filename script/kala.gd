@@ -140,7 +140,7 @@ func take_damage(attacker_id):
 		parry_sparks.emitting = true
 		
 		return
-	if !dodge_timer.time_left > 0: # Dodge
+	if !dodge_timer.is_stopped(): # Dodge
 		
 		dodge_area.global_position = global_position
 		

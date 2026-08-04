@@ -52,8 +52,6 @@ func change_win_limit_count(amount):
 	elif win_limit == 31:
 		win_limit = 1
 	win_limit_button.text = str(win_limit)
-	
-
 
 func _on_player_count_button_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_right"):
@@ -62,8 +60,6 @@ func _on_player_count_button_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_left"):
 		change_player_count(-1)
 		accept_event()
-
-
 
 func _on_win_limit_button_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_right"):
