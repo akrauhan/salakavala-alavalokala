@@ -96,7 +96,16 @@ func _physics_process(delta):
 		var direction = input2
 		
 		if melee_attack.attack(direction):
+			#var stop_time = 0.25
+			#var easing_curve = 3
+			#ease(min(delta/stop_time, 1), easing_curve)
+			#input2.enabled = 1
+			 #Pakottaa liikkeen pysähtymisen, lukitsee sitten input-suunnan ja laukaisee suuntaan.
 			apply_impulse(direction.normalized()*biteimpulse_strength)
+			#await bite_timer
+			#odottaa puraisun valmistumisen
+			#input2.enabled = 1
+			#Vapauttaa puraisun valmistuttua katseen pyörittämisen
 
 
 

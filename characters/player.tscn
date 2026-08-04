@@ -557,9 +557,8 @@ texture = SubResource("CompressedTexture2D_qk7w8")
 stream = ExtResource("18_nbheu")
 
 [node name="Eyelight" type="PointLight2D" parent="Bite" unique_id=1186784723]
-position = Vector2(12, -5)
 scale = Vector2(5, 5)
-color = Color(0, 1.7549219, 1.7758842, 1)
+color = Color(0, 2.4262455, 2.454227, 1)
 energy = 0.0
 texture = ExtResource("11_qp1es")
 
