@@ -338,13 +338,11 @@ radius = 6.0
 [sub_resource type="ImageTexture" id="ImageTexture_h2yge"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qp1es"]
-load_path = "res://.godot/imported/bite2.png-894dfe4af93457313d5fc93d0614f08c.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q4em8"]
 radius = 21.960052
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qk7w8"]
-load_path = "res://.godot/imported/bite.png-f36e7c8101f0d559a1afd98cb80fbd71.ctex"
 
 [node name="Player" type="RigidBody2D" unique_id=2038223969]
 gravity_scale = 0.0

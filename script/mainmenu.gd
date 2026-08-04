@@ -6,16 +6,15 @@ extends Control
 @onready var flapper2 := $Kala2/FlapperAnimation
 @onready var start_button := $VBoxContainer/StartButton
 
+@onready var tutorial_select = $VBoxContainer/HBoxContainer/TutorialSelect
+@onready var bitematch_select = $VBoxContainer/HBoxContainer/BitematchSelect
+@onready var deathmatch_select = $VBoxContainer/HBoxContainer/DeathmatchSelect
+
 var win_limit 
 var player_count
-
-var gamemodes = {
-	"default": "gamemodes/bitematch.tscn",
-	"bitematch":"gamemodes/bitematch.tscn",
-	"tutorial":"gamemodes/tutorial.tscn",
-	"deathmatch":"gamemodes/deathmatch.tscn"
-}
-var gamemode_selected = gamemodes["default"]
+var gamemode_scenes = GameSettings.gamemodes
+var gamemode_selected_scene = gamemode_scenes["default"]
+var gamemode_selected = "default"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,7 +24,7 @@ func _ready() -> void:
 	start_button.grab_focus()
 	
 	player_count = GameSettings.player_count
-	win_limit = GameSettings.win_limit
+	win_limit = GameSettings.win_limits["default"]
 
 
 func _process(delta):
@@ -37,13 +36,11 @@ func _input(event):
 
 func _on_start_button_pressed() -> void:
 	GameSettings.player_count = player_count
-	GameSettings.win_limit = win_limit
-	get_tree().change_scene_to_file(gamemode_selected) # Replace with function body.
+	GameSettings.win_limits["default"] = win_limit
+	get_tree().change_scene_to_file(gamemode_selected_scene) # Replace with function body.
 	queue_free()
 
-func _on_tutorial_button_pressed() -> void:
-	get_tree().change_scene_to_file(gamemodes["tutorial"])
-	queue_free()
+
 
 func _on_quitbutton_pressed() -> void:
 	get_tree().quit()
@@ -80,3 +77,24 @@ func _on_win_limit_button_gui_input(event: InputEvent) -> void:
 		change_win_limit_count(-1)
 		accept_event()
 	
+
+
+func _on_tutorial_select_pressed() -> void:
+	select_gamemode("tutorial")
+
+func _on_bitematch_select_pressed() -> void:
+	select_gamemode("bitematch")
+
+func _on_deathmatch_select_pressed() -> void:
+	select_gamemode("deathmatch")
+
+func select_gamemode(mode: String):
+	gamemode_selected = mode
+
+
+	var selected_color = Color.CYAN
+	var normal_color = Color.WHITE
+
+	tutorial_select.modulate = selected_color if mode == "tutorial" else normal_color
+	bitematch_select.modulate = selected_color if mode == "bitematch" else normal_color
+	deathmatch_select.modulate = selected_color if mode == "deathmatch" else normal_color
