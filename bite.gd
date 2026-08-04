@@ -4,7 +4,7 @@ extends Node2D
 
 @export var attack_distance := 40.0
 @export var attack_duration := 0.4
-@export var bite_cooldown := 3
+@export var bite_cooldown := 2
 @export var player_id := 0
 
 
@@ -15,6 +15,8 @@ extends Node2D
 
 @export var bite_sounds: Array[AudioStream]
 @onready var eyelight: PointLight2D = $Eyelight
+@onready var bite_emitter: GPUParticles2D = $"../Sprite2D/BiteEmitter"
+
 
 @export var bite_sfx: AudioStreamPlayer
 @export var normal_texture: Texture2D
@@ -38,21 +40,30 @@ func attack(direction) -> bool: # Returns if attack was successful
 	if !attack_duration_timer.is_stopped() or !bite_cooldown_timer.is_stopped() or attacking: 
 		return false
 	
-	if direction.length() < 0.4:
+	if direction.length() < 0.0:
 		return false
 	
 	sprite_2d.play("bite")
+	Input.start_joy_vibration(
+		player_id,	# Controller to vibrate
+		0.5,		# Weak motor (0.0-1.0)
+		0.5,		# Strong motor (0.0-1.0)
+		0.2		# Duration in seconds
+	)
 	
 	if player_id < bite_sounds.size():
 		bite_sound.stream = bite_sounds[player_id]
 	
 	bite_sound.play()
+	bite_emitter.emitting = true
 	
 	var locked_direction = direction.normalized()
 	
 	rotation = locked_direction.angle()
 	
+	
 	attack_duration_timer.start()	
+	
 	eyelight.energy=2
 	
 	bite_cooldown_timer.start()
@@ -70,4 +81,10 @@ func _on_bite_duration_timeout() -> void:
 
 		if target.has_method("take_damage"):
 			target.take_damage(get_parent().player_id)
-	
+			Input.start_joy_vibration(
+			player_id,	# Controller to vibrate
+			1.0,		# Weak motor (0.0-1.0)
+			0.5,		# Strong motor (0.0-1.0)
+			0.5		# Duration in seconds
+			)
+			continue
