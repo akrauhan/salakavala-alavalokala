@@ -7,7 +7,7 @@ extends Node2D
 @export var decoy_scene: PackedScene
 var decoy
 
-var step := 0
+var step := 5
 var players := 0
 var aim_progress := {}
 var light_toggles := {}
@@ -220,7 +220,7 @@ func finish():
 	show_message("You did it!")
 	
 	get_tree().create_timer(3).timeout.connect(func():
-		get_tree().change_scene_to_file("res://mainmenu.tscn")	
+		get_tree().change_scene_to_file("res://menus/mainmenu.tscn")	
 		queue_free()
 	)
 	

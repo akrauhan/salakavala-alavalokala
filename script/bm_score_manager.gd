@@ -1,5 +1,7 @@
 extends Node
 
+# Scoremanager for Bitematch-gamemode (no-one dies, successful bites give score)
+
 var scores := {}
 
 @export var game_over_timer: Timer
