@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cunt8n7olrmq0"]
+[gd_scene format=3 uid="uid://w1cqsgch8r3t"]
 
 [ext_resource type="Script" uid="uid://decjecqcyqegx" path="res://script/main.gd" id="1_31ybu"]
 [ext_resource type="Script" uid="uid://du6tis4q1xjq4" path="res://script/score_manager.gd" id="2_5mxol"]

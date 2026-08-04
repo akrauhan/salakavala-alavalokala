@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://5e76adhkk2wf"]
+[gd_scene format=3 uid="uid://02hv4aj5u7c1"]
 
 [ext_resource type="Script" uid="uid://decjecqcyqegx" path="res://script/main.gd" id="1_rim2s"]
 [ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="2_nfiwh"]
@@ -113,6 +113,8 @@ tint_progress = Color(1, 0, 0, 1)
 script = ExtResource("5_s8v7d")
 player_scene = ExtResource("6_1a8kb")
 
+[node name="Players" type="Node2D" parent="." unique_id=123082180]
+
 [node name="ScoreManager" type="Node" parent="." unique_id=1857764718 node_paths=PackedStringArray("game_over_timer")]
 script = ExtResource("7_rim2s")
 game_over_timer = NodePath("GameOverTimer")
@@ -132,7 +134,6 @@ color = Color(0, 0.039215688, 0.11764706, 1)
 [node name="CanvasModulate" type="CanvasModulate" parent="World" unique_id=1235036554]
 color = Color(0, 0, 0.039215688, 1)
 
-[node name="Players" type="Node2D" parent="World" unique_id=123082180]
 
 [node name="Borders" type="Node" parent="World" unique_id=1732383276]
 

@@ -5,16 +5,7 @@ func _process(delta):
 
 @export var SCREEN_WIDTH = 1000
 
-var colors = [
-	Color.RED,
-	Color.BLUE,
-	Color.GREEN,
-	Color.YELLOW,
-	Color.PURPLE,
-	Color.CYAN,
-	Color.ORANGE,
-	Color.HOT_PINK
-]
+var colors = GameSettings.colors
 
 func update_scoreboard():
 	for child in get_children():

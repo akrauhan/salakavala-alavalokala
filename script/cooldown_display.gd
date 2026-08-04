@@ -13,16 +13,6 @@ extends Control
 	$VBoxContainer/Player7BiteCooldown
 ]
 
-var colors = [
-	Color.RED,
-	Color.BLUE,
-	Color.GREEN,
-	Color.YELLOW,
-	Color.PURPLE,
-	Color.CYAN,
-	Color.ORANGE,
-	Color.HOT_PINK
-]
 
 func _ready():
 	for circle in circles:
@@ -30,7 +20,7 @@ func _ready():
 
 	for i in players.size():
 		circles[i].visible = true
-		circles[i].tint_progress = colors[i]
+		circles[i].tint_progress = GameSettings.colors[i]
 
 func _process(delta):
 	for i in players.size():
@@ -45,4 +35,4 @@ func add_player(player):
 
 	var i = players.size() - 1
 	circles[i].visible = true
-	circles[i].tint_progress = colors[i]
+	circles[i].tint_progress = GameSettings.colors[i]
