@@ -9,7 +9,7 @@ var win_limit
 var gamemode_path 
 
 func _ready() -> void:
-	ScoreManager.scoreboard = $UI/MarginContainer/Scoreboard
+	ScoreManager.scoreboard = $"../MarginContainer/Scoreboard"
 	win_limit = GameSettings.win_limits["default"]
 	gamemode_path = GameSettings.gamemodes["default"]
 
