@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bsq0l618aptqj"]
 
 [ext_resource type="Script" uid="uid://d108bhbec0tko" path="res://mainmenu.gd" id="1_wgsso"]
-[ext_resource type="Script" uid="uid://cgm0fra1hh3k6" path="res://h_box_container.gd" id="2_3pujl"]
+[ext_resource type="Script" path="res://h_box_container.gd" id="2_3pujl"]
 [ext_resource type="Texture2D" uid="uid://b5ni7ddb5cefe" path="res://asset/kala bite.png" id="3_igs2m"]
 [ext_resource type="Texture2D" uid="uid://dv41bri6nh48m" path="res://asset/fin move loop.png" id="4_3pujl"]
 [ext_resource type="Texture2D" uid="uid://mp6qp2akew6h" path="res://asset/UI/howto.png" id="4_igs2m"]
@@ -143,7 +143,6 @@ text = "Start"
 
 [node name="PlayerCount" type="HBoxContainer" parent="VBoxContainer" unique_id=73265232]
 layout_mode = 2
-focus_mode = 2
 alignment = 1
 script = ExtResource("2_3pujl")
 
@@ -151,12 +150,12 @@ script = ExtResource("2_3pujl")
 layout_mode = 2
 text = "Players"
 
-[node name="ValueLabel" type="Label" parent="VBoxContainer/PlayerCount" unique_id=122063226]
+[node name="PlayerCountButton" type="Button" parent="VBoxContainer/PlayerCount" unique_id=1383089057]
 layout_mode = 2
+text = "2"
 
 [node name="WinLimit" type="HBoxContainer" parent="VBoxContainer" unique_id=1175844350]
 layout_mode = 2
-focus_mode = 2
 alignment = 1
 script = ExtResource("2_3pujl")
 
@@ -164,8 +163,9 @@ script = ExtResource("2_3pujl")
 layout_mode = 2
 text = "Limit    "
 
-[node name="ValueLabel" type="Label" parent="VBoxContainer/WinLimit" unique_id=1683538930]
+[node name="WinLimitButton" type="Button" parent="VBoxContainer/WinLimit" unique_id=1280672744]
 layout_mode = 2
+text = "6"
 
 [node name="TutorialButton" type="MenuButton" parent="VBoxContainer" unique_id=1669471093]
 layout_mode = 2
@@ -208,5 +208,7 @@ offset = Vector2(-20, 0)
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="focus_entered" from="VBoxContainer/PlayerCount" to="VBoxContainer/PlayerCount" method="_on_focus_entered"]
 [connection signal="focus_exited" from="VBoxContainer/PlayerCount" to="VBoxContainer/PlayerCount" method="_on_focus_exited"]
+[connection signal="gui_input" from="VBoxContainer/PlayerCount/PlayerCountButton" to="." method="_on_player_count_button_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/WinLimit/WinLimitButton" to="." method="_on_win_limit_button_gui_input"]
 [connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quitbutton_pressed"]
