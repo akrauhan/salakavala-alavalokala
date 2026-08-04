@@ -37,7 +37,7 @@ func _input(event):
 func _on_start_button_pressed() -> void:
 	GameSettings.player_count = player_count
 	GameSettings.win_limits["default"] = win_limit
-	get_tree().change_scene_to_file(gamemode_selected_scene) # Replace with function body.
+	get_tree().change_scene_to_file(gamemode_scenes[gamemode_selected]) # Replace with function body.
 	queue_free()
 
 
