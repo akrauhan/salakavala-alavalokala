@@ -8,14 +8,9 @@ extends Control
 
 var win_limit 
 var player_count
-
-var gamemodes = {
-	"default": "gamemodes/bitematch.tscn",
-	"bitematch":"gamemodes/bitematch.tscn",
-	"tutorial":"gamemodes/tutorial.tscn",
-	"deathmatch":"gamemodes/deathmatch.tscn"
-}
-var gamemode_selected = gamemodes["default"]
+var gamemode_scenes = GameSettings.gamemodes
+var gamemode_selected_scene = gamemode_scenes["default"]
+var gamemode_selected = "default"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,7 +20,7 @@ func _ready() -> void:
 	start_button.grab_focus()
 	
 	player_count = GameSettings.player_count
-	win_limit = GameSettings.win_limit
+	win_limit = GameSettings.win_limits["default"]
 
 
 func _process(delta):
@@ -37,12 +32,12 @@ func _input(event):
 
 func _on_start_button_pressed() -> void:
 	GameSettings.player_count = player_count
-	GameSettings.win_limit = win_limit
-	get_tree().change_scene_to_file(gamemode_selected) # Replace with function body.
+	GameSettings.win_limits["default"] = win_limit
+	get_tree().change_scene_to_file(gamemode_selected_scene) # Replace with function body.
 	queue_free()
 
 func _on_tutorial_button_pressed() -> void:
-	get_tree().change_scene_to_file(gamemodes["tutorial"])
+	get_tree().change_scene_to_file(gamemode_scenes["tutorial"])
 	queue_free()
 
 func _on_quitbutton_pressed() -> void:

@@ -1,23 +1,25 @@
 extends Node
 
-# Scoremanager for Bitematch-gamemode (no-one dies, successful bites give score)
-
 var scores := {}
 
 @export var game_over_timer: Timer
 
 var scoreboard
+var win_limit
+var gamemode_path 
 
 func _ready() -> void:
 	ScoreManager.scoreboard = $UI/MarginContainer/Scoreboard
+	win_limit = GameSettings.win_limits["default"]
+	gamemode_path = GameSettings.gamemodes["default"]
 
-func add_player(player_id):
-	scores[player_id] = 0
+func add_player(player_id, start_score = 0):
+	scores[player_id] = start_score
 	
 func add_score(player_id, amount):
 	scores[player_id] += amount
 	scoreboard.update_scoreboard()
-	if scores[player_id] >= GameSettings.win_limit:
+	if scores[player_id] >= win_limit:
 		game_over(player_id)
 	
 func get_score(player_id):
@@ -34,13 +36,7 @@ func game_over(player_id):
 	#label.position = Vector2(500,100)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
-	var colors = GameSettings.colors
-	
-	label.add_theme_color_override("font_color", colors[player_id])
 
-	
-	
-	
 	get_tree().create_timer(3).timeout.connect(func():
 		get_tree().change_scene_to_file("res://mainmenu.tscn")
 		scores.clear()
