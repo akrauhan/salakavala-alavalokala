@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://b5nkeci1w8stu"]
 
-[ext_resource type="Script" uid="uid://d0j8vsqso2tu8" path="res://gamemodes/tutorialmanager.gd" id="1_yk7ps"]
-[ext_resource type="Script" uid="uid://du6tis4q1xjq4" path="res://score_manager.gd" id="2_4g6wd"]
-[ext_resource type="PackedScene" uid="uid://bwftgyyw1n4q0" path="res://gamemodes/decoy_fish.tscn" id="2_a76fb"]
-[ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://scoreboard.gd" id="3_a76fb"]
-[ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://cooldown_display.gd" id="4_kopkp"]
-[ext_resource type="Texture2D" uid="uid://cacdx6yhdy14l" path="res://asset/progress.png" id="5_bwdwo"]
+[ext_resource type="Script" uid="uid://d0j8vsqso2tu8" path="res://script/tutorialmanager.gd" id="1_yk7ps"]
+[ext_resource type="Script" uid="uid://du6tis4q1xjq4" path="res://script/score_manager.gd" id="2_4g6wd"]
+[ext_resource type="PackedScene" uid="uid://bwftgyyw1n4q0" path="res://characters/decoy_fish.tscn" id="2_a76fb"]
+[ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="3_a76fb"]
+[ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://script/cooldown_display.gd" id="4_kopkp"]
+[ext_resource type="Texture2D" uid="uid://cacdx6yhdy14l" path="res://asset/gfx/progress.png" id="5_bwdwo"]
 [ext_resource type="Script" uid="uid://bjhqs3ppgisuf" path="res://script/player_manager.gd" id="6_qdjmq"]
-[ext_resource type="PackedScene" uid="uid://bf8h02hmexujc" path="res://player.tscn" id="7_mo60f"]
+[ext_resource type="PackedScene" uid="uid://bf8h02hmexujc" path="res://characters/player.tscn" id="7_mo60f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(57, 710)
