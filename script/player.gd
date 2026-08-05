@@ -39,7 +39,6 @@ extends RigidBody2D
 
 @export var hurt_sounds: Array[AudioStream]
 
-
 var start_pos: Vector2
 
 # Called when the node enters the scene tree for the first time.
@@ -52,16 +51,7 @@ func _ready() -> void:
 	start_pos = global_position
 	ScoreManager.add_player(player_id)
 
-
-var toggle_light_previous := false
-
-
-	
-	
 @export var thrust := 500.0
-#	var input = Vector2(
-#		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_X),
-#		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
 
 
 func _physics_process(delta):
@@ -73,7 +63,6 @@ func _physics_process(delta):
 	if input.length() < deadzone and stun_timer.is_stopped():
 		input = Vector2.ZERO
 		flapper_animation.play("loop")
-		
 	flap(input)
 
 
@@ -89,22 +78,10 @@ func _physics_process(delta):
 		rotation = input2.angle()
 
 	var attack_pressed = Input.get_joy_axis(player_id,JOY_AXIS_TRIGGER_RIGHT) >= 0.2
-	
 	if attack_pressed:
-		var direction = input2
-		
+		var direction = input2	
 		if melee_attack.attack(direction):
-			#var stop_time = 0.25
-			#var easing_curve = 3
-			#ease(min(delta/stop_time, 1), easing_curve)
-			#input2.enabled = 1
-			 #Pakottaa liikkeen pysähtymisen, lukitsee sitten input-suunnan ja laukaisee suuntaan.
 			apply_impulse(direction.normalized()*biteimpulse_strength)
-			#await bite_timer
-			#odottaa puraisun valmistumisen
-			#input2.enabled = 1
-			#Vapauttaa puraisun valmistuttua katseen pyörittämisen
-
 
 
 func flap(direction):
