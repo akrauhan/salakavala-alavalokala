@@ -39,6 +39,9 @@ extends RigidBody2D
 
 @export var hurt_sounds: Array[AudioStream]
 
+@export var rotation_speed = 8.0
+@export var rotation_acceleration = 50.0
+
 var start_pos: Vector2
 
 # Called when the node enters the scene tree for the first time.
@@ -74,13 +77,26 @@ func _physics_process(delta):
 		Input.get_joy_axis(player_id, JOY_AXIS_RIGHT_X),
 		Input.get_joy_axis(player_id, JOY_AXIS_RIGHT_Y)
 	)
+	
 	if bite_duration.is_stopped(): # Lock rotation when attacking
-		rotation = input2.angle()
+		var target_angle = input2.angle()
+		var angle_difference = wrapf(target_angle-rotation, -PI, PI)
+		
+		var target_angular_velocity = angle_difference * rotation_speed
+		
+		angular_velocity = move_toward(
+			angular_velocity,
+			target_angular_velocity,
+			rotation_acceleration * delta
+		)
 
 	var attack_pressed = Input.get_joy_axis(player_id,JOY_AXIS_TRIGGER_RIGHT) >= 0.2
 	if attack_pressed:
+
 		var direction = input2	
 		if melee_attack.attack(direction):
+			linear_velocity = Vector2.ZERO
+			angular_velocity = 0
 			apply_impulse(direction.normalized()*biteimpulse_strength)
 
 
