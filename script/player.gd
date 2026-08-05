@@ -22,6 +22,7 @@ extends RigidBody2D
 
 @onready var dash_timer: Timer = $DashCooldown
 @onready var bite_timer: Timer = $Bite/BiteCooldown
+@onready var bite_duration: Timer = $Bite/BiteDuration
 @onready var flap_timer: Timer = $FlapCooldown
 @onready var stun_timer: Timer = $StunTimer
 @onready var parry_timer: Timer = $Parry/ParryTimer
@@ -80,19 +81,16 @@ func _physics_process(delta):
 	if Input.get_joy_axis(player_id,JOY_AXIS_TRIGGER_LEFT) >= 0.5:
 		dash()
 	
-	
 	var input2 = Vector2(
 		Input.get_joy_axis(player_id, JOY_AXIS_RIGHT_X),
 		Input.get_joy_axis(player_id, JOY_AXIS_RIGHT_Y)
 	)
-	
-	rotation = input2.angle()
-	
+	if bite_duration.is_stopped(): # Lock rotation when attacking
+		rotation = input2.angle()
 
 	var attack_pressed = Input.get_joy_axis(player_id,JOY_AXIS_TRIGGER_RIGHT) >= 0.2
-
 	
-	if attack_pressed and !attack_previous:
+	if attack_pressed:
 		var direction = input2
 		
 		if melee_attack.attack(direction):
@@ -114,7 +112,7 @@ func flap(direction):
 		flapper_emitter.emitting = false
 		return
 	flapper_emitter.emitting = true
-	if !flap_timer.is_stopped():
+	if !flap_timer.is_stopped() or !bite_duration.is_stopped():
 		return
 	
 	apply_impulse(direction.normalized() * flap_strength)
@@ -126,9 +124,8 @@ func flap(direction):
 	)
 	flap_timer.start()
 
-var attack_previous := false
 
-	
+
 func take_damage(attacker_id):
 	if get_tree().current_scene.name == "Tutorial": # No damage in tutorial
 		return
@@ -149,7 +146,7 @@ func take_damage(attacker_id):
 		parry_sparks.emitting = true
 		
 		return
-	if !dodge_timer.is_stopped(): # Dodge
+	if !dodge_timer.is_stopped() and false: # Dodge
 		
 		dodge_area.global_position = global_position
 		

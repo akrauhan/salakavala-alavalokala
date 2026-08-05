@@ -23,6 +23,9 @@ func _ready() -> void:
 	
 	player_count = GameSettings.player_count
 	win_limit = GameSettings.win_limits["default"]
+	
+	player_count_button.text = str(player_count)
+	win_limit_button.text = str(win_limit)
 
 
 func _process(delta):
@@ -32,6 +35,7 @@ func _on_start_button_pressed() -> void:
 	GameSettings.player_count = player_count
 	
 	var connected_joypads = Input.get_connected_joypads().size()
+		
 	
 	if player_count > connected_joypads:
 		error_label.text = "Only %d controllers detected!" % (connected_joypads)

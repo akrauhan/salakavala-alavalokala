@@ -17,10 +17,10 @@ extends Node2D
 @onready var eyelight: PointLight2D = $Eyelight
 @onready var bite_emitter: GPUParticles2D = $"../Sprite2D/BiteEmitter"
 
-
-@export var bite_sfx: AudioStreamPlayer
 @export var normal_texture: Texture2D
 @export var active_texture: Texture2D
+
+@onready var bite_visualizer := $BiteVisualizer
 
 signal bite_performed
 
@@ -44,6 +44,9 @@ func attack(direction) -> bool: # Returns if attack was successful
 		return false
 	
 	sprite_2d.play("bite")
+	
+	bite_visualizer.visible = true
+	
 	Input.start_joy_vibration(
 		player_id,	# Controller to vibrate
 		0.5,		# Weak motor (0.0-1.0)
@@ -57,11 +60,6 @@ func attack(direction) -> bool: # Returns if attack was successful
 	bite_sound.play()
 	bite_emitter.emitting = true
 	
-	var locked_direction = direction.normalized()
-	
-	rotation = locked_direction.angle()
-	
-	
 	attack_duration_timer.start()	
 	
 	eyelight.energy=5
@@ -73,6 +71,8 @@ func attack(direction) -> bool: # Returns if attack was successful
 
 
 func _on_bite_duration_timeout() -> void:
+	bite_visualizer.visible = false
+	
 	bite_performed.emit(player_id)
 	eyelight.energy=0
 	for target in bite_area.get_overlapping_bodies():

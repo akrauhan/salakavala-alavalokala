@@ -1,5 +1,5 @@
 extends Node2D
-@onready var basegame = $Basegame
+
 @onready var gamemode_label = $BaseUI/GamemodeLabel
 
 signal players_ready(players)
