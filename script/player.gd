@@ -144,7 +144,7 @@ func take_damage(attacker_id):
 		)
 		parry_sound.play()
 		parry_timer.start()
-		parry_light.energy = 10
+		parry_light.energy = 2
 		parry_collision.energy = 16
 		parry_sparks.emitting = true
 		

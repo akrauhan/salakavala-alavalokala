@@ -177,7 +177,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nfiwh"]
 shader = SubResource("Shader_tpv50")
-shader_parameter/time_speed = 0.30000001425
+shader_parameter/time_speed = 0.800000038
 shader_parameter/flip_y = false
 shader_parameter/sea_color_dark = Color(0.19793734, 0.19793719, 0.19793719, 1)
 shader_parameter/sea_color_light = Color(0, 0, 0, 1)

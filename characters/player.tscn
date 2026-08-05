@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://b31unxknwnvbh" path="res://asset/sfx/oof8.mp3" id="9_d3tvb"]
 [ext_resource type="AudioStream" uid="uid://v4sjeevvcgcr" path="res://asset/sfx/ParrySound.mp3" id="10_3t8uj"]
 [ext_resource type="Texture2D" uid="uid://d0kg1o3teyojr" path="res://asset/gfx/lightorgan.png" id="11_qp1es"]
-[ext_resource type="Texture2D" uid="uid://cmp0j4xakrxwx" path="res://asset/gfx/clash.png" id="12_qk7w8"]
 [ext_resource type="Texture2D" uid="uid://d1bnfxo53rfhs" path="res://asset/gfx/hurteffect.png" id="13_3t8uj"]
 [ext_resource type="Texture2D" uid="uid://b5ni7ddb5cefe" path="res://asset/gfx/kala bite.png" id="14_rjhu2"]
 [ext_resource type="Texture2D" uid="uid://dv41bri6nh48m" path="res://asset/gfx/fin move loop.png" id="15_lit6r"]
@@ -380,10 +379,9 @@ texture = ExtResource("11_qp1es")
 [node name="ParryCollision" type="PointLight2D" parent="Parry" unique_id=855936721]
 z_index = 1
 position = Vector2(14, 0)
-scale = Vector2(5.5, 5.5)
 color = Color(4.415934, 4.415934, 0, 1)
 energy = 0.0
-texture = ExtResource("12_qk7w8")
+texture = ExtResource("11_qp1es")
 
 [node name="ParrySparks" type="GPUParticles2D" parent="Parry" unique_id=185887625]
 modulate = Color(1, 1, 0.30980393, 1)
