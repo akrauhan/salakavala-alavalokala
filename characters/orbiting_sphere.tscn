@@ -15,7 +15,6 @@ script = ExtResource("1_3ek21")
 scale = Vector2(3, 3)
 color = Color(1.0511972, 2.1168277, 2.1168277, 1)
 energy = 16.0
-blend_mode = 2
 range_layer_min = -1024
 range_layer_max = 1024
 texture = ExtResource("2_rhsh7")
