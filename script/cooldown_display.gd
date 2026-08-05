@@ -1,26 +1,35 @@
 extends Control
 
-@export var players: Array[Node]
+var container: HBoxContainer
 
-@onready var circles = [
-	$VBoxContainer/Player0BiteCooldown,
-	$VBoxContainer/Player1BiteCooldown,
-	$VBoxContainer/Player2BiteCooldown,
-	$VBoxContainer/Player3BiteCooldown,
-	$VBoxContainer/Player4BiteCooldown,
-	$VBoxContainer/Player5BiteCooldown,
-	$VBoxContainer/Player6BiteCooldown,
-	$VBoxContainer/Player7BiteCooldown
-]
+var circles: Array[TextureProgressBar] = []
+var players: Array = []
 
 
-func _ready():
+
+func initialize(player_list):
+	container = $CooldownContainer
+	players = player_list
+	create_cooldowns()
+		
+func create_cooldowns():
 	for circle in circles:
-		circle.visible = false
+		circle.queue_free()
+	circles.clear()
 
-	for i in players.size():
-		circles[i].visible = true
-		circles[i].tint_progress = GameSettings.colors[i]
+	for i in range(players.size()):
+		var circle := TextureProgressBar.new()
+		
+		circle.name = "Player%dBiteCooldown" % i
+		circle.fill_mode = TextureProgressBar.FILL_CLOCKWISE
+		circle.max_value = 100
+		circle.value = 100
+		circle.texture_progress = preload("res://asset/gfx/progress.png")
+		circle.tint_progress = GameSettings.colors[i]
+		
+		container.add_child(circle)
+		circles.append(circle)
+
 
 func _process(delta):
 	for i in players.size():
@@ -29,10 +38,3 @@ func _process(delta):
 		
 		var progress = 1.0 - (timer.time_left / timer.wait_time)
 		circles[i].value = progress * 100
-
-func add_player(player):
-	players.append(player)
-
-	var i = players.size() - 1
-	circles[i].visible = true
-	circles[i].tint_progress = GameSettings.colors[i]

@@ -1,15 +1,13 @@
 [gd_scene format=3 uid="uid://02hv4aj5u7c1"]
 
-[ext_resource type="Script" uid="uid://decjecqcyqegx" path="res://script/main.gd" id="1_rim2s"]
-[ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="2_nfiwh"]
-[ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://script/cooldown_display.gd" id="3_q87uw"]
-[ext_resource type="Texture2D" uid="uid://cacdx6yhdy14l" path="res://asset/gfx/progress.png" id="4_suro5"]
+[ext_resource type="Script" uid="uid://decjecqcyqegx" path="res://script/basegame.gd" id="1_rim2s"]
+[ext_resource type="Script" uid="uid://ciemfuvcxmglk" path="res://gamemodes/game_manager.gd" id="2_cvhaq"]
 [ext_resource type="Script" uid="uid://bjhqs3ppgisuf" path="res://script/player_manager.gd" id="5_s8v7d"]
 [ext_resource type="PackedScene" uid="uid://bf8h02hmexujc" path="res://characters/player.tscn" id="6_1a8kb"]
+[ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://script/cooldown_display.gd" id="7_nfiwh"]
+[ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="7_q87uw"]
 [ext_resource type="Script" uid="uid://du6tis4q1xjq4" path="res://script/score_manager.gd" id="7_rim2s"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_272bh"]
-font_size = 60
+[ext_resource type="Shader" uid="uid://tgha53t6l52y" path="res://shaders/hueRect.gdshader" id="8_nfiwh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(57, 710)
@@ -17,122 +15,77 @@ size = Vector2(57, 710)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dop4x"]
 size = Vector2(1204, 100)
 
+[sub_resource type="Gradient" id="Gradient_q87uw"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x5a3e"]
+gradient = SubResource("Gradient_q87uw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_suro5"]
+shader = ExtResource("8_nfiwh")
+shader_parameter/hue = SubResource("GradientTexture2D_x5a3e")
+
+[sub_resource type="Shader" id="Shader_31ybu"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+uniform float wave_speed = 3.0; //wave loop speed
+uniform float wave_freq = 10.0; //wave vertical freq
+uniform float wave_width = 1; //wave width 
+void fragment(){
+	vec2 scale_UV = SCREEN_UV;
+	vec2 wave_uv_offset;
+	wave_uv_offset.x = cos((TIME*wave_speed)+UV.x+UV.y*wave_freq*2.0)*wave_width*0.01;
+	COLOR = vec4(wave_uv_offset,0.0,1.0);
+	COLOR = texture(SCREEN_TEXTURE,scale_UV+wave_uv_offset);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8v7d"]
+shader = SubResource("Shader_31ybu")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_freq = 2.0
+shader_parameter/wave_width = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_q87uw"]
+font_size = 60
+
 [node name="Basegame" type="Node2D" unique_id=566845920]
 script = ExtResource("1_rim2s")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=1971358089]
+[node name="GameManager" type="Node" parent="." unique_id=1690800232 node_paths=PackedStringArray("player_manager", "cooldown_ui", "scoreboard", "winner_label")]
+script = ExtResource("2_cvhaq")
+player_manager = NodePath("PlayerManager")
+cooldown_ui = NodePath("../BaseUI/CooldownManager")
+scoreboard = NodePath("../BaseUI/ScoreboardContainer/Scoreboard")
+winner_label = NodePath("../BaseUI/WinnerLabel")
 
-[node name="WinnerLabel" type="Label" parent="UI" unique_id=166953887]
-visible = false
-offset_left = 469.0
-offset_top = 118.0
-offset_right = 695.0
-offset_bottom = 201.0
-text = "Winner "
-label_settings = SubResource("LabelSettings_272bh")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=95226235]
-offset_left = 462.0
-offset_right = 662.0
-offset_bottom = 50.0
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 100
-
-[node name="Scoreboard" type="HBoxContainer" parent="UI/MarginContainer" unique_id=72781503]
-layout_mode = 2
-script = ExtResource("2_nfiwh")
-
-[node name="Cooldowns" type="Control" parent="UI" unique_id=1847699015]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("3_q87uw")
-
-[node name="VBoxContainer" type="HBoxContainer" parent="UI/Cooldowns" unique_id=671661390]
-layout_mode = 0
-offset_left = 423.0
-offset_top = 579.0
-offset_right = 1379.0
-offset_bottom = 1535.0
-scale = Vector2(0.35999984, 0.35999984)
-
-[node name="Player0BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=1389734142]
-layout_mode = 2
-fill_mode = 4
-texture_progress = ExtResource("4_suro5")
-tint_progress = Color(1, 0, 0, 1)
-
-[node name="Player1BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=178151619]
-layout_mode = 2
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("4_suro5")
-tint_progress = Color(1, 1, 0, 1)
-
-[node name="Player2BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=962886863]
-layout_mode = 2
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("4_suro5")
-tint_progress = Color(0.87058824, 0.72156864, 0.5294118, 1)
-
-[node name="Player3BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=58231700]
-layout_mode = 2
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("4_suro5")
-tint_progress = Color(0, 1, 0.49803922, 1)
-
-[node name="Player4BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=316727057]
-layout_mode = 2
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("4_suro5")
-tint_progress = Color(0, 0.7490196, 1, 1)
-
-[node name="Player5BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=704348871]
-layout_mode = 2
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("4_suro5")
-
-[node name="Player6BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=761231171]
-layout_mode = 2
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("4_suro5")
-tint_progress = Color(1, 0, 1, 1)
-
-[node name="Player7BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=1751158590]
-layout_mode = 2
-fill_mode = 4
-texture_progress = ExtResource("4_suro5")
-tint_progress = Color(1, 0, 0, 1)
-
-[node name="PlayerManager" type="Node" parent="." unique_id=239729471]
+[node name="PlayerManager" type="Node" parent="GameManager" unique_id=239729471 node_paths=PackedStringArray("players_container")]
 script = ExtResource("5_s8v7d")
 player_scene = ExtResource("6_1a8kb")
+players_container = NodePath("../../Players")
+
+[node name="ScoreManager" type="Node" parent="GameManager" unique_id=1857764718]
+script = ExtResource("7_rim2s")
+
+[node name="GameOverTimer" type="Timer" parent="GameManager/ScoreManager" unique_id=1819359228]
+wait_time = 5.0
 
 [node name="Players" type="Node2D" parent="." unique_id=123082180]
 
-[node name="ScoreManager" type="Node" parent="." unique_id=1857764718 node_paths=PackedStringArray("game_over_timer")]
-script = ExtResource("7_rim2s")
-game_over_timer = NodePath("GameOverTimer")
-
-[node name="GameOverTimer" type="Timer" parent="ScoreManager" unique_id=1819359228]
-wait_time = 5.0
-
 [node name="World" type="Node" parent="." unique_id=49791710]
 
+[node name="CanvasModulate" type="CanvasModulate" parent="World" unique_id=1235036554]
+z_index = -1
+color = Color(0, 0, 0.039215688, 1)
+
 [node name="ColorRect" type="ColorRect" parent="World" unique_id=53508969]
+z_index = -1
+z_as_relative = false
 offset_left = -16.0
 offset_top = -18.0
 offset_right = 1171.0
 offset_bottom = 657.0
 color = Color(0, 0.039215688, 0.11764706, 1)
-
-[node name="CanvasModulate" type="CanvasModulate" parent="World" unique_id=1235036554]
-color = Color(0, 0, 0.039215688, 1)
 
 [node name="Borders" type="Node" parent="World" unique_id=1732383276]
 
@@ -163,4 +116,76 @@ position = Vector2(-1, 648)
 position = Vector2(584, 47)
 shape = SubResource("RectangleShape2D_dop4x")
 
-[connection signal="timeout" from="ScoreManager/GameOverTimer" to="." method="_on_game_over_timer_timeout"]
+[node name="Water" type="Control" parent="." unique_id=228478757]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Water" unique_id=807336352]
+visible = false
+material = SubResource("ShaderMaterial_suro5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1112.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.039215688, 0.11764706, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Water" unique_id=639352503]
+visible = false
+
+[node name="UWfilter" type="ColorRect" parent="Water/CanvasLayer" unique_id=1610963402]
+visible = false
+material = SubResource("ShaderMaterial_s8v7d")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BaseUI" type="CanvasLayer" parent="." unique_id=751868063]
+
+[node name="WinnerLabel" type="Label" parent="BaseUI" unique_id=372587393]
+visible = false
+offset_left = 469.0
+offset_top = 118.0
+offset_right = 695.0
+offset_bottom = 201.0
+text = "Winner "
+label_settings = SubResource("LabelSettings_q87uw")
+
+[node name="ScoreboardContainer" type="MarginContainer" parent="BaseUI" unique_id=858892645]
+offset_left = 462.0
+offset_right = 662.0
+offset_bottom = 50.0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+
+[node name="Scoreboard" type="HBoxContainer" parent="BaseUI/ScoreboardContainer" unique_id=1005045130]
+layout_mode = 2
+script = ExtResource("7_q87uw")
+
+[node name="CooldownManager" type="Control" parent="BaseUI" unique_id=1396155506]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("7_nfiwh")
+
+[node name="CooldownContainer" type="HBoxContainer" parent="BaseUI/CooldownManager" unique_id=1392739757]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 579.0
+offset_right = 1379.0
+offset_bottom = 1535.0
+scale = Vector2(0.35999984, 0.35999984)
+
+[node name="GamemodeLabel" type="Label" parent="BaseUI" unique_id=1106309474]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="timeout" from="GameManager/ScoreManager/GameOverTimer" to="." method="_on_game_over_timer_timeout"]

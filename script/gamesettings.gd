@@ -23,7 +23,7 @@ var gamemodes := {
 }
 
 var win_limits := {
-	"default": 6,
+	"default": 1,
 	"bitematch": 6,
 	"tutorial": INT8_MAX,
 	"deathmatch": 10
