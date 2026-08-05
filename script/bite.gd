@@ -64,7 +64,8 @@ func attack(direction) -> bool: # Returns if attack was successful
 	
 	attack_duration_timer.start()	
 	
-	eyelight.energy=3
+	eyelight.energy=200
+	
 	
 	bite_cooldown_timer.start()
 	

@@ -444,8 +444,6 @@ animation = &"loop"
 offset = Vector2(-20, 0)
 
 [node name="FlapperEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=1095639060]
-modulate = Color(0.7019608, 0.8352941, 1, 0.7764706)
-self_modulate = Color(0.7019608, 0.8352941, 1, 0.6862745)
 position = Vector2(-56, -1)
 rotation = 3.1415927
 amount = 2000
@@ -455,8 +453,6 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_7hik5")
 
 [node name="DashEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=360676217]
-modulate = Color(0.70306283, 0.83463293, 0.9999997, 1)
-self_modulate = Color(0.7019608, 0.8352941, 1, 0.84705883)
 use_parent_material = true
 position = Vector2(-56, -1)
 scale = Vector2(2, 2)
@@ -469,8 +465,6 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_qtqh7")
 
 [node name="DodgeEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=274554108]
-modulate = Color(0.7019608, 0.8352941, 1, 0.6862745)
-self_modulate = Color(0.6866718, 0.82691604, 0.9999998, 0.6862745)
 material = SubResource("CanvasItemMaterial_iruf7")
 use_parent_material = true
 position = Vector2(-32, -1)
@@ -486,8 +480,6 @@ trail_section_subdivisions = 3
 process_material = SubResource("ParticleProcessMaterial_2wuci")
 
 [node name="BiteEmitter" type="GPUParticles2D" parent="Sprite2D" unique_id=84792539]
-modulate = Color(3.1672676, 3.1672676, 3.1672676, 0.40392157)
-self_modulate = Color(0.51794696, 0.73538595, 0.9999991, 0.7764706)
 use_parent_material = true
 position = Vector2(-56, -1)
 scale = Vector2(2, 2)
@@ -536,7 +528,6 @@ texture = SubResource("CompressedTexture2D_qk7w8")
 stream = ExtResource("18_nbheu")
 
 [node name="Eyelight" type="PointLight2D" parent="Bite" unique_id=1186784723]
-scale = Vector2(5, 5)
 color = Color(0, 2.4262455, 2.454227, 1)
 energy = 0.0
 texture = ExtResource("11_qp1es")

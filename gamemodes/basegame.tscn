@@ -179,9 +179,9 @@ void fragment() {
 shader = SubResource("Shader_tpv50")
 shader_parameter/time_speed = 0.30000001425
 shader_parameter/flip_y = false
-shader_parameter/sea_color_dark = Color(0, 0, 0, 1)
-shader_parameter/sea_color_light = Color(0, 0, 0.019607844, 1)
-shader_parameter/refraction_color = Color(0, 0.019607844, 0.039215688, 1)
+shader_parameter/sea_color_dark = Color(0.19793734, 0.19793719, 0.19793719, 1)
+shader_parameter/sea_color_light = Color(0, 0, 0, 1)
+shader_parameter/refraction_color = Color(1, 1, 1, 1)
 shader_parameter/light_shaft_color = Color(0.35479686, 0.99999994, 0.9497352, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
