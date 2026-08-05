@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://bj3e0uu6pfwdk"]
+
+[ext_resource type="PackedScene" uid="uid://bsq0l618aptqj" path="res://menus/mainmenu.tscn" id="1_asal3"]
+[ext_resource type="Texture2D" uid="uid://b5ni7ddb5cefe" path="res://asset/gfx/kala bite.png" id="2_yon3r"]
+[ext_resource type="Texture2D" uid="uid://dv41bri6nh48m" path="res://asset/gfx/fin move loop.png" id="3_elkbe"]
+[ext_resource type="Texture2D" uid="uid://mp6qp2akew6h" path="res://asset/UI/howto.png" id="5_pfvpq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
+atlas = ExtResource("2_yon3r")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
+atlas = ExtResource("2_yon3r")
+region = Rect2(96, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
+atlas = ExtResource("2_yon3r")
+region = Rect2(0, 32, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
+atlas = ExtResource("2_yon3r")
+region = Rect2(96, 32, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivps1"]
+atlas = ExtResource("2_yon3r")
+region = Rect2(0, 64, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urp6f"]
+atlas = ExtResource("2_yon3r")
+region = Rect2(96, 64, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwjto"]
+atlas = ExtResource("2_yon3r")
+region = Rect2(0, 96, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_606se"]
+atlas = ExtResource("2_yon3r")
+region = Rect2(96, 96, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1c27"]
+atlas = ExtResource("2_yon3r")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8p4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw050")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b26j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7ghd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvl01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivps1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urp6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwjto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_606se")
+}],
+"loop": 0,
+"name": &"bite",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1c27")
+}],
+"loop": 2,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op7ga"]
+atlas = ExtResource("3_elkbe")
+region = Rect2(0, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q13i1"]
+atlas = ExtResource("3_elkbe")
+region = Rect2(18, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pylmc"]
+atlas = ExtResource("3_elkbe")
+region = Rect2(36, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbfsw"]
+atlas = ExtResource("3_elkbe")
+region = Rect2(0, 32, 18, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gr7t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op7ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q13i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pylmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbfsw")
+}],
+"loop": 1,
+"name": &"loop",
+"speed": 4.0
+}]
+
+[node name="Node" type="Node" unique_id=416798475]
+
+[node name="MainMenu" parent="." unique_id=110763073 instance=ExtResource("1_asal3")]
+offset_left = 593.0
+offset_top = 291.0
+offset_right = 1018.0
+offset_bottom = 590.0
+
+[node name="Kala" type="AnimatedSprite2D" parent="." unique_id=1310763620]
+position = Vector2(783, 146.00002)
+scale = Vector2(-2.0399995, 2.0399995)
+sprite_frames = SubResource("SpriteFrames_y8p4k")
+animation = &"bite"
+
+[node name="FlapperAnimation" type="AnimatedSprite2D" parent="Kala" unique_id=1137604156]
+position = Vector2(-35, 0)
+sprite_frames = SubResource("SpriteFrames_8gr7t")
+animation = &"loop"
+offset = Vector2(-20, 0)
+
+[node name="Kala2" type="AnimatedSprite2D" parent="." unique_id=980692888]
+position = Vector2(377, 503)
+scale = Vector2(3.919999, 3.919999)
+sprite_frames = SubResource("SpriteFrames_y8p4k")
+animation = &"bite"
+
+[node name="FlapperAnimation" type="AnimatedSprite2D" parent="Kala2" unique_id=1105165514]
+position = Vector2(-35, 0)
+sprite_frames = SubResource("SpriteFrames_8gr7t")
+animation = &"loop"
+offset = Vector2(-20, 0)
+
+[node name="Howto" type="Sprite2D" parent="." unique_id=140502969]
+position = Vector2(277, 183)
+texture = ExtResource("5_pfvpq")

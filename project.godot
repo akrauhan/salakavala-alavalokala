@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Salakalava Alavalokala"
-run/main_scene="uid://bsq0l618aptqj"
+run/main_scene="uid://bj3e0uu6pfwdk"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
 [audio]

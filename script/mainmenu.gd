@@ -2,8 +2,8 @@ extends Control
 
 @onready var player_count_button := $VBoxContainer/PlayerCount/PlayerCountButton
 @onready var win_limit_button := $VBoxContainer/WinLimit/WinLimitButton
-@onready var flapper := $Kala/FlapperAnimation
-@onready var flapper2 := $Kala2/FlapperAnimation
+@onready var flapper := $"../Kala/FlapperAnimation"
+@onready var flapper2 := $"../Kala2/FlapperAnimation"
 @onready var start_button := $VBoxContainer/StartButton
 
 @onready var tutorial_select = $VBoxContainer/HBoxContainer/TutorialSelect
@@ -38,7 +38,12 @@ func _input(event):
 
 func _on_start_button_pressed() -> void:
 	GameSettings.player_count = player_count
-	GameSettings.win_limits["default"] = win_limit
+	GameSettings.gamemode_selected = gamemode_selected
+	GameSettings.win_limits[gamemode_selected] = win_limit
+	
+	ScoreManager.win_limit = GameSettings.win_limits[GameSettings.gamemode_selected]
+	ScoreManager.gamemode_path = GameSettings.gamemodes[GameSettings.gamemode_selected]
+	
 	get_tree().change_scene_to_file(gamemode_scenes[gamemode_selected]) # Replace with function body.
 	queue_free()
 

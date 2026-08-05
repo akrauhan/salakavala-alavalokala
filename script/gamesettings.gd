@@ -2,6 +2,8 @@ extends Node
 
 var player_count := 2
 
+var gamemode_selected := "default"
+
 var colors := [
 	Color.RED,
 	Color.BLUE,

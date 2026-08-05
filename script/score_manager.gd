@@ -6,12 +6,12 @@ var scores := {}
 
 var scoreboard
 var win_limit
-var gamemode_path 
+var gamemode_path
 
 func _ready() -> void:
 	ScoreManager.scoreboard = $"../MarginContainer/Scoreboard"
-	win_limit = GameSettings.win_limits["default"]
-	gamemode_path = GameSettings.gamemodes["default"]
+	win_limit = GameSettings.win_limits[GameSettings.gamemode_selected]
+	gamemode_path = GameSettings.gamemodes[GameSettings.gamemode_selected]
 
 func add_player(player_id, start_score = 0):
 	scores[player_id] = start_score
@@ -38,7 +38,7 @@ func game_over(player_id):
 	
 
 	get_tree().create_timer(3).timeout.connect(func():
-		get_tree().change_scene_to_file("res://mainmenu.tscn")
+		get_tree().change_scene_to_file("res://menus/mainmenucontainer.tscn")
 		scores.clear()
 	)
 	

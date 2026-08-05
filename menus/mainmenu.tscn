@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://bsq0l618aptqj"]
 
 [ext_resource type="Script" uid="uid://d108bhbec0tko" path="res://script/mainmenu.gd" id="1_0qj0o"]
-[ext_resource type="Texture2D" uid="uid://mp6qp2akew6h" path="res://asset/UI/howto.png" id="2_4wri8"]
-[ext_resource type="Texture2D" uid="uid://b5ni7ddb5cefe" path="res://asset/gfx/kala bite.png" id="3_0qj0o"]
-[ext_resource type="Texture2D" uid="uid://dv41bri6nh48m" path="res://asset/gfx/fin move loop.png" id="4_4wri8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0fbet"]
 font_size = 39
@@ -11,123 +8,11 @@ font_color = Color(0.5496051, 0.720617, 1, 1)
 
 [sub_resource type="GDScript" id="GDScript_igs2m"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
-atlas = ExtResource("3_0qj0o")
-region = Rect2(0, 0, 96, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
-atlas = ExtResource("3_0qj0o")
-region = Rect2(96, 0, 96, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
-atlas = ExtResource("3_0qj0o")
-region = Rect2(0, 32, 96, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
-atlas = ExtResource("3_0qj0o")
-region = Rect2(96, 32, 96, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ivps1"]
-atlas = ExtResource("3_0qj0o")
-region = Rect2(0, 64, 96, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_urp6f"]
-atlas = ExtResource("3_0qj0o")
-region = Rect2(96, 64, 96, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bwjto"]
-atlas = ExtResource("3_0qj0o")
-region = Rect2(0, 96, 96, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_606se"]
-atlas = ExtResource("3_0qj0o")
-region = Rect2(96, 96, 96, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u1c27"]
-atlas = ExtResource("3_0qj0o")
-region = Rect2(0, 0, 96, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7uvds"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dw050")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b26j0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n7ghd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nvl01")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ivps1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_urp6f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bwjto")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_606se")
-}],
-"loop": 0,
-"name": &"bite",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u1c27")
-}],
-"loop": 2,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_op7ga"]
-atlas = ExtResource("4_4wri8")
-region = Rect2(0, 0, 18, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q13i1"]
-atlas = ExtResource("4_4wri8")
-region = Rect2(18, 0, 18, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pylmc"]
-atlas = ExtResource("4_4wri8")
-region = Rect2(36, 0, 18, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pbfsw"]
-atlas = ExtResource("4_4wri8")
-region = Rect2(0, 32, 18, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_at6rn"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_op7ga")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q13i1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pylmc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pbfsw")
-}],
-"loop": 1,
-"name": &"loop",
-"speed": 4.0
-}]
-
 [node name="MainMenu" type="MarginContainer" unique_id=110763073]
-offset_left = 602.0
-offset_top = 282.0
-offset_right = 1027.0
-offset_bottom = 581.0
+offset_left = 590.0
+offset_top = 298.0
+offset_right = 1015.0
+offset_bottom = 597.0
 script = ExtResource("1_0qj0o")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2122676160]
@@ -217,34 +102,6 @@ layout_mode = 2
 layout_mode = 2
 focus_mode = 2
 text = "Quit"
-
-[node name="Howto" type="Sprite2D" parent="." unique_id=1254719489]
-position = Vector2(-283, -113)
-texture = ExtResource("2_4wri8")
-
-[node name="Kala" type="AnimatedSprite2D" parent="." unique_id=1072844442]
-position = Vector2(177, -131)
-scale = Vector2(-2.0399995, 2.0399995)
-sprite_frames = SubResource("SpriteFrames_7uvds")
-animation = &"bite"
-
-[node name="FlapperAnimation" type="AnimatedSprite2D" parent="Kala" unique_id=2044822452]
-position = Vector2(-35, 0)
-sprite_frames = SubResource("SpriteFrames_at6rn")
-animation = &"loop"
-offset = Vector2(-20, 0)
-
-[node name="Kala2" type="AnimatedSprite2D" parent="." unique_id=2013501580]
-position = Vector2(-196, 189)
-scale = Vector2(3.919999, 3.919999)
-sprite_frames = SubResource("SpriteFrames_7uvds")
-animation = &"bite"
-
-[node name="FlapperAnimation" type="AnimatedSprite2D" parent="Kala2" unique_id=898434046]
-position = Vector2(-35, 0)
-sprite_frames = SubResource("SpriteFrames_at6rn")
-animation = &"loop"
-offset = Vector2(-20, 0)
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/TutorialSelect" to="." method="_on_tutorial_select_pressed"]

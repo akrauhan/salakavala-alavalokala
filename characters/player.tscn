@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d1bnfxo53rfhs" path="res://asset/gfx/hurteffect.png" id="13_3t8uj"]
 [ext_resource type="Texture2D" uid="uid://b5ni7ddb5cefe" path="res://asset/gfx/kala bite.png" id="14_rjhu2"]
 [ext_resource type="Texture2D" uid="uid://dv41bri6nh48m" path="res://asset/gfx/fin move loop.png" id="15_lit6r"]
-[ext_resource type="Script" uid="uid://47usfo354a86" path="res://script/orbiting_sphere.gd" id="16_864dh"]
+[ext_resource type="PackedScene" uid="uid://5xe4n8ehadti" path="res://characters/orbiting_sphere.tscn" id="16_qp1es"]
 [ext_resource type="Script" uid="uid://c0mjhy45i5sd5" path="res://script/bite.gd" id="17_6pff7"]
 [ext_resource type="AudioStream" uid="uid://bkbrxdexv2cdl" path="res://asset/sfx/rousk1.mp3" id="18_nbheu"]
 [ext_resource type="AudioStream" uid="uid://cdm4ktk2yggxk" path="res://asset/sfx/rousk2.mp3" id="19_5mswt"]
@@ -332,9 +332,6 @@ collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.66
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_52wb4"]
-radius = 6.0
-
 [sub_resource type="ImageTexture" id="ImageTexture_h2yge"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qp1es"]
@@ -505,26 +502,8 @@ process_material = SubResource("ParticleProcessMaterial_qtqh7")
 [node name="DashCooldown" type="Timer" parent="." unique_id=1659091772]
 one_shot = true
 
-[node name="OrbitingSphere" type="RigidBody2D" parent="." unique_id=783793761]
+[node name="OrbitingSphere" parent="." unique_id=301407710 instance=ExtResource("16_qp1es")]
 position = Vector2(56, 0)
-gravity_scale = 0.0
-linear_damp = 10.0
-script = ExtResource("16_864dh")
-
-[node name="PointLight2D" type="PointLight2D" parent="OrbitingSphere" unique_id=711782307]
-scale = Vector2(3, 3)
-color = Color(1.0511972, 2.1168277, 2.1168277, 1)
-energy = 16.0
-blend_mode = 2
-range_layer_min = -1024
-range_layer_max = 1024
-texture = ExtResource("11_qp1es")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbitingSphere" unique_id=1513548188]
-shape = SubResource("CircleShape2D_52wb4")
-disabled = true
-one_way_collision = true
-one_way_collision_direction = Vector2(0, 0)
 
 [node name="Bite" type="Node2D" parent="." unique_id=1755387565 node_paths=PackedStringArray("sprite_2d")]
 script = ExtResource("17_6pff7")
