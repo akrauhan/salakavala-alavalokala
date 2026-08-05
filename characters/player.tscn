@@ -447,7 +447,7 @@ offset = Vector2(-20, 0)
 modulate = Color(0.7019608, 0.8352941, 1, 0.7764706)
 self_modulate = Color(0.7019608, 0.8352941, 1, 0.6862745)
 position = Vector2(-56, -1)
-rotation = 3.1415927
+rotation = -3.1415925
 amount = 2000
 lifetime = 20.0
 speed_scale = 0.75
@@ -517,7 +517,7 @@ position = Vector2(24.000002, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bite/BiteArea" unique_id=741406850]
 position = Vector2(15, 0)
-scale = Vector2(2, 0.5)
+scale = Vector2(2, 1.26)
 shape = SubResource("CircleShape2D_q4em8")
 
 [node name="BiteDuration" type="Timer" parent="Bite" unique_id=1502114615]

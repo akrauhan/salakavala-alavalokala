@@ -128,7 +128,7 @@ func flap(direction):
 
 var attack_previous := false
 
-	
+
 func take_damage(attacker_id):
 	if get_tree().current_scene.name == "Tutorial": # No damage in tutorial
 		return
@@ -149,7 +149,7 @@ func take_damage(attacker_id):
 		parry_sparks.emitting = true
 		
 		return
-	if !dodge_timer.is_stopped(): # Dodge
+	if !dodge_timer.is_stopped() and false: # Dodge
 		
 		dodge_area.global_position = global_position
 		
