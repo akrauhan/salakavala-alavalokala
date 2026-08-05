@@ -9,9 +9,10 @@ var win_limit
 var gamemode_path
 
 func _ready() -> void:
-	ScoreManager.scoreboard = $"../MarginContainer/Scoreboard"
+	ScoreManager.scoreboard = $"../UI/MarginContainer/Scoreboard"
 	win_limit = GameSettings.win_limits[GameSettings.gamemode_selected]
 	gamemode_path = GameSettings.gamemodes[GameSettings.gamemode_selected]
+	pass
 
 func add_player(player_id, start_score = 0):
 	scores[player_id] = start_score

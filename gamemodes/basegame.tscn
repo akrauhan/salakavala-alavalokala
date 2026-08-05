@@ -134,7 +134,6 @@ color = Color(0, 0.039215688, 0.11764706, 1)
 [node name="CanvasModulate" type="CanvasModulate" parent="World" unique_id=1235036554]
 color = Color(0, 0, 0.039215688, 1)
 
-
 [node name="Borders" type="Node" parent="World" unique_id=1732383276]
 
 [node name="Right" type="StaticBody2D" parent="World/Borders" unique_id=1198831199]

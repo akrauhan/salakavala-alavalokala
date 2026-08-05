@@ -2,8 +2,6 @@ extends Control
 
 @onready var player_count_button := $VBoxContainer/PlayerCount/PlayerCountButton
 @onready var win_limit_button := $VBoxContainer/WinLimit/WinLimitButton
-@onready var flapper := $"../Kala/FlapperAnimation"
-@onready var flapper2 := $"../Kala2/FlapperAnimation"
 @onready var start_button := $VBoxContainer/StartButton
 
 @onready var tutorial_select = $VBoxContainer/HBoxContainer/TutorialSelect
@@ -21,8 +19,6 @@ var gamemode_selected = "default"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	BackgroundMusic.play()
-	flapper.play()
-	flapper2.play()
 	start_button.grab_focus()
 	
 	player_count = GameSettings.player_count
@@ -32,12 +28,19 @@ func _ready() -> void:
 func _process(delta):
 	pass
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		print("ui_accept")
-
 func _on_start_button_pressed() -> void:
 	GameSettings.player_count = player_count
+	
+	var connected_joypads = Input.get_connected_joypads().size()
+	
+	if player_count > connected_joypads:
+		error_label.text = "Only %d controllers detected!" % (connected_joypads)
+		error_label.queue_redraw()
+		#error_label.shake()
+		start_button.grab_focus()
+		accept_event()
+		return
+	
 	GameSettings.gamemode_selected = gamemode_selected
 	GameSettings.win_limits[gamemode_selected] = win_limit
 	
@@ -62,7 +65,7 @@ func change_player_count(amount):
 	
 	var connected_joypads = Input.get_connected_joypads().size()
 	if  connected_joypads < player_count:
-		error_label.text = "Only " + str(connected_joypads) + " controllers detected!"
+		error_label.text = "Only %d controllers detected!" % (connected_joypads)
 	else:
 		error_label.text = ""
 	
