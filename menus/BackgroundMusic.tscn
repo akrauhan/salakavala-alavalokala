@@ -4,6 +4,6 @@
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=1811475618]
 stream = ExtResource("1_ubc86")
-volume_db = -7.0
+volume_db = -20.0
 autoplay = true
 parameters/looping = true

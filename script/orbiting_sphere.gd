@@ -61,5 +61,6 @@ func toggle_light():
 		light.energy = 0
 		
 	else:
-		light.energy = 20
+		light.energy = 5
+		
 	light_on =  !light_on

@@ -7,22 +7,6 @@
 [ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://script/cooldown_display.gd" id="7_nfiwh"]
 [ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="7_q87uw"]
 [ext_resource type="Script" uid="uid://du6tis4q1xjq4" path="res://script/score_manager.gd" id="7_rim2s"]
-[ext_resource type="Shader" uid="uid://tgha53t6l52y" path="res://shaders/hueRect.gdshader" id="8_nfiwh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(57, 710)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dop4x"]
-size = Vector2(1204, 100)
-
-[sub_resource type="Gradient" id="Gradient_q87uw"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x5a3e"]
-gradient = SubResource("Gradient_q87uw")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_suro5"]
-shader = ExtResource("8_nfiwh")
-shader_parameter/hue = SubResource("GradientTexture2D_x5a3e")
 
 [sub_resource type="Shader" id="Shader_tpv50"]
 resource_local_to_scene = true
@@ -193,12 +177,18 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nfiwh"]
 shader = SubResource("Shader_tpv50")
-shader_parameter/time_speed = 1.0
+shader_parameter/time_speed = 0.30000001425
 shader_parameter/flip_y = false
-shader_parameter/sea_color_dark = Color(0.039215688, 0.32156864, 0.54901963, 0.39215687)
-shader_parameter/sea_color_light = Color(0.05882353, 0.47058824, 0.6, 0.39215687)
-shader_parameter/refraction_color = Color(0.9607843, 0.98039216, 0.85882354, 0.39215687)
-shader_parameter/light_shaft_color = Color(0.8784314, 0.9019608, 0.78039217, 0.39215687)
+shader_parameter/sea_color_dark = Color(0, 0, 0, 1)
+shader_parameter/sea_color_light = Color(0, 0, 0.019607844, 1)
+shader_parameter/refraction_color = Color(0, 0.019607844, 0.039215688, 1)
+shader_parameter/light_shaft_color = Color(0.35479686, 0.99999994, 0.9497352, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(57, 710)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dop4x"]
+size = Vector2(1204, 100)
 
 [sub_resource type="LabelSettings" id="LabelSettings_q87uw"]
 font_size = 60
@@ -241,6 +231,15 @@ offset_right = 1171.0
 offset_bottom = 657.0
 color = Color(0, 0.039215688, 0.11764706, 1)
 
+[node name="UWfilter" type="ColorRect" parent="World" unique_id=831936182]
+z_index = 4
+material = SubResource("ShaderMaterial_nfiwh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Borders" type="Node" parent="World" unique_id=1732383276]
 
 [node name="Right" type="StaticBody2D" parent="World/Borders" unique_id=1198831199]
@@ -269,36 +268,6 @@ position = Vector2(-1, 648)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Borders/Bot" unique_id=1428801058]
 position = Vector2(584, 47)
 shape = SubResource("RectangleShape2D_dop4x")
-
-[node name="Water" type="Control" parent="." unique_id=228478757]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="Water" unique_id=807336352]
-material = SubResource("ShaderMaterial_suro5")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1112.0
-offset_bottom = 608.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.039215688, 0.11764706, 1)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Water" unique_id=639352503]
-
-[node name="UWfilter" type="ColorRect" parent="Water" unique_id=831936182]
-z_index = 4
-material = SubResource("ShaderMaterial_nfiwh")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="BaseUI" type="CanvasLayer" parent="." unique_id=751868063]
 
