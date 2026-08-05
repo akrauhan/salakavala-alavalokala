@@ -112,7 +112,7 @@ func flap(direction):
 		flapper_emitter.emitting = false
 		return
 	flapper_emitter.emitting = true
-	if !flap_timer.is_stopped():
+	if !flap_timer.is_stopped() or !bite_duration.is_stopped():
 		return
 	
 	apply_impulse(direction.normalized() * flap_strength)
