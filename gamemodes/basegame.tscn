@@ -222,17 +222,8 @@ wait_time = 5.0
 z_index = -1
 color = Color(0, 0, 0.039215688, 1)
 
-[node name="ColorRect" type="ColorRect" parent="World" unique_id=53508969]
-z_index = -1
-z_as_relative = false
-offset_left = -16.0
-offset_top = -18.0
-offset_right = 1171.0
-offset_bottom = 657.0
-color = Color(0, 0.039215688, 0.11764706, 1)
-
 [node name="UWfilter" type="ColorRect" parent="World" unique_id=831936182]
-z_index = 4
+z_index = -1
 material = SubResource("ShaderMaterial_nfiwh")
 anchors_preset = 15
 anchor_right = 1.0
