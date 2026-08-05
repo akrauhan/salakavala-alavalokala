@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://script/cooldown_display.gd" id="7_nfiwh"]
 [ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="7_q87uw"]
 [ext_resource type="Script" uid="uid://du6tis4q1xjq4" path="res://script/score_manager.gd" id="7_rim2s"]
+[ext_resource type="Script" uid="uid://82u11g30odli" path="res://gamemodes/game_mode.gd" id="8_nfiwh"]
 
 [sub_resource type="Shader" id="Shader_tpv50"]
 resource_local_to_scene = true
@@ -299,5 +300,8 @@ scale = Vector2(0.35999984, 0.35999984)
 [node name="GamemodeLabel" type="Label" parent="BaseUI" unique_id=1106309474]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="GameMode" type="Node" parent="." unique_id=1777073710]
+script = ExtResource("8_nfiwh")
 
 [connection signal="timeout" from="GameManager/ScoreManager/GameOverTimer" to="." method="_on_game_over_timer_timeout"]

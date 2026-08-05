@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://blx36ochkwbjb"]
+
+[ext_resource type="Script" uid="uid://ejk4fvx6g8dm" path="res://gamemodes/bitematch.gd" id="1_vkaqs"]
+[ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="2_0je0p"]
+[ext_resource type="PackedScene" uid="uid://02hv4aj5u7c1" path="res://gamemodes/basegame.tscn" id="3_62yem"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sv6qw"]
+font_size = 60
+
+[node name="Deathmatch" type="Node2D" unique_id=566845920]
+script = ExtResource("1_vkaqs")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=269729853]
+
+[node name="GamemodeLabel" type="Label" parent="UI" unique_id=375451060]
+offset_left = 586.0
+offset_top = 2.0
+offset_right = 626.0
+offset_bottom = 25.0
+
+[node name="WinnerLabel" type="Label" parent="UI" unique_id=2052803961]
+visible = false
+offset_left = 469.0
+offset_top = 118.0
+offset_right = 695.0
+offset_bottom = 201.0
+text = "Winner "
+label_settings = SubResource("LabelSettings_sv6qw")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=932563668]
+offset_left = 462.0
+offset_right = 662.0
+offset_bottom = 50.0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+
+[node name="Scoreboard" type="HBoxContainer" parent="UI/MarginContainer" unique_id=862540976]
+layout_mode = 2
+script = ExtResource("2_0je0p")
+
+[node name="Basegame" parent="." unique_id=257273898 instance=ExtResource("3_62yem")]
+position = Vector2(74, 90)
