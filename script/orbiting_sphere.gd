@@ -59,6 +59,7 @@ func _input(event):
 func toggle_light():
 	if light_on:
 		light.energy = 0
+		
 	else:
 		light.energy = 20
 	light_on =  !light_on
