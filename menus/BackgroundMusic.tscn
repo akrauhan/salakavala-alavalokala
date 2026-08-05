@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://7xr7gbp2vxno"]
 
-[ext_resource type="AudioStream" uid="uid://dxes5rv56ymdl" path="res://asset/AntSurvila_-_DEEP_SEA_ADVENTURE/AntSurvila_-_DEEP_SEA_ADVENTURE.mp3" id="1_syabp"]
+[ext_resource type="AudioStream" uid="uid://du5kmaemeoqj6" path="res://asset/music/PlaceholderKalaMP3.mp3" id="1_ubc86"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=1811475618]
-stream = ExtResource("1_syabp")
-volume_db = -20.0
+stream = ExtResource("1_ubc86")
+volume_db = -7.0
 autoplay = true
 parameters/looping = true
