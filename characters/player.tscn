@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://vd6q3sauqo44" path="res://asset/sfx/rousk6.mp3" id="23_xvpab"]
 [ext_resource type="AudioStream" uid="uid://duy720nmfak60" path="res://asset/sfx/rousk7.mp3" id="24_6mya6"]
 [ext_resource type="AudioStream" uid="uid://cv2xcnucjetwt" path="res://asset/sfx/rousk8.mp3" id="25_864dh"]
+[ext_resource type="Texture2D" uid="uid://cacdx6yhdy14l" path="res://asset/gfx/progress.png" id="26_qk7w8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lea0t"]
 
@@ -339,8 +340,6 @@ collision_bounce = 0.66
 [sub_resource type="CircleShape2D" id="CircleShape2D_q4em8"]
 radius = 21.960052
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qk7w8"]
-
 [node name="Player" type="RigidBody2D" unique_id=2038223969]
 gravity_scale = 0.0
 linear_damp = 5.0
@@ -528,9 +527,9 @@ one_shot = true
 one_shot = true
 
 [node name="BiteVisualizer" type="Sprite2D" parent="Bite" unique_id=1790828731]
-visible = false
-position = Vector2(24.000002, 0)
-texture = SubResource("CompressedTexture2D_qk7w8")
+position = Vector2(38, 1)
+scale = Vector2(-0.7420171, 0.52510166)
+texture = ExtResource("26_qk7w8")
 
 [node name="BiteSound" type="AudioStreamPlayer2D" parent="Bite" unique_id=855653927]
 stream = ExtResource("18_nbheu")
