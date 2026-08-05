@@ -16,3 +16,6 @@ func _process(delta: float) -> void:
 
 func _on_players_spawned(players):
 	players_ready.emit(players)
+
+func get_players() -> Array:
+	return player_manager.players_container.get_children()

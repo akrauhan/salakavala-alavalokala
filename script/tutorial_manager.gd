@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var label: Label = $"UI/TutorialLabel"
-@onready var playermanager = $Basegame/PlayerManager
 @onready var progress_bar = $UI/ProgressBar
 @onready var basegame = $Basegame
 
@@ -16,9 +15,13 @@ var light_toggles := {}
 var dashed_players := {}
 var bitten_players := {}
 var final_bites := {}
+
+var player_list
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
-	basegame.players_ready.connect(setup_tutorial)
+	player_list = basegame.get_players()
+	setup_tutorial(player_list)
 
 func setup_tutorial(player_list):
 	players = player_list.size()
@@ -102,7 +105,7 @@ func update_movement_progress():
 
 func players_moved() -> Dictionary:
 	var player_progress = {}
-	for player in playermanager.players_container.get_children():
+	for player in player_list:
 		player_progress[player.player_id] = player.global_position.distance_to(player.start_pos)
 	return player_progress
 
@@ -112,7 +115,7 @@ func update_light_progress():
 	var completed := 0
 	var total_progress := 0.0
 
-	for player in playermanager.players_container.get_children():
+	for player in player_list:
 		var pressed := Input.is_joy_button_pressed(
 			player.player_id,
 			JOY_BUTTON_LEFT_SHOULDER
@@ -139,7 +142,7 @@ func update_dash_progress():
 	var completed := 0
 	var total_progress := 0.0
 
-	for player in playermanager.players_container.get_children():
+	for player in player_list:
 		var trigger_pressed := Input.get_joy_axis(
 			player.player_id,
 			JOY_AXIS_TRIGGER_LEFT
@@ -165,7 +168,7 @@ func update_aim_progress(delta):
 	var completed := 0
 	var sum := 0.0
 
-	for player in playermanager.players_container.get_children():
+	for player in player_list:
 		var input := Vector2(
 			Input.get_joy_axis(player.player_id, JOY_AXIS_RIGHT_X),
 			Input.get_joy_axis(player.player_id, JOY_AXIS_RIGHT_Y)
