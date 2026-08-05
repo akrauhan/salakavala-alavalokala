@@ -3,17 +3,7 @@
 [ext_resource type="Script" uid="uid://d0j8vsqso2tu8" path="res://script/tutorial_manager.gd" id="1_yk7ps"]
 [ext_resource type="Script" uid="uid://du6tis4q1xjq4" path="res://script/score_manager.gd" id="2_4g6wd"]
 [ext_resource type="PackedScene" uid="uid://bwftgyyw1n4q0" path="res://characters/decoy_fish.tscn" id="2_a76fb"]
-[ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="3_a76fb"]
-[ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://script/cooldown_display.gd" id="4_kopkp"]
-[ext_resource type="Texture2D" uid="uid://cacdx6yhdy14l" path="res://asset/gfx/progress.png" id="5_bwdwo"]
-[ext_resource type="Script" uid="uid://bjhqs3ppgisuf" path="res://script/player_manager.gd" id="6_qdjmq"]
-[ext_resource type="PackedScene" uid="uid://bf8h02hmexujc" path="res://characters/player.tscn" id="7_mo60f"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(57, 710)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dop4x"]
-size = Vector2(1204, 100)
+[ext_resource type="PackedScene" uid="uid://02hv4aj5u7c1" path="res://gamemodes/basegame.tscn" id="7_yk7ps"]
 
 [node name="Tutorial" type="Node2D" unique_id=566845920]
 script = ExtResource("1_yk7ps")
@@ -43,89 +33,6 @@ game_over_timer = NodePath("GameOverTimer")
 [node name="GameOverTimer" type="Timer" parent="UI/ScoreManager" unique_id=1819359228]
 wait_time = 5.0
 
-[node name="Cooldowns" type="Control" parent="UI" unique_id=1847699015]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("4_kopkp")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Cooldowns" unique_id=460543730]
-layout_mode = 0
-offset_left = 323.0
-offset_top = 497.0
-offset_right = 523.0
-offset_bottom = 547.0
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/Cooldowns/HBoxContainer" unique_id=95226235]
-layout_mode = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 100
-
-[node name="Scoreboard" type="HBoxContainer" parent="UI/Cooldowns/HBoxContainer/MarginContainer" unique_id=72781503]
-layout_mode = 2
-script = ExtResource("3_a76fb")
-
-[node name="VBoxContainer" type="HBoxContainer" parent="UI/Cooldowns" unique_id=671661390]
-layout_mode = 0
-offset_left = 423.0
-offset_top = 579.0
-offset_right = 1379.0
-offset_bottom = 1535.0
-scale = Vector2(0.35999984, 0.35999984)
-
-[node name="Player0BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=1389734142]
-layout_mode = 2
-fill_mode = 4
-texture_progress = ExtResource("5_bwdwo")
-tint_progress = Color(1, 0, 0, 1)
-
-[node name="Player1BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=178151619]
-layout_mode = 2
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("5_bwdwo")
-tint_progress = Color(1, 1, 0, 1)
-
-[node name="Player2BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=962886863]
-layout_mode = 2
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("5_bwdwo")
-tint_progress = Color(0.87058824, 0.72156864, 0.5294118, 1)
-
-[node name="Player3BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=58231700]
-layout_mode = 2
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("5_bwdwo")
-tint_progress = Color(0, 1, 0.49803922, 1)
-
-[node name="Player4BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=316727057]
-layout_mode = 2
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("5_bwdwo")
-tint_progress = Color(0, 0.7490196, 1, 1)
-
-[node name="Player5BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=704348871]
-layout_mode = 2
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("5_bwdwo")
-
-[node name="Player6BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=761231171]
-layout_mode = 2
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("5_bwdwo")
-tint_progress = Color(1, 0, 1, 1)
-
-[node name="Player7BiteCooldown" type="TextureProgressBar" parent="UI/Cooldowns/VBoxContainer" unique_id=1751158590]
-layout_mode = 2
-fill_mode = 4
-texture_progress = ExtResource("5_bwdwo")
-tint_progress = Color(1, 0, 0, 1)
-
 [node name="ColorRect" type="ColorRect" parent="." unique_id=53508969]
 offset_left = -16.0
 offset_top = -18.0
@@ -136,39 +43,7 @@ color = Color(0.051970966, 0.05197096, 0.05197095, 1)
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1235036554]
 color = Color(0, 0, 0, 1)
 
-[node name="Players" type="Node2D" parent="." unique_id=123082180]
-
-[node name="PlayerManager" type="Node" parent="." unique_id=239729471]
-script = ExtResource("6_qdjmq")
-player_scene = ExtResource("7_mo60f")
-
-[node name="Borders" type="Node" parent="." unique_id=1732383276]
-
-[node name="Right" type="StaticBody2D" parent="Borders" unique_id=1198831199]
-position = Vector2(1, 1309)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right" unique_id=1007763113]
-position = Vector2(-29, -982)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Left" type="StaticBody2D" parent="Borders" unique_id=1827380981]
-position = Vector2(1154, 638)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left" unique_id=983993276]
-position = Vector2(29, -326)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Top" type="StaticBody2D" parent="Borders" unique_id=245295799]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Top" unique_id=221768745]
-position = Vector2(572, -52)
-shape = SubResource("RectangleShape2D_dop4x")
-
-[node name="Bot" type="StaticBody2D" parent="Borders" unique_id=924000071]
-position = Vector2(-1, 648)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Bot" unique_id=1428801058]
-position = Vector2(584, 47)
-shape = SubResource("RectangleShape2D_dop4x")
+[node name="Basegame" parent="." unique_id=1269202794 instance=ExtResource("7_yk7ps")]
+position = Vector2(1, 0)
 
 [connection signal="timeout" from="UI/ScoreManager/GameOverTimer" to="." method="_on_game_over_timer_timeout"]

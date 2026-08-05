@@ -1,13 +1,15 @@
 extends Node2D
 
 @onready var label: Label = $"UI/TutorialLabel"
-@onready var playermanager = $PlayerManager
+@onready var playermanager = $Basegame/PlayerManager
 @onready var progress_bar = $UI/ProgressBar
+@onready var basegame = $Basegame
 
 @export var decoy_scene: PackedScene
+
 var decoy
 
-var step := 5
+var step := 0
 var players := 0
 var aim_progress := {}
 var light_toggles := {}
@@ -15,20 +17,22 @@ var dashed_players := {}
 var bitten_players := {}
 var final_bites := {}
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	players = playermanager.players_container.get_children().size()
-	
-	for player in playermanager.players_container.get_children():
+func _ready() -> void:	
+	basegame.players_ready.connect(setup_tutorial)
+
+func setup_tutorial(player_list):
+	players = player_list.size()
+
+	for player in player_list:
 		aim_progress[player.player_id] = 0.0
 		light_toggles[player.player_id] = 0
 		dashed_players[player.player_id] = false
 		bitten_players[player.player_id] = false
-		var bite = player.get_node("Bite")
-		bite.bite_performed.connect(_on_bite_performed)
-		
+
+		player.get_node("Bite").bite_performed.connect(_on_bite_performed)
+
 	next_step()
 	
-
 func next_step():
 	step += 1
 

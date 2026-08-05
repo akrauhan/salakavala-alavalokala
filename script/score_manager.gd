@@ -1,25 +1,28 @@
 extends Node
 
 var scores := {}
+var scoreboard: HBoxContainer
+var winner_label: Label
 
 @export var game_over_timer: Timer
 
-var scoreboard
+
 var win_limit
 var gamemode_path
 
 func _ready() -> void:
-	ScoreManager.scoreboard = $"../UI/MarginContainer/Scoreboard"
 	win_limit = GameSettings.win_limits[GameSettings.gamemode_selected]
 	gamemode_path = GameSettings.gamemodes[GameSettings.gamemode_selected]
-	pass
 
 func add_player(player_id, start_score = 0):
 	scores[player_id] = start_score
 	
 func add_score(player_id, amount):
 	scores[player_id] += amount
-	scoreboard.update_scoreboard()
+	if scoreboard != null:
+		scoreboard.update_scoreboard()
+	else:
+		push_error("Scoreboard reference missing.")
 	if scores[player_id] >= win_limit:
 		game_over(player_id)
 	
@@ -29,13 +32,11 @@ func get_score(player_id):
 func game_over(player_id):
 	print("Player ", player_id, " won")
 	
-	var label = get_tree().current_scene.get_node("UI/WinnerLabel")
+	winner_label.text = "Player %d wins!" % (player_id + 1)
 
-	label.text = "Player %d wins!" % (player_id + 1)
-
-	label.visible = true
+	winner_label.visible = true
 	#label.position = Vector2(500,100)
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	winner_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
 
 	get_tree().create_timer(3).timeout.connect(func():
