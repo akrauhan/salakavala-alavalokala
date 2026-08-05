@@ -7,6 +7,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_0fbet"]
 font_size = 39
+font_color = Color(0.5496051, 0.720617, 1, 1)
 
 [sub_resource type="GDScript" id="GDScript_igs2m"]
 
@@ -123,10 +124,10 @@ animations = [{
 }]
 
 [node name="MainMenu" type="MarginContainer" unique_id=110763073]
-offset_left = 590.0
-offset_top = 349.0
-offset_right = 1015.0
-offset_bottom = 543.0
+offset_left = 602.0
+offset_top = 282.0
+offset_right = 1027.0
+offset_bottom = 581.0
 script = ExtResource("1_0qj0o")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2122676160]
@@ -140,6 +141,7 @@ label_settings = SubResource("LabelSettings_0fbet")
 [node name="StartButton" type="MenuButton" parent="VBoxContainer" unique_id=1443704411]
 layout_mode = 2
 focus_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Start"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=976045435]
@@ -162,6 +164,11 @@ disabled = true
 toggle_mode = true
 text = "Deathmatch"
 
+[node name="ErrorLabel" type="Label" parent="VBoxContainer" unique_id=1008128329]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.35732567, 0.29020837, 1)
+horizontal_alignment = 1
+
 [node name="PlayerCount" type="HBoxContainer" parent="VBoxContainer" unique_id=73265232]
 layout_mode = 2
 alignment = 1
@@ -170,9 +177,17 @@ alignment = 1
 layout_mode = 2
 text = "Players"
 
+[node name="Label" type="Label" parent="VBoxContainer/PlayerCount" unique_id=1102501337]
+layout_mode = 2
+text = "<"
+
 [node name="PlayerCountButton" type="Button" parent="VBoxContainer/PlayerCount" unique_id=1383089057]
 layout_mode = 2
 text = "2"
+
+[node name="Label2" type="Label" parent="VBoxContainer/PlayerCount" unique_id=840822969]
+layout_mode = 2
+text = ">"
 
 [node name="WinLimit" type="HBoxContainer" parent="VBoxContainer" unique_id=1175844350]
 layout_mode = 2
@@ -183,9 +198,20 @@ script = SubResource("GDScript_igs2m")
 layout_mode = 2
 text = "Limit    "
 
+[node name="Label" type="Label" parent="VBoxContainer/WinLimit" unique_id=1819514764]
+layout_mode = 2
+text = "<"
+
 [node name="WinLimitButton" type="Button" parent="VBoxContainer/WinLimit" unique_id=1280672744]
 layout_mode = 2
 text = "6"
+
+[node name="Label2" type="Label" parent="VBoxContainer/WinLimit" unique_id=318413131]
+layout_mode = 2
+text = ">"
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1481915928]
+layout_mode = 2
 
 [node name="QuitButton" type="MenuButton" parent="VBoxContainer" unique_id=1336057452]
 layout_mode = 2
@@ -193,11 +219,11 @@ focus_mode = 2
 text = "Quit"
 
 [node name="Howto" type="Sprite2D" parent="." unique_id=1254719489]
-position = Vector2(-270, -188)
+position = Vector2(-283, -113)
 texture = ExtResource("2_4wri8")
 
 [node name="Kala" type="AnimatedSprite2D" parent="." unique_id=1072844442]
-position = Vector2(148, -183)
+position = Vector2(177, -131)
 scale = Vector2(-2.0399995, 2.0399995)
 sprite_frames = SubResource("SpriteFrames_7uvds")
 animation = &"bite"
@@ -209,7 +235,7 @@ animation = &"loop"
 offset = Vector2(-20, 0)
 
 [node name="Kala2" type="AnimatedSprite2D" parent="." unique_id=2013501580]
-position = Vector2(-202, 141)
+position = Vector2(-196, 189)
 scale = Vector2(3.919999, 3.919999)
 sprite_frames = SubResource("SpriteFrames_7uvds")
 animation = &"bite"

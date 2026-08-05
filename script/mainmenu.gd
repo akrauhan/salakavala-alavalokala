@@ -10,6 +10,8 @@ extends Control
 @onready var bitematch_select = $VBoxContainer/HBoxContainer/BitematchSelect
 @onready var deathmatch_select = $VBoxContainer/HBoxContainer/DeathmatchSelect
 
+@onready var error_label = $VBoxContainer/ErrorLabel
+
 var win_limit 
 var player_count
 var gamemode_scenes = GameSettings.gamemodes
@@ -52,6 +54,12 @@ func change_player_count(amount):
 	elif player_count == 9:
 		player_count = 2
 	player_count_button.text = str(player_count)
+	
+	var connected_joypads = Input.get_connected_joypads().size()
+	if  connected_joypads < player_count:
+		error_label.text = "Only " + str(connected_joypads) + " controllers detected!"
+	else:
+		error_label.text = ""
 	
 func change_win_limit_count(amount):
 	win_limit += amount
