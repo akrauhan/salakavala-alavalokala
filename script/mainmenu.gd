@@ -6,18 +6,19 @@ extends Control
 
 @onready var tutorial_select = $VBoxContainer/HBoxContainer/TutorialSelect
 @onready var bitematch_select = $VBoxContainer/HBoxContainer/BitematchSelect
-@onready var deathmatch_select = $VBoxContainer/HBoxContainer/DeathmatchSelect
+@onready var elimination_select = $VBoxContainer/HBoxContainer/EliminationSelect
 
 @onready var error_label = $VBoxContainer/ErrorLabel
 
 var win_limit 
 var player_count
-var gamemode_scenes = GameSettings.gamemodes
+var gamemode_scenes
 var gamemode_selected_scene
 var gamemode_selected
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	gamemode_scenes = GameSettings.gamemode_scenes
 	gamemode_selected = GameSettings.gamemode_selected
 	player_count = GameSettings.player_count
 	win_limit = GameSettings.win_limits[gamemode_selected]
@@ -50,15 +51,14 @@ func _on_start_button_pressed() -> void:
 		return
 	
 	GameSettings.gamemode_selected = gamemode_selected
+	ScoreManager.gamemode = gamemode_selected
+	
 	GameSettings.win_limits[gamemode_selected] = win_limit
+	ScoreManager.win_limit = win_limit
+	ScoreManager.gamemode_path = GameSettings.gamemode_scenes[GameSettings.gamemode_selected]
 	
-	ScoreManager.win_limit = GameSettings.win_limits[GameSettings.gamemode_selected]
-	ScoreManager.gamemode_path = GameSettings.gamemodes[GameSettings.gamemode_selected]
-	
-	get_tree().change_scene_to_file(GameSettings.gamemodes[gamemode_selected]) # Replace with function body.
+	get_tree().change_scene_to_file(GameSettings.gamemode_scenes[gamemode_selected]) # Replace with function body.
 	queue_free()
-
-
 
 func _on_quitbutton_pressed() -> void:
 	get_tree().quit()
@@ -100,8 +100,6 @@ func _on_win_limit_button_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_left"):
 		change_win_limit_count(-1)
 		accept_event()
-	
-
 
 func _on_tutorial_select_pressed() -> void:
 	select_gamemode("tutorial")
@@ -109,8 +107,8 @@ func _on_tutorial_select_pressed() -> void:
 func _on_bitematch_select_pressed() -> void:
 	select_gamemode("bitematch")
 
-func _on_deathmatch_select_pressed() -> void:
-	select_gamemode("deathmatch")
+func _on_elimination_select_pressed() -> void:
+	select_gamemode("elimination")
 
 func select_gamemode(mode: String):
 	gamemode_selected = mode
@@ -120,4 +118,4 @@ func select_gamemode(mode: String):
 
 	tutorial_select.modulate = selected_color if mode == "tutorial" else normal_color
 	bitematch_select.modulate = selected_color if mode == "bitematch" else normal_color
-	deathmatch_select.modulate = selected_color if mode == "deathmatch" else normal_color
+	elimination_select.modulate = selected_color if mode == "elimination" else normal_color

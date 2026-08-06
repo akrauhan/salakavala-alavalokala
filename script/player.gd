@@ -124,9 +124,7 @@ func flap(direction):
 
 
 func take_damage(attacker_id):
-	
-	if get_tree().current_scene.name == "Tutorial": # No damage in tutorial
-		return
+
 	if !bite_timer.is_stopped(): # Parry
 				
 		parry_area.global_position = global_position
@@ -144,6 +142,7 @@ func take_damage(attacker_id):
 		parry_sparks.emitting = true
 		
 		return
+
 	if !dodge_timer.is_stopped() and false: # Dodge
 		
 		dodge_area.global_position = global_position
@@ -221,3 +220,7 @@ func _on_parry_timer_timeout() -> void:
 	parry_collision.energy = 0
 	parry_sparks.emitting = false
 	
+
+func destroy():
+	visible = false
+	collision_layer = -1

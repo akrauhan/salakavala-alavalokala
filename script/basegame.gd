@@ -5,9 +5,6 @@ extends Node2D
 signal players_ready(players)
 @onready var player_manager = $GameManager/PlayerManager
 
-@export var game_mode_scene: PackedScene
-var game_mode
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ScoreManager.scoreboard = $UI/MarginContainer/Scoreboard

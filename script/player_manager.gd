@@ -5,6 +5,7 @@ extends Node
 
 signal players_spawned(players)
 
+
 func _ready():
 	pass
 
@@ -35,3 +36,15 @@ func spawn_players():
 
 func get_players():
 	return players_container.get_children()
+
+func eliminate(player_id):
+	for player in players_container:
+		if player.player_id == player_id:
+			player.destroy()
+			break
+	
+	
+
+
+func _on_score_manager_player_eliminated(player_id) -> void:
+	eliminate(player_id)
