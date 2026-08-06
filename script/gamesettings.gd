@@ -2,7 +2,7 @@ extends Node
 
 var player_count := 2
 
-var gamemode_selected := "default"
+var gamemode_selected := "bitematch" # Default gamemode selected at game launch
 
 var colors := [
 	Color.RED,
@@ -16,10 +16,10 @@ var colors := [
 ]
 
 var gamemodes := {
-	"default": "gamemodes/bitematch.tscn",
-	"bitematch":"gamemodes/bitematch.tscn",
-	"tutorial":"gamemodes/tutorial.tscn",
-	"deathmatch":"gamemodes/deathmatch.tscn"
+	"default": "res://gamemodes/bitematch.tscn",
+	"bitematch":"res://gamemodes/bitematch.tscn",
+	"tutorial":"res://gamemodes/tutorial.tscn",
+	"deathmatch":"res://gamemodes/deathmatch.tscn"
 }
 
 var win_limits := {
@@ -27,4 +27,11 @@ var win_limits := {
 	"bitematch": 6,
 	"tutorial": INT8_MAX,
 	"deathmatch": 10
+}
+
+var player_healths := { # -1 for unlimited health
+	"default": -1,
+	"bitematch": -1,
+	"tutorial": -1,
+	"deathmatch": 1
 }

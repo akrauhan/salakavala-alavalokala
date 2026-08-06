@@ -48,7 +48,6 @@ text = "Bitematch"
 
 [node name="DeathmatchSelect" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1918174745]
 layout_mode = 2
-disabled = true
 toggle_mode = true
 text = "Deathmatch"
 

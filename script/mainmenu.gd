@@ -13,17 +13,18 @@ extends Control
 var win_limit 
 var player_count
 var gamemode_scenes = GameSettings.gamemodes
-var gamemode_selected_scene = gamemode_scenes["default"]
-var gamemode_selected = "default"
+var gamemode_selected_scene
+var gamemode_selected
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	gamemode_selected = GameSettings.gamemode_selected
+	player_count = GameSettings.player_count
+	win_limit = GameSettings.win_limits[gamemode_selected]
 	BackgroundMusic.play()
 	start_button.grab_focus()
 	
-	player_count = GameSettings.player_count
-	win_limit = GameSettings.win_limits["default"]
-	
+	select_gamemode(gamemode_selected)
 	player_count_button.text = str(player_count)
 	win_limit_button.text = str(win_limit)
 
@@ -32,6 +33,9 @@ func _process(delta):
 	pass
 
 func _on_start_button_pressed() -> void:
+	player_count = int(player_count_button.text)
+	win_limit = int(win_limit_button.text)
+	
 	GameSettings.player_count = player_count
 	
 	var connected_joypads = Input.get_connected_joypads().size()
@@ -51,7 +55,7 @@ func _on_start_button_pressed() -> void:
 	ScoreManager.win_limit = GameSettings.win_limits[GameSettings.gamemode_selected]
 	ScoreManager.gamemode_path = GameSettings.gamemodes[GameSettings.gamemode_selected]
 	
-	get_tree().change_scene_to_file(gamemode_scenes[gamemode_selected]) # Replace with function body.
+	get_tree().change_scene_to_file(GameSettings.gamemodes[gamemode_selected]) # Replace with function body.
 	queue_free()
 
 
@@ -110,7 +114,6 @@ func _on_deathmatch_select_pressed() -> void:
 
 func select_gamemode(mode: String):
 	gamemode_selected = mode
-
 
 	var selected_color = Color.CYAN
 	var normal_color = Color.WHITE

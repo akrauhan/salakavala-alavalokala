@@ -7,7 +7,6 @@ signal players_ready(players)
 
 @export var game_mode_scene: PackedScene
 var game_mode
-var players = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

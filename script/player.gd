@@ -43,6 +43,9 @@ extends RigidBody2D
 @export var rotation_acceleration = 50.0
 
 var start_pos: Vector2
+var player_health
+
+signal took_damage
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,6 +56,7 @@ func _ready() -> void:
 	melee_attack.player_id = player_id
 	start_pos = global_position
 	ScoreManager.add_player(player_id)
+	player_health = GameSettings.player_healths[GameSettings.gamemode_selected]
 
 @export var thrust := 500.0
 
@@ -120,6 +124,7 @@ func flap(direction):
 
 
 func take_damage(attacker_id):
+	
 	if get_tree().current_scene.name == "Tutorial": # No damage in tutorial
 		return
 	if !bite_timer.is_stopped(): # Parry
@@ -155,7 +160,8 @@ func take_damage(attacker_id):
 		return
 	
 	
-	print("Player ", player_id, "hit")
+	took_damage.emit(attacker_id, player_id)
+	print("Player ", player_id, " took damage from " , attacker_id)
 	if player_id < hurt_sounds.size():
 		hurt_sound.stream = hurt_sounds[player_id]
 	hurt_sound.play()
@@ -169,6 +175,14 @@ func take_damage(attacker_id):
 		1.0,		# Strong motor (0.0-1.0)
 		0.25		# Duration in seconds
 	)
+	
+	if player_health == 1:
+		print("Player ", player_id, " died by ", attacker_id)
+		queue_free()
+		return
+	elif player_health > 1:
+		player_health -= 1
+					
 	
 	# Stuns the player
 	stun_timer.start()
@@ -206,3 +220,4 @@ func _on_parry_timer_timeout() -> void:
 	parry_light.energy = 0
 	parry_collision.energy = 0
 	parry_sparks.emitting = false
+	
