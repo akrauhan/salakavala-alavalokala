@@ -138,6 +138,7 @@ collision_friction = 0.0
 collision_bounce = 0.66
 
 [node name="DecoyFish" type="RigidBody2D" unique_id=2033426450]
+z_index = 1
 mass = 1000.0
 gravity_scale = 0.0
 script = ExtResource("1_l4yiv")

@@ -1,15 +1,15 @@
-extends Node2D
+extends Gamemode
 
 @onready var label: Label = $"UI/TutorialLabel"
 @onready var progress_bar = $UI/ProgressBar
-@onready var basegame = $Basegame
+
 
 @export var decoy_scene: PackedScene
 
 var decoy
 
 var step := 0
-var players := 0
+var player_count := 0
 var aim_progress := {}
 var light_toggles := {}
 var dashed_players := {}
@@ -19,14 +19,13 @@ var final_bites := {}
 var player_list
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:	
-	player_list = basegame.get_players()
-	setup_tutorial(player_list)
+func on_players_ready() -> void:
+	setup_tutorial()
 
-func setup_tutorial(player_list):
-	players = player_list.size()
+func setup_tutorial():
+	player_count = players.size()
 
-	for player in player_list:
+	for player in players:
 		aim_progress[player.player_id] = 0.0
 		light_toggles[player.player_id] = 0
 		dashed_players[player.player_id] = false
@@ -97,15 +96,15 @@ func update_movement_progress():
 		if movements[player_id] >= step_goal:
 			completed += 1
 
-	progress_bar.value = sum / (players * step_goal)
+	progress_bar.value = sum / (player_count * step_goal)
 
-	if completed >= players:
+	if completed >= player_count:
 		next_step()
 
 
 func players_moved() -> Dictionary:
 	var player_progress = {}
-	for player in player_list:
+	for player in players:
 		player_progress[player.player_id] = player.global_position.distance_to(player.start_pos)
 	return player_progress
 
@@ -115,7 +114,7 @@ func update_light_progress():
 	var completed := 0
 	var total_progress := 0.0
 
-	for player in player_list:
+	for player in players:
 		var pressed := Input.is_joy_button_pressed(
 			player.player_id,
 			JOY_BUTTON_LEFT_SHOULDER
@@ -132,9 +131,9 @@ func update_light_progress():
 		if light_toggles[player.player_id] >= required_toggles:
 			completed += 1
 
-	progress_bar.value = total_progress / (players * required_toggles)
+	progress_bar.value = total_progress / (player_count* required_toggles)
 
-	if completed >= players:
+	if completed >= player_count:
 		next_step()
 
 
@@ -142,7 +141,7 @@ func update_dash_progress():
 	var completed := 0
 	var total_progress := 0.0
 
-	for player in player_list:
+	for player in players:
 		var trigger_pressed := Input.get_joy_axis(
 			player.player_id,
 			JOY_AXIS_TRIGGER_LEFT
@@ -157,9 +156,9 @@ func update_dash_progress():
 			total_progress += 1
 			completed += 1
 
-	progress_bar.value = total_progress / players
+	progress_bar.value = total_progress / player_count
 
-	if completed >= players:
+	if completed >= player_count:
 		next_step()
 	
 func update_aim_progress(delta):
@@ -168,7 +167,7 @@ func update_aim_progress(delta):
 	var completed := 0
 	var sum := 0.0
 
-	for player in player_list:
+	for player in players:
 		var input := Vector2(
 			Input.get_joy_axis(player.player_id, JOY_AXIS_RIGHT_X),
 			Input.get_joy_axis(player.player_id, JOY_AXIS_RIGHT_Y)
@@ -183,9 +182,9 @@ func update_aim_progress(delta):
 		if aim_progress[player.player_id] >= aim_goal:
 			completed += 1
 
-	progress_bar.value = sum / (players * aim_goal)
+	progress_bar.value = sum / (player_count * aim_goal)
 
-	if completed >= players:
+	if completed >= player_count:
 		next_step()
 	
 
@@ -198,9 +197,9 @@ func update_bite_progress():
 			total_progress += 1
 			completed += 1
 
-	progress_bar.value = total_progress / players
+	progress_bar.value = total_progress / player_count
 
-	if completed >= players:
+	if completed >= player_count:
 		next_step()
 
 func _on_bite_performed(player_id):
@@ -210,7 +209,7 @@ func setup_final_step():
 	decoy = decoy_scene.instantiate()
 
 	decoy.position = Vector2(400, 400)
-	decoy.required_players = players
+	decoy.required_players = player_count
 	decoy.finished.connect(finish)
 	
 	add_child(decoy)
@@ -221,7 +220,7 @@ func update_final_progress():
 	if decoy == null:
 		return
 	
-	progress_bar.value = float(decoy.players_bitten.size()) / players
+	progress_bar.value = float(decoy.players_bitten.size()) / player_count
 
 func finish():
 	show_message("You did it!")
