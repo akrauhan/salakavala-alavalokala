@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cirdniqh8u5os"]
+[gd_scene format=3 uid="uid://cxy8f681ulm0n"]
 
 [ext_resource type="Script" uid="uid://d0j8vsqso2tu8" path="res://script/tutorial_manager.gd" id="1_olffe"]
 [ext_resource type="PackedScene" uid="uid://bwftgyyw1n4q0" path="res://characters/decoy_fish.tscn" id="2_3m7xf"]

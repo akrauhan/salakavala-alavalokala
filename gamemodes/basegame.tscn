@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://02hv4aj5u7c1"]
 
 [ext_resource type="Script" uid="uid://decjecqcyqegx" path="res://script/basegame.gd" id="1_rim2s"]
-[ext_resource type="Script" uid="uid://ciemfuvcxmglk" path="res://gamemodes/game_manager.gd" id="2_cvhaq"]
+[ext_resource type="Script" uid="uid://ciemfuvcxmglk" path="res://script/game_manager.gd" id="2_cvhaq"]
 [ext_resource type="Script" uid="uid://bjhqs3ppgisuf" path="res://script/player_manager.gd" id="5_s8v7d"]
 [ext_resource type="PackedScene" uid="uid://bf8h02hmexujc" path="res://characters/player.tscn" id="6_1a8kb"]
 [ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://script/cooldown_display.gd" id="7_nfiwh"]
 [ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="7_q87uw"]
 [ext_resource type="Script" uid="uid://du6tis4q1xjq4" path="res://script/score_manager.gd" id="7_rim2s"]
-[ext_resource type="Script" uid="uid://82u11g30odli" path="res://gamemodes/game_mode.gd" id="8_nfiwh"]
 
 [sub_resource type="Shader" id="Shader_tpv50"]
 resource_local_to_scene = true
@@ -194,6 +193,22 @@ size = Vector2(1204, 100)
 [sub_resource type="LabelSettings" id="LabelSettings_q87uw"]
 font_size = 60
 
+[sub_resource type="GDScript" id="GDScript_rim2s"]
+script/source = "extends Node
+
+var players: Array = []
+
+# Called when the node enters the scene tree for the first time.
+func initialize(player_list):
+	players = player_list
+
+func player_hit(victim, attacker):
+	pass
+	
+func check_win():
+	pass
+"
+
 [node name="Basegame" type="Node2D" unique_id=566845920]
 script = ExtResource("1_rim2s")
 
@@ -209,8 +224,10 @@ script = ExtResource("5_s8v7d")
 player_scene = ExtResource("6_1a8kb")
 players_container = NodePath("../../Players")
 
-[node name="ScoreManager" type="Node" parent="GameManager" unique_id=1857764718]
+[node name="ScoreManager" type="Node" parent="GameManager" unique_id=1857764718 node_paths=PackedStringArray("scoreboard", "game_over_timer")]
 script = ExtResource("7_rim2s")
+scoreboard = NodePath("../../BaseUI/ScoreboardContainer/Scoreboard")
+game_over_timer = NodePath("GameOverTimer")
 
 [node name="GameOverTimer" type="Timer" parent="GameManager/ScoreManager" unique_id=1819359228]
 wait_time = 5.0
@@ -302,6 +319,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="GameMode" type="Node" parent="." unique_id=1777073710]
-script = ExtResource("8_nfiwh")
+script = SubResource("GDScript_rim2s")
 
+[connection signal="player_eliminated" from="GameManager/ScoreManager" to="GameManager/PlayerManager" method="_on_score_manager_player_eliminated"]
 [connection signal="timeout" from="GameManager/ScoreManager/GameOverTimer" to="." method="_on_game_over_timer_timeout"]

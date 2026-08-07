@@ -5,9 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bwftgyyw1n4q0" path="res://characters/decoy_fish.tscn" id="2_a76fb"]
 [ext_resource type="PackedScene" uid="uid://02hv4aj5u7c1" path="res://gamemodes/basegame.tscn" id="7_yk7ps"]
 
-[node name="Tutorial" type="Node2D" unique_id=566845920]
+[node name="Tutorial" type="Node2D" unique_id=566845920 node_paths=PackedStringArray("basegame")]
 script = ExtResource("1_yk7ps")
 decoy_scene = ExtResource("2_a76fb")
+basegame = NodePath("Basegame")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1971358089]
 

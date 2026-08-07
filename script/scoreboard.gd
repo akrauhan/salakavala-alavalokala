@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 func _process(delta):
-	update_scoreboard()
+	pass
 
 @export var SCREEN_WIDTH = 1000
 

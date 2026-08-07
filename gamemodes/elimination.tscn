@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://blx36ochkwbjb"]
 
-[ext_resource type="Script" uid="uid://ejk4fvx6g8dm" path="res://gamemodes/bitematch.gd" id="1_vkaqs"]
-[ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="2_0je0p"]
-[ext_resource type="PackedScene" uid="uid://02hv4aj5u7c1" path="res://gamemodes/basegame.tscn" id="3_62yem"]
+[ext_resource type="Script" uid="uid://dj6c7gm38jwkq" path="res://script/elimination.gd" id="1_ikwc5"]
+[ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="2_sjx64"]
+[ext_resource type="PackedScene" uid="uid://02hv4aj5u7c1" path="res://gamemodes/basegame.tscn" id="3_072pr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sv6qw"]
 font_size = 60
 
-[node name="Deathmatch" type="Node2D" unique_id=566845920]
-script = ExtResource("1_vkaqs")
+[node name="Elimination" type="Node2D" unique_id=566845920 node_paths=PackedStringArray("basegame")]
+script = ExtResource("1_ikwc5")
+basegame = NodePath("Basegame")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=269729853]
 
@@ -37,7 +38,7 @@ theme_override_constants/margin_right = 100
 
 [node name="Scoreboard" type="HBoxContainer" parent="UI/MarginContainer" unique_id=862540976]
 layout_mode = 2
-script = ExtResource("2_0je0p")
+script = ExtResource("2_sjx64")
 
-[node name="Basegame" parent="." unique_id=257273898 instance=ExtResource("3_62yem")]
+[node name="Basegame" parent="." unique_id=257273898 instance=ExtResource("3_072pr")]
 position = Vector2(74, 90)

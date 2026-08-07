@@ -43,6 +43,10 @@ extends RigidBody2D
 @export var rotation_acceleration = 50.0
 
 var start_pos: Vector2
+var player_health
+
+signal took_damage
+signal health_depleted(player_id) # emitted when player_health reaches 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,6 +57,7 @@ func _ready() -> void:
 	melee_attack.player_id = player_id
 	start_pos = global_position
 	ScoreManager.add_player(player_id)
+	player_health = -1 # default is unlimited, active gamemode changes this after spawning
 
 @export var thrust := 500.0
 
@@ -120,8 +125,7 @@ func flap(direction):
 
 
 func take_damage(attacker_id):
-	if get_tree().current_scene.name == "Tutorial": # No damage in tutorial
-		return
+
 	if !bite_timer.is_stopped(): # Parry
 				
 		parry_area.global_position = global_position
@@ -139,6 +143,7 @@ func take_damage(attacker_id):
 		parry_sparks.emitting = true
 		
 		return
+
 	if !dodge_timer.is_stopped() and false: # Dodge
 		
 		dodge_area.global_position = global_position
@@ -155,13 +160,13 @@ func take_damage(attacker_id):
 		return
 	
 	
-	print("Player ", player_id, "hit")
+	took_damage.emit(attacker_id, player_id)
+	print("Player ", player_id, " took damage from " , attacker_id)
 	if player_id < hurt_sounds.size():
 		hurt_sound.stream = hurt_sounds[player_id]
 	hurt_sound.play()
 	blood_animation.play("blood")  
-		
-	ScoreManager.add_score(attacker_id, 1)
+	
 	
 	Input.start_joy_vibration(
 		player_id,	# Controller to vibrate
@@ -169,6 +174,13 @@ func take_damage(attacker_id):
 		1.0,		# Strong motor (0.0-1.0)
 		0.25		# Duration in seconds
 	)
+	
+	if player_health > 0: # -1 means unlimited health
+		player_health -= 1
+		if player_health == 0:
+			health_depleted.emit(player_id)			
+			return
+					
 	
 	# Stuns the player
 	stun_timer.start()
@@ -206,3 +218,8 @@ func _on_parry_timer_timeout() -> void:
 	parry_light.energy = 0
 	parry_collision.energy = 0
 	parry_sparks.emitting = false
+	
+
+func destroy():
+	visible = false
+	collision_layer = -1
