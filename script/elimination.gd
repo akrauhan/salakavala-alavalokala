@@ -21,17 +21,21 @@ func on_players_ready() -> void:
 
 func start_round():
 	alive_players = players.duplicate()
+	
 	for player in players:
-		player.revive()
-		player.player_health = get_start_health(player.player_id)
+		basegame.player_manager.revive(player.player_id)
 
 func _on_player_took_damage(attacker_id, victim_id):
 	ScoreManager.add_score(attacker_id, 1)
-	ScoreManager.eliminate_player(victim_id)
+	
+	basegame.player_manager.eliminate(victim_id)
+	
+	# Remove victim from this round
 	alive_players = alive_players.filter(func(p): return p.player_id != victim_id)
 	
 	if ScoreManager.get_score(attacker_id) >= win_limit:
 		trigger_game_over(attacker_id)
+		return
 	
 	if alive_players.size() == 1:
 		get_tree().create_timer(round_restart_delay).timeout.connect(start_round)

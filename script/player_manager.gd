@@ -7,6 +7,7 @@ signal players_spawned(players)
 
 
 func _ready():
+	ScoreManager.player_eliminated.connect(_on_player_eliminated)
 	pass
 
 func spawn_players():
@@ -37,14 +38,25 @@ func spawn_players():
 func get_players():
 	return players_container.get_children()
 
-func eliminate(player_id):
+func get_player(player_id: int):
 	for player in players_container.get_children():
 		if player.player_id == player_id:
-			player.destroy()
-			break
-	
+			return player
+	return null
 	
 
 
-func _on_score_manager_player_eliminated(player_id) -> void:
+func eliminate(player_id):
+	var player = get_player(player_id)
+	if player:
+		player.eliminate()
+	
+func revive(player_id):
+	var player = get_player(player_id)
+	if player:
+		player.revive()
+	
+	
+
+func _on_player_eliminated(player_id) -> void:
 	eliminate(player_id)

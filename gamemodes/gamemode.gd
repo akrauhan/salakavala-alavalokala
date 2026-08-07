@@ -26,12 +26,15 @@ extends Node2D
 
 @export var basegame: Node2D
 
+var player_manager 
 var players: Array = []
 
 func _ready() -> void:
 	if basegame == null:
 		push_error("Gamemode: 'basegame' export not assigned in the editor.")
 		return
+		
+	player_manager = basegame.player_manager
 
 	var existing: Array = basegame.get_players()
 	if existing.is_empty():

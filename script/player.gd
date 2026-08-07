@@ -222,14 +222,15 @@ func _on_parry_timer_timeout() -> void:
 	parry_sparks.emitting = false
 	
 
-func destroy():
+func eliminate():
 	visible = false
 	collision_layer = 0
+	collision_mask = 0
 	
 func revive():
 	visible = true
-	collision_layer = default_collision_layer
-	global_position = start_pos
+	collision_layer = 1
+	collision_mask = 1
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0
 	

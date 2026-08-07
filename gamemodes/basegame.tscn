@@ -193,22 +193,6 @@ size = Vector2(1204, 100)
 [sub_resource type="LabelSettings" id="LabelSettings_q87uw"]
 font_size = 60
 
-[sub_resource type="GDScript" id="GDScript_rim2s"]
-script/source = "extends Node
-
-var players: Array = []
-
-# Called when the node enters the scene tree for the first time.
-func initialize(player_list):
-	players = player_list
-
-func player_hit(victim, attacker):
-	pass
-	
-func check_win():
-	pass
-"
-
 [node name="Basegame" type="Node2D" unique_id=566845920]
 script = ExtResource("1_rim2s")
 
@@ -317,9 +301,6 @@ scale = Vector2(0.35999984, 0.35999984)
 [node name="GamemodeLabel" type="Label" parent="BaseUI" unique_id=1106309474]
 offset_right = 40.0
 offset_bottom = 23.0
-
-[node name="GameMode" type="Node" parent="." unique_id=1777073710]
-script = SubResource("GDScript_rim2s")
 
 [connection signal="player_eliminated" from="GameManager/ScoreManager" to="GameManager/PlayerManager" method="_on_score_manager_player_eliminated"]
 [connection signal="timeout" from="GameManager/ScoreManager/GameOverTimer" to="." method="_on_game_over_timer_timeout"]
