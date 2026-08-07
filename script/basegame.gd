@@ -7,7 +7,7 @@ signal players_ready(players)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ScoreManager.scoreboard = $UI/MarginContainer/Scoreboard
+	ScoreManager.scoreboard = $BaseUI/ScoreboardContainer/Scoreboard
 	gamemode_label.text = GameSettings.gamemode_selected
 	player_manager.players_spawned.connect(_on_players_spawned)
 # Called every frame. 'delta' is the elapsed time since the previous frame.

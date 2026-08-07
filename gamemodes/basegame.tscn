@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://02hv4aj5u7c1"]
 
 [ext_resource type="Script" uid="uid://decjecqcyqegx" path="res://script/basegame.gd" id="1_rim2s"]
-[ext_resource type="Script" uid="uid://ciemfuvcxmglk" path="res://gamemodes/game_manager.gd" id="2_cvhaq"]
+[ext_resource type="Script" uid="uid://ciemfuvcxmglk" path="res://script/game_manager.gd" id="2_cvhaq"]
 [ext_resource type="Script" uid="uid://bjhqs3ppgisuf" path="res://script/player_manager.gd" id="5_s8v7d"]
 [ext_resource type="PackedScene" uid="uid://bf8h02hmexujc" path="res://characters/player.tscn" id="6_1a8kb"]
 [ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://script/cooldown_display.gd" id="7_nfiwh"]
@@ -224,8 +224,9 @@ script = ExtResource("5_s8v7d")
 player_scene = ExtResource("6_1a8kb")
 players_container = NodePath("../../Players")
 
-[node name="ScoreManager" type="Node" parent="GameManager" unique_id=1857764718 node_paths=PackedStringArray("game_over_timer")]
+[node name="ScoreManager" type="Node" parent="GameManager" unique_id=1857764718 node_paths=PackedStringArray("scoreboard", "game_over_timer")]
 script = ExtResource("7_rim2s")
+scoreboard = NodePath("../../BaseUI/ScoreboardContainer/Scoreboard")
 game_over_timer = NodePath("GameOverTimer")
 
 [node name="GameOverTimer" type="Timer" parent="GameManager/ScoreManager" unique_id=1819359228]

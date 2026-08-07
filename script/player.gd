@@ -46,6 +46,7 @@ var start_pos: Vector2
 var player_health
 
 signal took_damage
+signal health_depleted(player_id) # emitted when player_health reaches 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,7 +57,7 @@ func _ready() -> void:
 	melee_attack.player_id = player_id
 	start_pos = global_position
 	ScoreManager.add_player(player_id)
-	player_health = GameSettings.player_healths[GameSettings.gamemode_selected]
+	player_health = -1 # default is unlimited, active gamemode changes this after spawning
 
 @export var thrust := 500.0
 
@@ -165,8 +166,7 @@ func take_damage(attacker_id):
 		hurt_sound.stream = hurt_sounds[player_id]
 	hurt_sound.play()
 	blood_animation.play("blood")  
-		
-	ScoreManager.add_score(attacker_id, 1)
+	
 	
 	Input.start_joy_vibration(
 		player_id,	# Controller to vibrate
@@ -175,12 +175,11 @@ func take_damage(attacker_id):
 		0.25		# Duration in seconds
 	)
 	
-	if player_health == 1:
-		print("Player ", player_id, " died by ", attacker_id)
-		queue_free()
-		return
-	elif player_health > 1:
+	if player_health > 0: # -1 means unlimited health
 		player_health -= 1
+		if player_health == 0:
+			health_depleted.emit(player_id)			
+			return
 					
 	
 	# Stuns the player

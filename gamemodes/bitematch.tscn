@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://w1cqsgch8r3t"]
 
-[ext_resource type="Script" uid="uid://ejk4fvx6g8dm" path="res://gamemodes/bitematch.gd" id="1_hk1fe"]
+[ext_resource type="Script" uid="uid://ejk4fvx6g8dm" path="res://script/bitematch.gd" id="1_hk1fe"]
 [ext_resource type="PackedScene" uid="uid://02hv4aj5u7c1" path="res://gamemodes/basegame.tscn" id="3_tpv50"]
 [ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="3_x5a3e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sv6qw"]
 font_size = 60
 
-[node name="Bitematch" type="Node2D" unique_id=566845920]
+[node name="Bitematch" type="Node2D" unique_id=566845920 node_paths=PackedStringArray("basegame")]
 script = ExtResource("1_hk1fe")
+basegame = NodePath("Basegame")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=269729853]
 
