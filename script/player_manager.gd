@@ -38,7 +38,7 @@ func get_players():
 	return players_container.get_children()
 
 func eliminate(player_id):
-	for player in players_container:
+	for player in players_container.get_children():
 		if player.player_id == player_id:
 			player.destroy()
 			break

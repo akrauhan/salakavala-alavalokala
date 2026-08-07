@@ -44,9 +44,11 @@ extends RigidBody2D
 
 var start_pos: Vector2
 var player_health
+var default_collision_layer : int
 
 signal took_damage
 signal health_depleted(player_id) # emitted when player_health reaches 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,7 +58,7 @@ func _ready() -> void:
 	orbiting_sphere.player_id = player_id
 	melee_attack.player_id = player_id
 	start_pos = global_position
-	ScoreManager.add_player(player_id)
+	default_collision_layer = collision_layer
 	player_health = -1 # default is unlimited, active gamemode changes this after spawning
 
 @export var thrust := 500.0
@@ -222,4 +224,12 @@ func _on_parry_timer_timeout() -> void:
 
 func destroy():
 	visible = false
-	collision_layer = -1
+	collision_layer = 0
+	
+func revive():
+	visible = true
+	collision_layer = default_collision_layer
+	global_position = start_pos
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0
+	

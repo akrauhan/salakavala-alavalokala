@@ -17,10 +17,9 @@ func _ready() -> void:
 	pass
 	
 func add_player(player_id, start_score = 0):
-	if gamemode == "elimination":
-		start_score = win_limit
 	scores[player_id] = start_score
-	scoreboard.update_scoreboard()
+	if scoreboard:
+		scoreboard.update_scoreboard()
 	
 	
 func add_score(player_id, amount):
