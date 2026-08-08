@@ -122,14 +122,15 @@ animations = [{
 script = ExtResource("1_yon3r")
 
 [node name="MainMenu" parent="." unique_id=110763073 instance=ExtResource("1_asal3")]
-offset_left = 593.0
-offset_top = 291.0
-offset_right = 1018.0
-offset_bottom = 590.0
+offset_left = 10.0
+offset_top = 12.0
+offset_right = 463.0
+offset_bottom = 341.0
+scale = Vector2(1.9, 1.9)
 
 [node name="Kala" type="AnimatedSprite2D" parent="." unique_id=1310763620]
-position = Vector2(783, 146.00002)
-scale = Vector2(-2.0399995, 2.0399995)
+position = Vector2(1063, 430.00003)
+scale = Vector2(-1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_y8p4k")
 animation = &"bite"
 
@@ -140,8 +141,8 @@ animation = &"loop"
 offset = Vector2(-20, 0)
 
 [node name="Kala2" type="AnimatedSprite2D" parent="." unique_id=980692888]
-position = Vector2(377, 503)
-scale = Vector2(3.919999, 3.919999)
+position = Vector2(953, 90.000015)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_y8p4k")
 animation = &"bite"
 
@@ -152,5 +153,5 @@ animation = &"loop"
 offset = Vector2(-20, 0)
 
 [node name="Howto" type="Sprite2D" parent="." unique_id=140502969]
-position = Vector2(277, 183)
+position = Vector2(993, 523)
 texture = ExtResource("5_pfvpq")

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bsq0l618aptqj"]
 
 [ext_resource type="Script" uid="uid://d108bhbec0tko" path="res://script/mainmenu.gd" id="1_0qj0o"]
+[ext_resource type="FontFile" uid="uid://crpj1a6easgck" path="res://asset/UI/font/Zuber stone solo letras mayusculas (free promo).ttf" id="2_qfgyp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0fbet"]
 font_size = 39
@@ -11,6 +12,7 @@ font_color = Color(0.5496051, 0.720617, 1, 1)
 [node name="MainMenu" type="MarginContainer" unique_id=110763073]
 offset_right = 425.0
 offset_bottom = 299.0
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_0qj0o")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2122676160]
@@ -18,15 +20,19 @@ layout_mode = 2
 
 [node name="NameLabel" type="Label" parent="VBoxContainer" unique_id=2146587661]
 layout_mode = 2
-text = "Salakavala Alavalokala"
+theme_override_fonts/font = ExtResource("2_qfgyp")
+text = "SALAKAVALA
+ALAVALOKALA"
 label_settings = SubResource("LabelSettings_0fbet")
+uppercase = true
 
 [node name="StartButton" type="MenuButton" parent="VBoxContainer" unique_id=1443704411]
 layout_mode = 2
 focus_mode = 2
+theme_override_fonts/font = ExtResource("2_qfgyp")
 theme_override_font_sizes/font_size = 28
 toggle_mode = false
-text = "Start"
+text = "INITIATE"
 
 [node name="ErrorLabel" type="Label" parent="VBoxContainer" unique_id=744629711]
 layout_mode = 2
@@ -38,18 +44,24 @@ alignment = 1
 
 [node name="TutorialSelect" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=351121160]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qfgyp")
 toggle_mode = true
-text = "Tutorial"
+text = "ONBOARDING
+ALAVALOKALA"
 
 [node name="BitematchSelect" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1802584634]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qfgyp")
 toggle_mode = true
-text = "Bitematch"
+text = "PURENNALLISIN
+ALAVALOKALA"
 
 [node name="EliminationSelect" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1918174745]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qfgyp")
 toggle_mode = true
-text = "Elimination
+text = "SALAKAVALIN 
+ALAVALOKALA
 "
 
 [node name="PlayerCount" type="HBoxContainer" parent="VBoxContainer" unique_id=73265232]
@@ -58,7 +70,8 @@ alignment = 1
 
 [node name="PlayersLabel" type="Label" parent="VBoxContainer/PlayerCount" unique_id=249098104]
 layout_mode = 2
-text = "Players"
+theme_override_fonts/font = ExtResource("2_qfgyp")
+text = "ALAVALOKALOJA"
 
 [node name="Label" type="Label" parent="VBoxContainer/PlayerCount" unique_id=1102501337]
 layout_mode = 2
@@ -79,7 +92,8 @@ script = SubResource("GDScript_igs2m")
 
 [node name="LimitLabel" type="Label" parent="VBoxContainer/WinLimit" unique_id=864152791]
 layout_mode = 2
-text = "Limit    "
+theme_override_fonts/font = ExtResource("2_qfgyp")
+text = "AEAERIRAJOITUKSET"
 
 [node name="Label" type="Label" parent="VBoxContainer/WinLimit" unique_id=1819514764]
 layout_mode = 2
@@ -99,7 +113,8 @@ layout_mode = 2
 [node name="QuitButton" type="MenuButton" parent="VBoxContainer" unique_id=1336057452]
 layout_mode = 2
 focus_mode = 2
-text = "Quit"
+theme_override_fonts/font = ExtResource("2_qfgyp")
+text = "RANTAUDU"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/TutorialSelect" to="." method="_on_tutorial_select_pressed"]
