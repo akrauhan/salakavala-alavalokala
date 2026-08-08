@@ -22,8 +22,7 @@ func on_players_ready() -> void:
 func start_round():
 	alive_players = players.duplicate()
 	
-	for player in players:
-		basegame.player_manager.revive(player.player_id)
+	basegame.player_manager.revive_players()
 
 func _on_player_took_damage(attacker_id, victim_id):
 	ScoreManager.add_score(attacker_id, 1)
