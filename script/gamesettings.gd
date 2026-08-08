@@ -59,10 +59,17 @@ func apply_display_settings() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		DisplayServer.window_set_size(resolution_options[resolution_index])
-		_center_window()
+		_set_windowed_size_and_position(resolution_options[resolution_index])
  
-func _center_window() -> void:
-	var screen_size = DisplayServer.screen_get_size()
-	var window_size = DisplayServer.window_get_size()
-	DisplayServer.window_set_position((screen_size - window_size) / 2)
+func _set_windowed_size_and_position(window_size: Vector2i) -> void:
+	# Always target the primary screen explicitly, rather than "whichever
+	# screen the window currently overlaps" -- on multi-monitor setups
+	# (especially with a rotated second monitor), that detection can flip
+	# mid-resize and land the window in the gap between monitors.
+	var screen := DisplayServer.get_primary_screen()
+	var screen_position = DisplayServer.screen_get_position(screen)
+	var screen_size = DisplayServer.screen_get_size(screen)
+	var target_position = screen_position + (screen_size - window_size) / 2
+ 
+	DisplayServer.window_set_position(target_position)
+	DisplayServer.window_set_size(window_size)
