@@ -117,6 +117,12 @@ text = ">"
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=1481915928]
 layout_mode = 2
 
+[node name="OptionsButton" type="MenuButton" parent="VBoxContainer" unique_id=1961616276]
+layout_mode = 2
+focus_mode = 2
+theme_override_fonts/font = ExtResource("2_qfgyp")
+text = "VAIHTOEHTOJA"
+
 [node name="QuitButton" type="MenuButton" parent="VBoxContainer" unique_id=1336057452]
 layout_mode = 2
 focus_mode = 2
@@ -131,4 +137,5 @@ text = "RANTAUDU"
 [connection signal="focus_exited" from="VBoxContainer/PlayerCount" to="VBoxContainer/PlayerCount" method="_on_focus_exited"]
 [connection signal="gui_input" from="VBoxContainer/PlayerCount/PlayerCountButton" to="." method="_on_player_count_button_gui_input"]
 [connection signal="gui_input" from="VBoxContainer/WinLimit/WinLimitButton" to="." method="_on_win_limit_button_gui_input"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quitbutton_pressed"]

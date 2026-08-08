@@ -38,3 +38,4 @@ text = "Back"
 [connection signal="pressed" from="VBoxContainer/Resolutions/Res720" to="." method="_on_res_720_pressed"]
 [connection signal="pressed" from="VBoxContainer/Resolutions/Res1080" to="." method="_on_res_1080_pressed"]
 [connection signal="pressed" from="VBoxContainer/Resolutions/Res1440" to="." method="_on_res_1440_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

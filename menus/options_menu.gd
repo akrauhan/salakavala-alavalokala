@@ -1,5 +1,7 @@
 extends Control
- 
+
+signal back_requested
+
 ## CLAUDE
  
 @onready var res_720_button: Button = $VBoxContainer/Resolutions/Res720
@@ -49,4 +51,7 @@ func _update_resolution_buttons_enabled() -> void:
 		button.disabled = GameSettings.fullscreen
  
 func _on_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://menus/mainmenucontainer.tscn")
+	back_requested.emit()
+
+func grab_default_focus():
+	back_button.grab_focus()
