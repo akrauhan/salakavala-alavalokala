@@ -118,7 +118,7 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="Node" type="Node" unique_id=416798475]
+[node name="MainMenuContainer" type="Node" unique_id=416798475]
 script = ExtResource("1_yon3r")
 
 [node name="MainMenu" parent="." unique_id=110763073 instance=ExtResource("1_asal3")]

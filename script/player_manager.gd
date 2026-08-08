@@ -14,7 +14,7 @@ func _ready():
 
 func spawn_players(spawn_points = []):
 	var spawned := []
-	
+
 	var controllers = Input.get_connected_joypads()
 	var count = min(GameSettings.player_count, controllers.size())
 
@@ -34,7 +34,7 @@ func spawn_players(spawn_points = []):
 		print("Spawned player ID: ", player.player_id)
 		players_container.add_child(player)
 		spawned.append(player)
-	
+
 	players_spawned.emit(spawned)
 	return spawned
 
@@ -46,19 +46,19 @@ func get_player(player_id: int):
 		if player.player_id == player_id:
 			return player
 	return null
-	
+
 
 
 func eliminate(player_id):
 	var player = get_player(player_id)
 	if player:
 		player.eliminate()
-	
+
 func revive(player_id):
 	var player = get_player(player_id)
 	if player:
 		player.revive()
-	
+
 func revive_players(spawn_points = []):
 	for i in range(players_container.get_children().size()):
 		if spawn_points:

@@ -2,6 +2,7 @@ extends Node
 @onready var flapper := $"Kala/FlapperAnimation"
 @onready var flapper2 := $"Kala2/FlapperAnimation"
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	flapper.play()
