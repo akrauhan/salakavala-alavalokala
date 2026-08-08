@@ -1,14 +1,14 @@
 extends Control
 
-@onready var player_count_button := $VBoxContainer/PlayerCount/PlayerCountButton
-@onready var win_limit_button := $VBoxContainer/WinLimit/WinLimitButton
-@onready var start_button := $VBoxContainer/StartButton
+@export var player_count_button: Button
+@export var win_limit_button: Button
+@export var start_button: Button
 
-@onready var tutorial_select = $VBoxContainer/HBoxContainer/TutorialSelect
-@onready var bitematch_select = $VBoxContainer/HBoxContainer/BitematchSelect
-@onready var elimination_select = $VBoxContainer/HBoxContainer/EliminationSelect
+@export var tutorial_select: Button
+@export var bitematch_select: Button
+@export var elimination_select: Button
 
-@onready var error_label = $VBoxContainer/ErrorLabel
+@export var error_label: Label
 
 var win_limit 
 var player_count
