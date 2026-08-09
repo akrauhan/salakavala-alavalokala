@@ -287,6 +287,7 @@ theme_override_constants/margin_right = 100
 
 [node name="Scoreboard" type="HBoxContainer" parent="BaseUI/ScoreboardContainer" unique_id=1005045130]
 layout_mode = 2
+alignment = 1
 script = ExtResource("7_q87uw")
 
 [node name="CooldownManager" type="Control" parent="BaseUI" unique_id=1396155506]
@@ -301,6 +302,7 @@ offset_top = 579.0
 offset_right = 1379.0
 offset_bottom = 1535.0
 scale = Vector2(0.35999984, 0.35999984)
+alignment = 1
 
 [node name="GamemodeLabel" type="Label" parent="BaseUI" unique_id=1106309474]
 offset_right = 40.0
