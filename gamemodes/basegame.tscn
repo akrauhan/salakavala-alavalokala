@@ -203,10 +203,14 @@ cooldown_ui = NodePath("../BaseUI/CooldownManager")
 scoreboard = NodePath("../BaseUI/ScoreboardContainer/Scoreboard")
 winner_label = NodePath("../BaseUI/WinnerLabel")
 
-[node name="PlayerManager" type="Node" parent="GameManager" unique_id=239729471 node_paths=PackedStringArray("players_container")]
+[node name="PlayerManager" type="Node" parent="GameManager" unique_id=239729471 node_paths=PackedStringArray("players_container", "border_left", "border_right", "border_top", "border_bottom")]
 script = ExtResource("5_s8v7d")
 player_scene = ExtResource("6_1a8kb")
 players_container = NodePath("../../Players")
+border_left = NodePath("../../World/Borders/Left")
+border_right = NodePath("../../World/Borders/Right")
+border_top = NodePath("../../World/Borders/Top")
+border_bottom = NodePath("../../World/Borders/Bot")
 
 [node name="ScoreManager" type="Node" parent="GameManager" unique_id=1857764718 node_paths=PackedStringArray("scoreboard", "game_over_timer")]
 script = ExtResource("7_rim2s")
@@ -235,17 +239,17 @@ grow_vertical = 2
 
 [node name="Borders" type="Node" parent="World" unique_id=1732383276]
 
-[node name="Right" type="StaticBody2D" parent="World/Borders" unique_id=1198831199]
+[node name="Left" type="StaticBody2D" parent="World/Borders" unique_id=1198831199]
 position = Vector2(1, 1309)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Borders/Right" unique_id=1007763113]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Borders/Left" unique_id=1007763113]
 position = Vector2(-29, -982)
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Left" type="StaticBody2D" parent="World/Borders" unique_id=1827380981]
+[node name="Right" type="StaticBody2D" parent="World/Borders" unique_id=1827380981]
 position = Vector2(1154, 638)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Borders/Left" unique_id=983993276]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Borders/Right" unique_id=983993276]
 position = Vector2(29, -326)
 shape = SubResource("RectangleShape2D_h2yge")
 

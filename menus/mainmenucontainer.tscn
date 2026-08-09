@@ -127,9 +127,15 @@ offset_left = 10.0
 offset_top = 12.0
 offset_right = 463.0
 offset_bottom = 341.0
-scale = Vector2(1.9, 1.9)
+scale = Vector2(1.7399995, 1.7399995)
 
 [node name="OptionsMenu" parent="." unique_id=1222754564 instance=ExtResource("3_yon3r")]
+visible = false
+offset_left = 249.00003
+offset_top = 382.00003
+offset_right = 249.00003
+offset_bottom = 382.00003
+scale = Vector2(0.9781565, 0.971852)
 
 [node name="Kala" type="AnimatedSprite2D" parent="." unique_id=1310763620]
 position = Vector2(1063, 430.00003)
