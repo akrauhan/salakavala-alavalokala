@@ -33,6 +33,10 @@ extends RigidBody2D
 @export var ability_cooldown := 3 # How long until the cooldown replenishes from 0 to 100%
 var ability_charge := 1.0 # always 1, meaning 100%
 
+# Percentage costs for abilities
+var dash_cost = 0.33
+var bite_cost = 1.0
+
 @onready var orbiting_sphere = $OrbitingSphere
 @onready var melee_attack = $Bite
 @onready var parry_area = $Parry/ParryExplosionArea
@@ -112,7 +116,7 @@ func _physics_process(delta):
 		var direction = input2	
 		if ability_charge >= 1.0:
 			if melee_attack.attack(direction):
-				use_ability(1.0)
+				use_ability(bite_cost)
 				
 				linear_velocity = Vector2.ZERO
 				angular_velocity = 0
@@ -210,7 +214,7 @@ func dash():
 		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
 	) 
 	
-	if not use_ability(0.4):
+	if not use_ability(dash_cost):
 		return
 	
 	apply_impulse(input * dash_strength)
