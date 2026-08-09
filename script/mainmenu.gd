@@ -9,6 +9,8 @@ extends Control
 @export var elimination_select: Button
 
 @export var error_label: Label
+ 
+signal options_requested
 
 var win_limit 
 var player_count
@@ -29,9 +31,6 @@ func _ready() -> void:
 	player_count_button.text = str(player_count)
 	win_limit_button.text = str(win_limit)
 
-
-func _process(delta):
-	pass
 
 func _on_start_button_pressed() -> void:
 	player_count = int(player_count_button.text)
@@ -62,6 +61,12 @@ func _on_start_button_pressed() -> void:
 
 func _on_quitbutton_pressed() -> void:
 	get_tree().quit()
+
+func _on_options_button_pressed() -> void:
+	options_requested.emit()
+	
+func grab_default_focus():
+	start_button.grab_focus()
 
 func change_player_count(amount):
 	player_count += amount
