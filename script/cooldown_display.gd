@@ -33,9 +33,4 @@ func create_cooldowns():
 
 func _process(delta):
 	for i in players.size():
-		var player = players[i]
-		if player:
-			var timer = player.get_node("Bite/BiteCooldown")
-		
-			var progress = 1.0 - (timer.time_left / timer.wait_time)
-			circles[i].value = progress * 100
+		circles[i].value = players[i].ability_charge * 100.0

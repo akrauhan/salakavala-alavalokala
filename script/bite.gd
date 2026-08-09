@@ -43,6 +43,8 @@ func attack(direction) -> bool: # Returns if attack was successful
 	if direction.length() < 0.0:
 		return false
 	
+	#if not player.use_ability(1):
+		#return false
 	sprite_2d.play("bite")
 	
 	bite_visualizer.visible = true
