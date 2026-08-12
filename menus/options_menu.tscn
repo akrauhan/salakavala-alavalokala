@@ -14,6 +14,12 @@ offset_bottom = 40.0
 
 [node name="FullscreenButton" type="CheckButton" parent="VBoxContainer" unique_id=692727165]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Resolutions/Res720")
+focus_next = NodePath("../Resolutions/Res720")
+focus_previous = NodePath("../BackButton")
 text = "Fullscreen"
 
 [node name="Resolutions" type="HBoxContainer" parent="VBoxContainer" unique_id=2040648360]
@@ -21,18 +27,42 @@ layout_mode = 2
 
 [node name="Res720" type="Button" parent="VBoxContainer/Resolutions" unique_id=1618241178]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Res1440")
+focus_neighbor_top = NodePath("../../FullscreenButton")
+focus_neighbor_right = NodePath("../Res1080")
+focus_neighbor_bottom = NodePath("../../BackButton")
+focus_next = NodePath("../Res1080")
+focus_previous = NodePath("../../FullscreenButton")
 text = "1280 x 720"
 
 [node name="Res1080" type="Button" parent="VBoxContainer/Resolutions" unique_id=528942324]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Res720")
+focus_neighbor_top = NodePath("../../FullscreenButton")
+focus_neighbor_right = NodePath("../Res1440")
+focus_neighbor_bottom = NodePath("../../BackButton")
+focus_next = NodePath("../Res1440")
+focus_previous = NodePath("../Res720")
 text = "1920 x 1080"
 
 [node name="Res1440" type="Button" parent="VBoxContainer/Resolutions" unique_id=1465927457]
 layout_mode = 2
+focus_neighbor_left = NodePath("../Res1080")
+focus_neighbor_top = NodePath("../../FullscreenButton")
+focus_neighbor_right = NodePath("../Res720")
+focus_neighbor_bottom = NodePath("../../BackButton")
+focus_next = NodePath("../../BackButton")
+focus_previous = NodePath("../Res1080")
 text = "2560 x 1440"
 
 [node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1254531375]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Resolutions/Res720")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../FullscreenButton")
+focus_next = NodePath("../FullscreenButton")
+focus_previous = NodePath("../Resolutions/Res1440")
 text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/Resolutions/Res720" to="." method="_on_res_720_pressed"]
