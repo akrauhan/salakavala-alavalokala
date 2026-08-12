@@ -18,6 +18,7 @@ var gamemode_scenes
 var gamemode_selected_scene
 var gamemode_selected
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	gamemode_scenes = GameSettings.gamemode_scenes
@@ -30,34 +31,46 @@ func _ready() -> void:
 	select_gamemode(gamemode_selected)
 	player_count_button.text = str(player_count)
 	win_limit_button.text = str(win_limit)
+	joycheck()
+
+
+## Check if there is enough controllers connected for chosen player count.[br]
+## Returns false if not and displays an error message.
+func joycheck() -> bool:
+	var joycount : int = Input.get_connected_joypads().size()
+	var joyok : bool = (joycount >= player_count)
+	if joyok:
+		error_label.text = ""
+	else:
+		error_label.text = "Only %d controllers detected!" % (joycount)
+	
+	start_button.disabled = not joyok # remove to use flow control in _on_start_button_pressed()
+	return joyok
 
 
 func _on_start_button_pressed() -> void:
-	player_count = int(player_count_button.text)
-	win_limit = int(win_limit_button.text)
-	
-	GameSettings.player_count = player_count
-	
-	var connected_joypads = Input.get_connected_joypads().size()
+	if joycheck(): # start the match
+		player_count = int(player_count_button.text)
+		win_limit = int(win_limit_button.text)
 		
-	
-	if player_count > connected_joypads:
-		error_label.text = "Only %d controllers detected!" % (connected_joypads)
-		error_label.queue_redraw()
+		GameSettings.player_count = player_count
+		
+		GameSettings.gamemode_selected = gamemode_selected
+		ScoreManager.gamemode = gamemode_selected
+		
+		GameSettings.win_limits[gamemode_selected] = win_limit
+		ScoreManager.win_limit = win_limit
+		ScoreManager.gamemode_path = GameSettings.gamemode_scenes[GameSettings.gamemode_selected]
+		
+		get_tree().change_scene_to_file(GameSettings.gamemode_scenes[gamemode_selected]) # Replace with function body.
+		queue_free()
+		
+	else: # dont start (player count > connected controllers)
+		# NOTE: to land here, remove "start_button.disabled = ..." from joycheck()
+		# TODO: currently breaks the menu/controls, fix before using
 		#error_label.shake()
-		start_button.grab_focus()
-		accept_event()
-		return
-	
-	GameSettings.gamemode_selected = gamemode_selected
-	ScoreManager.gamemode = gamemode_selected
-	
-	GameSettings.win_limits[gamemode_selected] = win_limit
-	ScoreManager.win_limit = win_limit
-	ScoreManager.gamemode_path = GameSettings.gamemode_scenes[GameSettings.gamemode_selected]
-	
-	get_tree().change_scene_to_file(GameSettings.gamemode_scenes[gamemode_selected]) # Replace with function body.
-	queue_free()
+		pass
+
 
 func _on_quitbutton_pressed() -> void:
 	get_tree().quit()
@@ -75,13 +88,8 @@ func change_player_count(amount):
 	elif player_count == 9:
 		player_count = 2
 	player_count_button.text = str(player_count)
-	
-	var connected_joypads = Input.get_connected_joypads().size()
-	if  connected_joypads < player_count:
-		error_label.text = "Only %d controllers detected!" % (connected_joypads)
-	else:
-		error_label.text = ""
-	
+	joycheck()
+
 func change_win_limit_count(amount):
 	win_limit += amount
 	if win_limit == 0:
