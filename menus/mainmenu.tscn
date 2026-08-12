@@ -51,6 +51,9 @@ alignment = 1
 
 [node name="TutorialSelect" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=351121160]
 layout_mode = 2
+focus_neighbor_left = NodePath("../EliminationSelect")
+focus_neighbor_right = NodePath("../BitematchSelect")
+focus_neighbor_bottom = NodePath("../../PlayerCount/PlayerCountButton")
 theme_override_fonts/font = ExtResource("2_qfgyp")
 toggle_mode = true
 text = "ONBOARDING
@@ -58,6 +61,9 @@ ALAVALOKALA"
 
 [node name="BitematchSelect" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1802584634]
 layout_mode = 2
+focus_neighbor_left = NodePath("../TutorialSelect")
+focus_neighbor_right = NodePath("../EliminationSelect")
+focus_neighbor_bottom = NodePath("../../PlayerCount/PlayerCountButton")
 theme_override_fonts/font = ExtResource("2_qfgyp")
 toggle_mode = true
 text = "PURENNALLISIN
@@ -65,6 +71,9 @@ ALAVALOKALA"
 
 [node name="EliminationSelect" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1918174745]
 layout_mode = 2
+focus_neighbor_left = NodePath("../BitematchSelect")
+focus_neighbor_right = NodePath("../TutorialSelect")
+focus_neighbor_bottom = NodePath("../../PlayerCount/PlayerCountButton")
 theme_override_fonts/font = ExtResource("2_qfgyp")
 toggle_mode = true
 text = "SALAKAVALIN 
@@ -86,6 +95,7 @@ text = "<"
 
 [node name="PlayerCountButton" type="Button" parent="VBoxContainer/PlayerCount" unique_id=1383089057]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer/BitematchSelect")
 text = "2"
 
 [node name="Label2" type="Label" parent="VBoxContainer/PlayerCount" unique_id=840822969]
