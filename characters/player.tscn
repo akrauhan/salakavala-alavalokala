@@ -491,6 +491,9 @@ process_material = SubResource("ParticleProcessMaterial_qtqh7")
 [node name="DashCooldown" type="Timer" parent="." unique_id=1659091772]
 one_shot = true
 
+[node name="AbilityCooldown" type="Timer" parent="." unique_id=1679652617]
+one_shot = true
+
 [node name="OrbitingSphere" parent="." unique_id=301407710 instance=ExtResource("16_qp1es")]
 position = Vector2(56, 0)
 

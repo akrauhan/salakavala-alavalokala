@@ -29,6 +29,14 @@ extends RigidBody2D
 @onready var dodge_timer: Timer = $Parry/DodgeTimer
 
 
+@onready var ability_timer: Timer = $AbilityCooldown
+@export var ability_cooldown := 3 # How long until the cooldown replenishes from 0 to 100%
+var ability_charge := 1.0 # always 1, meaning 100%
+
+# Percentage costs for abilities
+var dash_cost = 0.33
+var bite_cost = 1.0
+
 @onready var orbiting_sphere = $OrbitingSphere
 @onready var melee_attack = $Bite
 @onready var parry_area = $Parry/ParryExplosionArea
@@ -60,6 +68,8 @@ func _ready() -> void:
 	start_pos = global_position
 	default_collision_layer = collision_layer
 	player_health = -1 # default is unlimited, active gamemode changes this after spawning
+	
+
 
 @export var thrust := 500.0
 
@@ -74,6 +84,9 @@ func _physics_process(delta):
 		input = Vector2.ZERO
 		flapper_animation.play("loop")
 	flap(input)
+	
+	ability_charge = min(ability_charge + delta / ability_cooldown, 1.0)
+	
 
 
 	# DASH_INPUT
@@ -101,10 +114,13 @@ func _physics_process(delta):
 	if attack_pressed:
 
 		var direction = input2	
-		if melee_attack.attack(direction):
-			linear_velocity = Vector2.ZERO
-			angular_velocity = 0
-			apply_impulse(direction.normalized()*biteimpulse_strength)
+		if ability_charge >= 1.0:
+			if melee_attack.attack(direction):
+				use_ability(bite_cost)
+				
+				linear_velocity = Vector2.ZERO
+				angular_velocity = 0
+				apply_impulse(direction.normalized()*biteimpulse_strength)
 
 
 func flap(direction):
@@ -192,12 +208,14 @@ func take_damage(attacker_id):
 
 
 func dash():
-	if !dash_timer.is_stopped():
-		return
+
 	var input = Vector2(
 		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_X),
 		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
 	) 
+	
+	if not use_ability(dash_cost):
+		return
 	
 	apply_impulse(input * dash_strength)
 	dash_emitter.restart()
@@ -209,8 +227,14 @@ func dash():
 		0.1		# Duration in seconds
 	)
 		
-	dash_timer.start()
+	
 
+func use_ability(cost):
+	if ability_charge < 1.0:
+		return false
+	
+	ability_charge -= cost
+	return true
 
 func _on_dash_cooldown_timeout() -> void:
 	print("Dash ready: ", player_id )
