@@ -18,6 +18,10 @@ func _ready() -> void:
 	fullscreen_button.button_pressed = GameSettings.fullscreen
 	_highlight_resolution(GameSettings.resolution_index)
 	_update_resolution_buttons_enabled()
+	
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("ui_cancel"):
+		back_requested.emit()
  
 func _on_res_720_pressed() -> void:
 	_select_resolution(0)
