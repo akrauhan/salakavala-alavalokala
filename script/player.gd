@@ -57,6 +57,7 @@ var default_collision_layer : int
 signal took_damage
 signal health_depleted(player_id) # emitted when player_health reaches 0
 
+var game_starting := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -73,8 +74,36 @@ func _ready() -> void:
 
 @export var thrust := 500.0
 
+func start_game_intro():
+	game_starting = true
+	freeze = true
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0.0
+	
+	sleeping = true
+	
+func finish_game_intro():
+	sleeping = false
+	freeze = false
+	game_starting = false
+
+func launch_from_intro(target_position: Vector2, duration: float):
+	var tween := create_tween()
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.set_ease(Tween.EASE_OUT)
+
+	tween.tween_property(
+		self,
+		"global_position",
+		target_position,
+		duration
+	)
+	
+	await tween.finished
 
 func _physics_process(delta):
+	if game_starting: 
+		return
 	var input = Vector2(
 		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_X),
 		Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)
