@@ -19,8 +19,12 @@ var min_distance = 300 # between players when spawning
 var max_spawn_attempts := 100
 
 func _ready():
-	min_pos = Vector2(border_left.position.x + d, border_top.position.y + d)
-	max_pos = Vector2(border_right.position.x - d, border_bottom.position.y - d)
+	if border_left and border_right and border_top and border_bottom:
+		min_pos = Vector2(border_left.position.x + d, border_top.position.y + d)
+		max_pos = Vector2(border_right.position.x - d, border_bottom.position.y - d)
+	else:
+		min_pos = Vector2.ZERO
+		max_pos = Vector2.ZERO
 	print(min_pos)
 	print(max_pos)
 	

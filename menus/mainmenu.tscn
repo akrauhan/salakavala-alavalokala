@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d108bhbec0tko" path="res://script/mainmenu.gd" id="1_0qj0o"]
 [ext_resource type="FontFile" uid="uid://crpj1a6easgck" path="res://asset/UI/font/Zuber stone solo letras mayusculas (free promo).ttf" id="2_qfgyp"]
+[ext_resource type="PackedScene" uid="uid://bhxwbc1e8gt6b" path="res://characters/player_manager.tscn" id="2_yp026"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0fbet"]
 font_size = 39
@@ -9,7 +10,7 @@ font_color = Color(0.5496051, 0.720617, 1, 1)
 
 [sub_resource type="GDScript" id="GDScript_igs2m"]
 
-[node name="MainMenu" type="MarginContainer" unique_id=110763073 node_paths=PackedStringArray("player_count_button", "win_limit_button", "start_button", "tutorial_select", "bitematch_select", "elimination_select", "error_label")]
+[node name="MainMenu" type="MarginContainer" unique_id=110763073 node_paths=PackedStringArray("player_count_button", "win_limit_button", "start_button", "tutorial_select", "bitematch_select", "elimination_select", "error_label", "player_manager")]
 offset_right = 425.0
 offset_bottom = 299.0
 scale = Vector2(1.5, 1.5)
@@ -21,6 +22,12 @@ tutorial_select = NodePath("VBoxContainer/HBoxContainer/TutorialSelect")
 bitematch_select = NodePath("VBoxContainer/HBoxContainer/BitematchSelect")
 elimination_select = NodePath("VBoxContainer/HBoxContainer/EliminationSelect")
 error_label = NodePath("VBoxContainer/ErrorLabel")
+player_manager = NodePath("PlayerManager")
+
+[node name="PlayerManager" parent="." unique_id=1955240991 node_paths=PackedStringArray("players_container") instance=ExtResource("2_yp026")]
+players_container = NodePath("../Players")
+
+[node name="Players" type="Node2D" parent="." unique_id=530349884]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2122676160]
 layout_mode = 2

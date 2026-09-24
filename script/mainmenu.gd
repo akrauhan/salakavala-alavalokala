@@ -9,7 +9,9 @@ extends Control
 @export var elimination_select: Button
 
 @export var error_label: Label
- 
+
+@export var player_manager: Node 
+
 signal options_requested
 
 var win_limit 
@@ -32,6 +34,8 @@ func _ready() -> void:
 	select_gamemode(gamemode_selected)
 	player_count_button.text = str(player_count)
 	win_limit_button.text = str(win_limit)
+	
+	update_menu_players(player_count)
 	joycheck()
 
 
@@ -89,12 +93,23 @@ func change_player_count(amount):
 	elif player_count == 9:
 		player_count = 2
 	player_count_button.text = str(player_count)
-	update_players(player_count)
+	update_menu_players(player_count)
 	joycheck()
 
-func update_players(player_count): # Spawn or remove players that are controlled
-	
-	pass
+func update_menu_players(amount):
+	var controllers = Input.get_connected_joypads()
+	var current_players = player_manager.get_players()
+	var target_count = min(amount, controllers.size())
+
+	while current_players.size() < target_count:
+		var controller_id = controllers[current_players.size()]
+		player_manager.spawn_player(controller_id)
+		current_players = player_manager.get_players()
+
+	while current_players.size() > target_count:
+		var player = current_players.back()
+		player_manager.remove_player(player.player_id)
+		current_players = player_manager.get_players()
 
 func change_win_limit_count(amount):
 	win_limit += amount
