@@ -18,6 +18,7 @@ var gamemode_scenes
 var gamemode_selected_scene
 var gamemode_selected
 
+var players
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -88,7 +89,12 @@ func change_player_count(amount):
 	elif player_count == 9:
 		player_count = 2
 	player_count_button.text = str(player_count)
+	update_players(player_count)
 	joycheck()
+
+func update_players(player_count): # Spawn or remove players that are controlled
+	
+	pass
 
 func change_win_limit_count(amount):
 	win_limit += amount

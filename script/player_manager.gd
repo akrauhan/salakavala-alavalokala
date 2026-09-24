@@ -29,25 +29,20 @@ func _ready():
 
 func spawn_players(spawn_points = []):
 	var spawned := []
-
 	var controllers = Input.get_connected_joypads()
 	var count = min(GameSettings.player_count, controllers.size())
 
 	for i in range(count):
-		var player = player_scene.instantiate()
-		player.player_id = controllers[i]
-
 		var spawn_position: Vector2
-
+		
 		# Use predefined spawn point if available.
 		if i < spawn_points.size():
 			spawn_position = spawn_points[i]
 		else:
 			spawn_position = find_spawn_position(spawned)
 
-		player.position = spawn_position
-
-		players_container.add_child(player)
+		var player = spawn_player(controllers[i], spawn_position)
+		
 		spawned.append(player)
 
 		print("Spawned player ID: ", player.player_id, " at ", player.position)
@@ -55,6 +50,19 @@ func spawn_players(spawn_points = []):
 	players_spawned.emit(spawned)
 	return spawned
 
+func spawn_player(player_id: int, spawn_position := Vector2.ZERO):
+	var player = player_scene.instantiate()
+	player.player_id = player_id
+	player.position = spawn_position
+	players_container.add_child(player)
+	return player
+	
+func remove_player(player_id: int):
+	var player = get_player(player_id)
+	
+	if player:
+		player.queue_free()
+	
 
 func find_spawn_position(existing_players: Array) -> Vector2:
 	for attempt in range(max_spawn_attempts):

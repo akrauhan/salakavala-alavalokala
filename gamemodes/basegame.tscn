@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://decjecqcyqegx" path="res://script/basegame.gd" id="1_rim2s"]
 [ext_resource type="Script" uid="uid://ciemfuvcxmglk" path="res://script/game_manager.gd" id="2_cvhaq"]
-[ext_resource type="Script" uid="uid://bjhqs3ppgisuf" path="res://script/player_manager.gd" id="5_s8v7d"]
-[ext_resource type="PackedScene" uid="uid://bf8h02hmexujc" path="res://characters/player.tscn" id="6_1a8kb"]
+[ext_resource type="PackedScene" uid="uid://bhxwbc1e8gt6b" path="res://characters/player_manager.tscn" id="3_cvhaq"]
 [ext_resource type="Script" uid="uid://feeivv8jqxim" path="res://script/cooldown_display.gd" id="7_nfiwh"]
 [ext_resource type="Script" uid="uid://c3eyoc4xw06tr" path="res://script/scoreboard.gd" id="7_q87uw"]
 [ext_resource type="Script" uid="uid://du6tis4q1xjq4" path="res://script/score_manager.gd" id="7_rim2s"]
@@ -203,9 +202,7 @@ cooldown_ui = NodePath("../BaseUI/CooldownManager")
 scoreboard = NodePath("../BaseUI/ScoreboardContainer/Scoreboard")
 winner_label = NodePath("../BaseUI/WinnerLabel")
 
-[node name="PlayerManager" type="Node" parent="GameManager" unique_id=239729471 node_paths=PackedStringArray("players_container", "border_left", "border_right", "border_top", "border_bottom")]
-script = ExtResource("5_s8v7d")
-player_scene = ExtResource("6_1a8kb")
+[node name="PlayerManager" parent="GameManager" unique_id=1955240991 node_paths=PackedStringArray("players_container", "border_left", "border_right", "border_top", "border_bottom") instance=ExtResource("3_cvhaq")]
 players_container = NodePath("../../Players")
 border_left = NodePath("../../World/Borders/Left")
 border_right = NodePath("../../World/Borders/Right")
@@ -308,5 +305,4 @@ alignment = 1
 offset_right = 40.0
 offset_bottom = 23.0
 
-[connection signal="player_eliminated" from="GameManager/ScoreManager" to="GameManager/PlayerManager" method="_on_score_manager_player_eliminated"]
 [connection signal="timeout" from="GameManager/ScoreManager/GameOverTimer" to="." method="_on_game_over_timer_timeout"]
