@@ -5,8 +5,6 @@
 [node name="GameStartSequence" type="Node2D" unique_id=1905312384]
 script = ExtResource("1_1asl5")
 
-[node name="AnimationController" type="Node" parent="." unique_id=1754494651]
-
 [node name="StartLabel" type="Label" parent="." unique_id=171460861]
 offset_right = 40.0
 offset_bottom = 23.0
