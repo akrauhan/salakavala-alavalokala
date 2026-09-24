@@ -7,6 +7,8 @@ extends Gamemode
 
 @export var round_restart_delay := 3.0
 
+@onready var game_start_sequence = $GameStartSequence
+
 var win_limit: int
 var alive_players: Array = []
 
@@ -15,14 +17,28 @@ func get_start_health(_player_id) -> int:
 
 func on_players_ready() -> void:
 	win_limit = GameSettings.win_limits[GameSettings.gamemode_selected]	
-	for player in players:
-		player.took_damage.connect(_on_player_took_damage)
+
 	start_round()
+
+
+func _on_game_start_finished() -> void:
+	for player in players:
+		player.finish_game_intro()
+
 
 func start_round():
 	alive_players = players.duplicate()
 	
 	basegame.player_manager.revive_players()
+	
+	game_start_sequence.start_sequence_finished.connect(_on_game_start_finished)	
+	game_start_sequence.start(players)
+	
+	for player in players:
+		player.took_damage.connect(_on_player_took_damage)
+		player.start_game_intro()
+		
+	
 
 func _on_player_took_damage(attacker_id, victim_id):
 	ScoreManager.add_score(attacker_id, 1)
