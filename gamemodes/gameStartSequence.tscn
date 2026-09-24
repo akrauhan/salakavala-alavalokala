@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bdtre1kg6qetk"]
+
+[ext_resource type="Script" uid="uid://dfm683mh6waty" path="res://gamemodes/game_start_sequence.gd" id="1_1asl5"]
+
+[node name="GameStartSequence" type="Node2D" unique_id=1905312384]
+script = ExtResource("1_1asl5")
+
+[node name="StartLabel" type="Label" parent="." unique_id=171460861]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "PURE!"
+
+[node name="StartAudio" type="AudioStreamPlayer" parent="." unique_id=1301814075]
